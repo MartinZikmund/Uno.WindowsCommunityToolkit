@@ -56,8 +56,8 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
-    <PackageReference Include="Uno.UI" Version="3.0.0-dev.593" />
-    <PackageReference Include="Uno.ColorCode.UWP" Version="2.0.5-gd0f1a63314" />
+    <PackageReference Include="Uno.UI" Version="3.0.0-dev.899" />
+    <PackageReference Include="Uno.ColorCode.UWP" Version="2.0.8-gd42a883502" />
 
 		<Page Remove="Eyedropper/**/*.xaml" />
 		<Page Remove="InfiniteCanvas/**/*.xaml" />
@@ -74,10 +74,6 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'uap10.0' or '$(TargetFramework)' == 'uap10.0.16299'">
     <PackageReference Include="ColorCode.UWP" Version="2.0.6" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Uno.UI" Version="3.0.0-dev.593" />
   </ItemGroup>
 	
   <ItemGroup>

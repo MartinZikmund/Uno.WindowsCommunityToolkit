@@ -4,8 +4,6 @@
     <IsPackable>false</IsPackable>
     <OutputType>Exe</OutputType>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <DefineConstants>$(DefineConstants);__WASM__</DefineConstants>
-    <WasmHead>true</WasmHead>
     <WasmPWAManifestFile Condition="'$(Configuration)'=='Release'">manifest.json</WasmPWAManifestFile>
     <NoWarn>$(NoWarm);Uno0001</NoWarn>
     <MonoRuntimeDebuggerEnabled Condition="'$(Configuration)'=='Debug'">true</MonoRuntimeDebuggerEnabled>
@@ -36,14 +34,14 @@
   </ItemGroup>
       
   <ItemGroup>
-    <PackageReference Include="Uno.UI" Version="3.0.0-dev.593" />
-    <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.3.0-dev.44" />
-		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="1.3.0-dev.44" />
+    <PackageReference Include="Uno.UI.WebAssembly" Version="3.0.0-dev.899" />
+    <PackageReference Include="Uno.Wasm.Bootstrap" Version="1.3.0" />
+		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="1.3.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
     <PackageReference Include="Microsoft.TypeScript.Compiler" Version="2.8.3" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="2.8.3" />
-    <PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.23" />
+    <PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.33" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 

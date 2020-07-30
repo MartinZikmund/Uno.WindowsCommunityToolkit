@@ -6,7 +6,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Toolkit.Uwp.UI.Extensions;
-using Uno.Extensions.Specialized;
 using Windows.ApplicationModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -14,6 +13,9 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+#if HAS_UNO
+using Uno.Extensions.Specialized;
+#endif
 
 namespace Microsoft.Toolkit.Uwp.UI.Controls
 {
@@ -597,7 +599,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             return itemsSource as IEnumerable ?? Items;
         }
 #else
-        private IEnumerable GetItems() => Items;
+        private ItemCollection GetItems() => Items;
 #endif
     }
 }

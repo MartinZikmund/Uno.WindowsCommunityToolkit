@@ -1,4 +1,5 @@
 ﻿<linker>
+	<assembly fullname="WebAssembly.Bindings"/>
 	<assembly fullname="Uno.Foundation"/>
 	<assembly fullname="Uno.Xaml"/>
   <assembly fullname="Microsoft.Toolkit.Uwp.SampleApp.Wasm"/>

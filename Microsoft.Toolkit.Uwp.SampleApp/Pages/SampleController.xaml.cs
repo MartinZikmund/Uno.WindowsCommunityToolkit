@@ -146,6 +146,8 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
 
         public void ShowExceptionNotification(Exception ex)
         {
+            Console.WriteLine(ex.ToString());
+
             if (ex != null)
             {
                 ExceptionNotification.Show(ex.Message);
@@ -207,6 +209,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                 {
                     try
                     {
+                        if (CurrentSample.PageType == null)
+                        {
+                            throw new InvalidOperationException($"Unable to find page for type [{CurrentSample.Type}]");
+                        }
+
                         Console.WriteLine($"Creating {CurrentSample.PageType}");
 
                         var pageInstance = Activator.CreateInstance(CurrentSample.PageType);

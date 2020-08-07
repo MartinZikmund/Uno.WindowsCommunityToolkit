@@ -110,7 +110,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
         /// <summary>
         /// Gets the Page Type.
         /// </summary>
-        public Type PageType => System.Type.GetType("Microsoft.Toolkit.Uwp.SampleApp.SamplePages." + Type);
+        public Type PageType => this.GetType().Assembly.GetType("Microsoft.Toolkit.Uwp.SampleApp.SamplePages." + Type);
 
         /// <summary>
         /// Gets or sets the Category Name.

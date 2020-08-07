@@ -157,6 +157,11 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
+            if (sender.Text == null)
+            {
+                return;
+            }
+
             var t = sender.Text.Trim();
 
             Owner.Text = sender.Text; // Update parent text property

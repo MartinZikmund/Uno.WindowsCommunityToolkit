@@ -90,7 +90,7 @@
     <PackageReference Include="Uno.Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.2-uno.74</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI" Version="3.0.0-dev.899" />
+    <PackageReference Include="Uno.UI" Version="3.0.0-dev.1502" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Toolkit.Parsers\Microsoft.Toolkit.Parsers.csproj">
@@ -140,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="obj\Debug\90\AndroidManifest.xml" />
   </ItemGroup>
   <Import Project="..\Microsoft.Toolkit.Uwp.SampleApp\Microsoft.Toolkit.Uwp.SampleApp.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

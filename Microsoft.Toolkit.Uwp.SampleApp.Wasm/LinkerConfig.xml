@@ -2,7 +2,6 @@
 	<assembly fullname="WebAssembly.Bindings"/>
 	<assembly fullname="Uno.Foundation"/>
 	<assembly fullname="Uno.Xaml"/>
-	<assembly fullname="Uno.UI.FluentTheme"/>
   <assembly fullname="Microsoft.Toolkit.Uwp.SampleApp.Wasm"/>
 	<assembly fullname="ColorCode.UWP"/>
 	<assembly fullname="ColorCode.Core"/>

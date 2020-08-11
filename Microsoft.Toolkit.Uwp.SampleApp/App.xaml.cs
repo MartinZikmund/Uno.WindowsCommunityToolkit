@@ -34,14 +34,6 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
         /// </summary>
         public App()
         {
-#if HAS_UNO
-            // Workaround for https://github.com/unoplatform/uno/pull/3779
-            var res = System.Reflection.Assembly.Load("Uno.UI.FluentTheme").GetType("Uno.UI.FluentTheme.GlobalStaticResources");
-            res.GetMethod("RegisterDefaultStyles").Invoke(null, null);
-            res.GetMethod("RegisterResourceDictionariesBySource").Invoke(null, null);
-#endif
-
-
 #if DEBUG
             ConfigureFilters(LogExtensionPoint.AmbientLoggerFactory);
 #endif

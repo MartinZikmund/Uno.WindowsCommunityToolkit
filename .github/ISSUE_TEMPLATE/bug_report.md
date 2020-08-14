@@ -37,25 +37,13 @@ NuGet Package(s):
 
 Package Version(s): 
 
-Windows 10 Build Number:
-- [ ] Fall Creators Update (16299)
-- [ ] April 2018 Update (17134)
-- [ ] October 2018 Update (17763)
-- [ ] May 2019 Update (18362)
-- [ ] Insider Build (build number: )
-
-App min and target version:
-- [ ] Fall Creators Update (16299)
-- [ ] April 2018 Update (17134)
-- [ ] October 2018 Update (17763)
-- [ ] May 2019 Update (18362)
-- [ ] Insider Build (xxxxx)
-
 Device form factor:
-- [ ] Desktop
-- [ ] Xbox
-- [ ] Surface Hub
-- [ ] IoT
+- [ ] Windows
+- [ ] macOS
+- [ ] iOS
+- [ ] Android
+- [ ] WebAssembly
+- [ ] WebAssembly renderers for Xamarin.Forms
 
 Visual Studio 
 - [ ] 2017 (version: )

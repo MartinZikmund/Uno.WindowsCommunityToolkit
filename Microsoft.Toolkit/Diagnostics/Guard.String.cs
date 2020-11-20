@@ -43,7 +43,9 @@ namespace Microsoft.Toolkit.Diagnostics
         {
             if (!string.IsNullOrEmpty(text))
             {
+#pragma warning disable CS8777 // Parameter must have a non-null value when exiting.
                 return;
+#pragma warning restore CS8777 // Parameter must have a non-null value when exiting.
             }
 
             ThrowHelper.ThrowArgumentExceptionForIsNotNullOrEmpty(text, name);
@@ -79,7 +81,9 @@ namespace Microsoft.Toolkit.Diagnostics
         {
             if (!string.IsNullOrWhiteSpace(text))
             {
+#pragma warning disable CS8777 // Parameter must have a non-null value when exiting.
                 return;
+#pragma warning restore CS8777 // Parameter must have a non-null value when exiting.
             }
 
             ThrowHelper.ThrowArgumentExceptionForIsNotNullOrWhitespace(text, name);

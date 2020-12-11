@@ -3349,6 +3349,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
 #if !HAS_UNO
                 ComputeScrollBarsLayout();
+#else
+                UpdateDisplayedRows(this.DisplayData.FirstScrollingSlot, this.CellsHeight);
 #endif
             }
 

@@ -244,8 +244,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                 textBlockElement.SetBinding(TextBlock.TextProperty, this.Binding);
             }
 
-            // UNO TODO
-            return new Border { Child = textBlockElement };
+            return textBlockElement;
         }
 
         /// <summary>
@@ -292,8 +291,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             TextBox textBox = element as TextBox;
             if (textBox == null)
             {
-                // UNO TODO
-                TextBlock textBlock = (element as Border)?.Child as TextBlock;
+                TextBlock textBlock = element as TextBlock;
                 if (textBlock == null)
                 {
                     throw DataGridError.DataGrid.ValueIsNotAnInstanceOfEitherOr("element", typeof(TextBox), typeof(TextBlock));
@@ -381,8 +379,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             }
             else
             {
-                // UNO TODO
-                TextBlock textBlock = (element as Border)?.Child as TextBlock;
+                TextBlock textBlock = element as TextBlock;
                 if (textBlock != null)
                 {
                     RefreshForeground(textBlock, computedRowForeground);

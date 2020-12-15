@@ -576,7 +576,7 @@
                                 <ColumnDefinition MinWidth="32" Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
 
                             <FontIcon Grid.Column="1" x:Name="SortIcon" FontFamily="{ThemeResource SymbolThemeFontFamily}" Glyph="{ThemeResource SortIconAscending}" FontSize="12"
                                 Foreground="{ThemeResource DataGridColumnHeaderForegroundBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0"/>

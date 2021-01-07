@@ -778,7 +778,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                 return base.MeasureOverride(availableSize);
             }
 
-#if !__IOS__
+#if !__IOS__ && !__MACOS__
             // This section is commented out for iOS until the measure
             // infinite loop is fixed. https://github.com/unoplatform/uno/issues/2842
 

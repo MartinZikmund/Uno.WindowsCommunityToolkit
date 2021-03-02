@@ -20,6 +20,8 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
+using DiagnosticsDebug = System.Diagnostics.Debug;
+
 namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 {
     /// <summary>
@@ -306,7 +308,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 
         internal void InvokeProcessSort()
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null owning DataGrid.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null owning DataGrid.");
 
             if (this.OwningGrid.WaitForLostFocus(() => { this.InvokeProcessSort(); }))
             {
@@ -348,7 +350,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 
                     SortDescription? sort = this.OwningColumn.GetSortDescription();
                     ICollectionView collectionView = owningGrid.DataConnection.CollectionView;
-                    System.Diagnostics.Debug.Assert(collectionView != null);
+                    DiagnosticsDebug.Assert(collectionView != null);
                     try
                     {
                         owningGrid.OnUserSorting();
@@ -487,7 +489,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
             {
                 DataGridColumnHeaderInteractionInfo interactionInfo = this.OwningGrid.ColumnHeaderInteractionInfo;
 
-                System.Diagnostics.Debug.Assert(interactionInfo.DragMode != DragMode.None, "Expected _dragMode other than None.");
+                DiagnosticsDebug.Assert(interactionInfo.DragMode != DragMode.None, "Expected _dragMode other than None.");
 
                 interactionInfo.DragColumn = column;
                 interactionInfo.DragMode = DragMode.Resize;
@@ -618,7 +620,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
                 return;
             }
 
-            System.Diagnostics.Debug.Assert(interactionInfo.DragPointerId == 0, "Expected _dragPointerId is 0.");
+            DiagnosticsDebug.Assert(interactionInfo.DragPointerId == 0, "Expected _dragPointerId is 0.");
 
             bool handled = e.Handled;
 
@@ -637,8 +639,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
                     interactionInfo.CapturedPointer = null;
                 }
 
-                System.Diagnostics.Debug.Assert(interactionInfo.DragMode == DragMode.None, "Expected _dragMode equals None.");
-                System.Diagnostics.Debug.Assert(interactionInfo.DragColumn == null, "Expected _dragColumn is null.");
+                DiagnosticsDebug.Assert(interactionInfo.DragMode == DragMode.None, "Expected _dragMode equals None.");
+                DiagnosticsDebug.Assert(interactionInfo.DragColumn == null, "Expected _dragColumn is null.");
                 interactionInfo.DragMode = DragMode.PointerPressed;
                 interactionInfo.DragPointerId = e.Pointer.PointerId;
                 interactionInfo.FrozenColumnsWidth = this.OwningGrid.ColumnsInternal.GetVisibleFrozenEdgedColumnsWidth();
@@ -777,7 +779,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
                 Point pointerPositionHeaders = e.GetCurrentPoint(this.OwningGrid.ColumnHeaders).Position;
                 bool handled = false;
 
-                System.Diagnostics.Debug.Assert(this.OwningGrid.Parent is UIElement, "Expected owning DataGrid's parent to be a UIElement.");
+                DiagnosticsDebug.Assert(this.OwningGrid.Parent is UIElement, "Expected owning DataGrid's parent to be a UIElement.");
 
                 double distanceFromLeft = pointerPosition.X;
                 double distanceFromRight = this.ActualWidth - distanceFromLeft;
@@ -822,7 +824,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
         /// <returns>The column against whose top-left the reordering caret should be positioned.</returns>
         private DataGridColumn GetReorderingTargetColumn(Point pointerPositionHeaders, bool scroll, out double scrollAmount)
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
 
             scrollAmount = 0;
             double leftEdge = 0;
@@ -896,7 +898,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
         /// <returns>The display index to set the column to.</returns>
         private int GetReorderingTargetDisplayIndex(Point pointerPositionHeaders)
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
 
             DataGridColumn targetColumn = GetReorderingTargetColumn(pointerPositionHeaders, false /*scroll*/, out _);
             if (targetColumn != null)
@@ -911,7 +913,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 
         private void OnPointerMove_BeginReorder(uint pointerId, Point pointerPosition)
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
 
             DataGridColumnHeader dragIndicator = new DataGridColumnHeader();
             dragIndicator.OwningColumn = this.OwningColumn;
@@ -959,7 +961,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 
             // The app didn't cancel, so prepare for the reorder.
             interactionInfo.DragColumn = this.OwningColumn;
-            System.Diagnostics.Debug.Assert(interactionInfo.DragMode != DragMode.None, "Expected _dragMode other than None.");
+            DiagnosticsDebug.Assert(interactionInfo.DragMode != DragMode.None, "Expected _dragMode other than None.");
             interactionInfo.DragMode = DragMode.Reorder;
             interactionInfo.DragPointerId = pointerId;
             interactionInfo.DragStart = pointerPosition;
@@ -972,7 +974,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 
         private void OnPointerMove_Reorder(ref bool handled, Pointer pointer, Point pointerPosition, Point pointerPositionHeaders, double distanceFromLeft, double distanceFromRight)
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
 
             if (handled)
             {
@@ -1037,13 +1039,13 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 
         private void OnPointerMove_Resize(ref bool handled, Point pointerPositionHeaders)
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
 
             DataGridColumnHeaderInteractionInfo interactionInfo = this.OwningGrid.ColumnHeaderInteractionInfo;
 
             if (!handled && interactionInfo.DragMode == DragMode.Resize && interactionInfo.DragColumn != null && interactionInfo.DragStart.HasValue)
             {
-                System.Diagnostics.Debug.Assert(interactionInfo.ResizePointerId != 0, "Expected interactionInfo.ResizePointerId other than 0.");
+                DiagnosticsDebug.Assert(interactionInfo.ResizePointerId != 0, "Expected interactionInfo.ResizePointerId other than 0.");
 
                 // Resize column
                 double pointerDelta = pointerPositionHeaders.X - interactionInfo.DragStart.Value.X;
@@ -1060,13 +1062,13 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 
         private void SetOriginalCursor()
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
 
             DataGridColumnHeaderInteractionInfo interactionInfo = this.OwningGrid.ColumnHeaderInteractionInfo;
 
             if (interactionInfo.ResizePointerId != 0)
             {
-                System.Diagnostics.Debug.Assert(interactionInfo.OriginalCursor != null, "Expected non-null interactionInfo.OriginalCursor.");
+                DiagnosticsDebug.Assert(interactionInfo.OriginalCursor != null, "Expected non-null interactionInfo.OriginalCursor.");
 
                 Windows.UI.Xaml.Window.Current.CoreWindow.PointerCursor = interactionInfo.OriginalCursor;
                 interactionInfo.ResizePointerId = 0;
@@ -1075,7 +1077,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.Primitives
 
         private void SetResizeCursor(Pointer pointer, Point pointerPosition)
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null OwningGrid.");
 
             DataGridColumnHeaderInteractionInfo interactionInfo = this.OwningGrid.ColumnHeaderInteractionInfo;
 

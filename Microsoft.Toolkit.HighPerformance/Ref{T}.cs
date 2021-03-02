@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 #if SPAN_RUNTIME_SUPPORT
 using System.Runtime.InteropServices;
 #else
-using Microsoft.Toolkit.HighPerformance.Extensions;
+using Microsoft.Toolkit.HighPerformance.Helpers;
 #endif
 
 namespace Microsoft.Toolkit.HighPerformance
@@ -32,6 +32,16 @@ namespace Microsoft.Toolkit.HighPerformance
         public Ref(ref T value)
         {
             Span = MemoryMarshal.CreateSpan(ref value, 1);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Ref{T}"/> struct.
+        /// </summary>
+        /// <param name="pointer">The pointer to the target value.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public unsafe Ref(void* pointer)
+            : this(ref Unsafe.AsRef<T>(pointer))
+        {
         }
 
         /// <summary>
@@ -62,12 +72,12 @@ namespace Microsoft.Toolkit.HighPerformance
         /// </summary>
         /// <param name="owner">The owner <see cref="object"/> to create a portable reference for.</param>
         /// <param name="value">The target reference to point to (it must be within <paramref name="owner"/>).</param>
-        /// <remarks>The <paramref name="value"/> parameter is not validated, and it's responsability of the caller to ensure it's valid.</remarks>
+        /// <remarks>The <paramref name="value"/> parameter is not validated, and it's responsibility of the caller to ensure it's valid.</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Ref(object owner, ref T value)
         {
             Owner = owner;
-            Offset = owner.DangerousGetObjectDataByteOffset(ref value);
+            Offset = ObjectMarshal.DangerousGetObjectDataByteOffset(owner, ref value);
         }
 
         /// <summary>
@@ -76,7 +86,7 @@ namespace Microsoft.Toolkit.HighPerformance
         public ref T Value
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => ref Owner.DangerousGetObjectDataReferenceAt<T>(Offset);
+            get => ref ObjectMarshal.DangerousGetObjectDataReferenceAt<T>(Owner, Offset);
         }
 #endif
 

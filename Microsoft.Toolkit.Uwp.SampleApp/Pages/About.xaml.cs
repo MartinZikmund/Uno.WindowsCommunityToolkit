@@ -5,12 +5,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Microsoft.Toolkit.Uwp.UI.Animations;
-using Newtonsoft.Json;
 using Windows.ApplicationModel;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
@@ -152,8 +154,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.Pages
                         From = 0,
                         To = 1,
                         Duration = TimeSpan.FromMilliseconds(300),
-                        Delay = TimeSpan.FromMilliseconds(counter++ * delay),
-                        SetInitialValueBeforeDelay = true
+                        Delay = TimeSpan.FromMilliseconds(counter++ * delay)
                     });
                 }
 #endif
@@ -209,8 +210,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.Pages
             {
                 using (var jsonStream = await StreamHelper.GetEmbeddedFileStreamAsync(GetType(), "landingPageLinks.json"))
                 {
-                    var jsonString = await jsonStream.ReadTextAsync();
-                    var links = JsonConvert.DeserializeObject<LandingPageLinks>(jsonString);
+                    var links = await JsonSerializer.DeserializeAsync<LandingPageLinks>(jsonStream.AsStream());
                     var packageVersion = Package.Current.Id.Version;
 
                     var resource = links.Resources.FirstOrDefault(item => item.ID == "app");

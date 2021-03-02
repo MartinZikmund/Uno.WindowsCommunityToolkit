@@ -4,7 +4,7 @@
 
 using Windows.UI.Xaml.Media;
 
-namespace Microsoft.Toolkit.Uwp.UI.Extensions
+namespace Microsoft.Toolkit.Uwp.UI
 {
     /// <summary>
     /// Extension methods for <see cref="ScaleTransform"/>.
@@ -15,7 +15,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Extensions
         /// Gets the matrix that represents this transform.
         /// Implements WPF's SkewTransform.Value.
         /// </summary>
-        /// <param name="transform">Extended SkewTranform.</param>
+        /// <param name="transform">Extended SkewTransform.</param>
         /// <returns>Matrix representing transform.</returns>
         public static Matrix GetMatrix(this ScaleTransform transform)
         {

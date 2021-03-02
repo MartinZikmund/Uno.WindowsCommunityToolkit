@@ -1,28 +1,31 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <!--<TargetFrameworks>uap10.0.16299</TargetFrameworks>-->
+    <TargetFrameworks>uap10.0.17763</TargetFrameworks>
     <Title>Windows Community Toolkit</Title>
     <Description>This package includes code only helpers such as Colors conversion tool, Storage file handling, a Stream helper class, etc.</Description>
     <PackageTags>UWP Toolkit Windows</PackageTags>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    
+    <ProjectReference Include="..\Microsoft.Toolkit\Microsoft.Toolkit.csproj" />
+
+  </ItemGroup>
+
+	<!-- BEGIN UNO SPECIFIC -->
 	<PropertyGroup>
 		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
 		<PackageId>Uno.Microsoft.Toolkit.Uwp</PackageId>
 		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
 	</PropertyGroup>
-	
+
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
-		<PackageReference Include="Uno.UI" Version="3.0.0-dev.1549" />
+		<PackageReference Include="Uno.UI"
+											Version="3.0.0-dev.1549" />
 	</ItemGroup>
-
-	<ItemGroup>
-
-		<PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-
-		<ProjectReference Include="..\Microsoft.Toolkit\Microsoft.Toolkit.csproj" />
-
-  </ItemGroup>
+	
+	<!-- END UNO SPECIFIC -->
 
 </Project>

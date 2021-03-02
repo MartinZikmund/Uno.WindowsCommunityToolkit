@@ -2,10 +2,11 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 
-namespace Microsoft.Toolkit.HighPerformance.Extensions
+namespace Microsoft.Toolkit.HighPerformance
 {
     /// <summary>
     /// Helpers for working with the <see cref="bool"/> type.
@@ -13,16 +14,23 @@ namespace Microsoft.Toolkit.HighPerformance.Extensions
     public static class BoolExtensions
     {
         /// <summary>
-        /// Converts the given <see cref="bool"/> value into an <see cref="int"/>.
+        /// Converts the given <see cref="bool"/> value into a <see cref="byte"/>.
         /// </summary>
         /// <param name="flag">The input value to convert.</param>
         /// <returns>1 if <paramref name="flag"/> is <see langword="true"/>, 0 otherwise.</returns>
         /// <remarks>This method does not contain branching instructions.</remarks>
         [Pure]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int ToInt(this bool flag)
+        public static unsafe byte ToByte(this bool flag)
         {
-            return Unsafe.As<bool, byte>(ref flag);
+            // Whenever we need to take the address of an argument, we make a local copy first.
+            // This will be removed by the JIT anyway, but it can help produce better codegen and
+            // remove unwanted stack spills if the caller is using constant arguments. This is
+            // because taking the address of an argument can interfere with some of the flow
+            // analysis executed by the JIT, which can in some cases block constant propagation.
+            bool copy = flag;
+
+            return *(byte*)&copy;
         }
 
         /// <summary>
@@ -41,9 +49,10 @@ namespace Microsoft.Toolkit.HighPerformance.Extensions
         /// </remarks>
         [Pure]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int ToBitwiseMask32(this bool flag)
+        public static unsafe int ToBitwiseMask32(this bool flag)
         {
-            byte rangeFlag = Unsafe.As<bool, byte>(ref flag);
+            bool copy = flag;
+            byte rangeFlag = *(byte*)&copy;
             int
                 negativeFlag = rangeFlag - 1,
                 mask = ~negativeFlag;
@@ -60,9 +69,10 @@ namespace Microsoft.Toolkit.HighPerformance.Extensions
         /// <remarks>This method does not contain branching instructions. See additional note in <see cref="ToBitwiseMask32"/>.</remarks>
         [Pure]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long ToBitwiseMask64(this bool flag)
+        public static unsafe long ToBitwiseMask64(this bool flag)
         {
-            byte rangeFlag = Unsafe.As<bool, byte>(ref flag);
+            bool copy = flag;
+            byte rangeFlag = *(byte*)&copy;
             long
                 negativeFlag = (long)rangeFlag - 1,
                 mask = ~negativeFlag;

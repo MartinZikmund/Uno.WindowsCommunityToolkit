@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 #if SPAN_RUNTIME_SUPPORT
 using System.Runtime.InteropServices;
 #else
-using Microsoft.Toolkit.HighPerformance.Extensions;
+using Microsoft.Toolkit.HighPerformance.Helpers;
 #endif
 
 namespace Microsoft.Toolkit.HighPerformance
@@ -37,6 +37,16 @@ namespace Microsoft.Toolkit.HighPerformance
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ReadOnlyRef{T}"/> struct.
+        /// </summary>
+        /// <param name="pointer">The pointer to the target value.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public unsafe ReadOnlyRef(void* pointer)
+            : this(in Unsafe.AsRef<T>(pointer))
+        {
+        }
+
+        /// <summary>
         /// Gets the readonly <typeparamref name="T"/> reference represented by the current <see cref="Ref{T}"/> instance.
         /// </summary>
         public ref readonly T Value
@@ -52,7 +62,7 @@ namespace Microsoft.Toolkit.HighPerformance
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator ReadOnlyRef<T>(Ref<T> reference)
         {
-            return new ReadOnlyRef<T>(reference.Value);
+            return new(in reference.Value);
         }
 #else
         /// <summary>
@@ -70,7 +80,7 @@ namespace Microsoft.Toolkit.HighPerformance
         /// </summary>
         /// <param name="owner">The owner <see cref="object"/> to create a portable reference for.</param>
         /// <param name="offset">The target offset within <paramref name="owner"/> for the target reference.</param>
-        /// <remarks>The <paramref name="offset"/> parameter is not validated, and it's responsability of the caller to ensure it's valid.</remarks>
+        /// <remarks>The <paramref name="offset"/> parameter is not validated, and it's responsibility of the caller to ensure it's valid.</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private ReadOnlyRef(object owner, IntPtr offset)
         {
@@ -83,12 +93,12 @@ namespace Microsoft.Toolkit.HighPerformance
         /// </summary>
         /// <param name="owner">The owner <see cref="object"/> to create a portable reference for.</param>
         /// <param name="value">The target reference to point to (it must be within <paramref name="owner"/>).</param>
-        /// <remarks>The <paramref name="value"/> parameter is not validated, and it's responsability of the caller to ensure it's valid.</remarks>
+        /// <remarks>The <paramref name="value"/> parameter is not validated, and it's responsibility of the caller to ensure it's valid.</remarks>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ReadOnlyRef(object owner, in T value)
         {
             this.owner = owner;
-            this.offset = owner.DangerousGetObjectDataByteOffset(ref Unsafe.AsRef(value));
+            this.offset = ObjectMarshal.DangerousGetObjectDataByteOffset(owner, ref Unsafe.AsRef(value));
         }
 
         /// <summary>
@@ -97,7 +107,7 @@ namespace Microsoft.Toolkit.HighPerformance
         public ref readonly T Value
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => ref this.owner.DangerousGetObjectDataReferenceAt<T>(this.offset);
+            get => ref ObjectMarshal.DangerousGetObjectDataReferenceAt<T>(this.owner, this.offset);
         }
 
         /// <summary>
@@ -107,7 +117,7 @@ namespace Microsoft.Toolkit.HighPerformance
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static implicit operator ReadOnlyRef<T>(Ref<T> reference)
         {
-            return new ReadOnlyRef<T>(reference.Owner, reference.Offset);
+            return new(reference.Owner, reference.Offset);
         }
 #endif
 

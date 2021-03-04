@@ -11,6 +11,13 @@ using static Microsoft.Toolkit.Uwp.UI.Animations.AnimationExtensions;
 namespace Microsoft.Toolkit.Uwp.UI.Animations
 {
     /// <summary>
+    /// A base model representing a key frame for Uno Platform compatibility
+    /// </summary>
+    public abstract partial class KeyFrame : DependencyObject
+    {
+    }
+
+    /// <summary>
     /// A base model representing a typed keyframe that can be used in XAML.
     /// </summary>
     /// <typeparam name="TValue">
@@ -18,7 +25,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
     /// This can differ from <typeparamref name="TKeyFrame"/> to facilitate XAML parsing.
     /// </typeparam>
     /// <typeparam name="TKeyFrame">The actual type of keyframe values in use.</typeparam>
-    public abstract class KeyFrame<TValue, TKeyFrame> : DependencyObject, IKeyFrame<TKeyFrame>
+    public abstract partial class KeyFrame<TValue, TKeyFrame> : KeyFrame, IKeyFrame<TKeyFrame>
     {
         /// <summary>
         /// Gets or sets the key time for the current keyframe. This is a normalized

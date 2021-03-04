@@ -127,7 +127,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.UI.Controls.Input/RadialGauge",
         "XamlCodeFile": "RadialGaugeCode.bind",
         "Icon": "/SamplePages/RadialGauge/RadialGauge.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/RadialGauge.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/RadialGauge.md"
       },
       {
         "Name": "RadialProgressBar",
@@ -137,7 +137,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.UI.Controls.Core/RadialProgressBar",
         "XamlCodeFile": "RadialProgressBarCode.bind",
         "Icon": "/SamplePages/RadialProgressBar/RadialProgressBar.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/RadialProgressBar.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/RadialProgressBar.md"
       },
       {
         "Name": "RotatorTile",
@@ -157,7 +157,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.UI.Controls.Layout/BladeView",
         "XamlCodeFile": "BladeCode.bind",
         "Icon": "/SamplePages/BladeView/BladeView.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/BladeView.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/BladeView.md"
       },
       {
         "Name": "ScrollHeader",
@@ -176,7 +176,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.UI.Controls.Layout/GridSplitter",
         "XamlCodeFile": "GridSplitter.bind",
         "Icon": "/SamplePages/GridSplitter/GridSplitter.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/GridSplitter.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/GridSplitter.md"
       },
       {
         "Name": "DropShadowPanel",
@@ -272,7 +272,7 @@
         "XamlCodeFile": "InAppNotificationXaml.bind",
         "CodeFile": "InAppNotificationCode.bind",
         "Icon": "/SamplePages/InAppNotification/InAppNotification.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/InAppNotification.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/InAppNotification.md"
       },
       {
         "Name": "DockPanel",
@@ -762,7 +762,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp/Helpers/SystemInformation.cs",
         "CodeFile": "SystemInformationCode.bind",
         "Icon": "/SamplePages/SystemInformation/SystemInformation.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/helpers/SystemInformation.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/helpers/SystemInformation.md"
       },
       {
         "Name": "PrintHelper",
@@ -783,7 +783,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/blob/master/Microsoft.Toolkit.Uwp/Helpers/DispatcherQueueHelper.cs",
         "CodeFile": "DispatcherQueueHelperCode.bind",
         "Icon": "/Assets/Helpers.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/helpers/DispatcherQueueHelper.md"
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/helpers/DispatcherQueueHelper.md",
         "IsUno": true
       },
       {
@@ -864,7 +864,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.UI/Behaviors/",
         "CodeFile": "FocusBehaviorXaml.bind",
         "Icon": "/Assets/Helpers.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/behaviors/FocusBehavior.md"
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/behaviors/FocusBehavior.md",
         "IsUno": true
       },
       {
@@ -948,7 +948,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.UI.Triggers",
         "XamlCodeFile": "/SamplePages/Triggers/FullScreenModeStateTrigger.bind",
         "Icon": "/Assets/Helpers.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/helpers/Triggers.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/helpers/Triggers.md"
       },
       {
         "Name": "IsNullOrEmptyStateTrigger",
@@ -1142,7 +1142,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.UI/Extensions/ListViewExtensions",
         "XamlCodeFile": "ListViewExtensionsCode.bind",
         "Icon": "/Assets/Helpers.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/extensions/ListViewExtensions.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/extensions/ListViewExtensions.md"
       },
       {
         "Name": "ViewExtensions",
@@ -1160,7 +1160,7 @@
         "CodeUrl": "https://github.com/windows-toolkit/WindowsCommunityToolkit/tree/master/Microsoft.Toolkit.Uwp.UI/Extensions/TextBoxMask",
         "XamlCodeFile": "TextBoxMask.bind",
         "Icon": "/SamplePages/TextBoxMask/TextBoxMask.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/extensions/TextBoxMask.md",
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/extensions/TextBoxMask.md"
       },
       {
         "Name": "Mouse",

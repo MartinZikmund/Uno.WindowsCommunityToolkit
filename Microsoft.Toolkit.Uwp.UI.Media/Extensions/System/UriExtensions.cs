@@ -41,7 +41,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Media
         [Pure]
         public static Uri ToAppxUri(this string path)
         {
-            string prefix = $"ms-appx://{(path.StartsWith('/') ? string.Empty : "/")}";
+            string prefix = $"ms-appx://{(path.StartsWith("/") ? string.Empty : "/")}";
 
             return new Uri($"{prefix}{path}");
         }

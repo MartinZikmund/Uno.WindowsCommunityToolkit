@@ -15,6 +15,10 @@ using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
+#if HAS_UNO
+using Popup = Windows.UI.Xaml.Controls.Popup;
+#endif
+
 namespace Microsoft.Toolkit.Uwp.UI.Controls
 {
     /// <summary>
@@ -188,7 +192,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             }
             else
             {
-                content = Window.Current.Content;
+                content = Windows.UI.Xaml.Window.Current.Content;
             }
 
             var ttv = TransformToVisual(content);
@@ -366,6 +370,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                 UIElement content;
                 double outerContentWidth;
                 double outerContentHeight;
+#if !HAS_UNO
                 if (ControlHelpers.IsXamlRootAvailable && MenuFlyout.XamlRoot != null)
                 {
                     popups = VisualTreeHelper.GetOpenPopupsForXamlRoot(MenuFlyout.XamlRoot);
@@ -374,11 +379,12 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     outerContentHeight = MenuFlyout.XamlRoot.Size.Height;
                 }
                 else
+#endif
                 {
-                    popups = VisualTreeHelper.GetOpenPopups(Window.Current);
-                    content = Window.Current.Content;
-                    outerContentWidth = Window.Current.Bounds.Width;
-                    outerContentHeight = Window.Current.Bounds.Height;
+                    popups = VisualTreeHelper.GetOpenPopups(Windows.UI.Xaml.Window.Current);
+                    content = Windows.UI.Xaml.Window.Current.Content;
+                    outerContentWidth = Windows.UI.Xaml.Window.Current.Bounds.Width;
+                    outerContentHeight = Windows.UI.Xaml.Window.Current.Bounds.Height;
                 }
 
                 var popup = popups.FirstOrDefault(p => p.Child is MenuFlyoutPresenter);

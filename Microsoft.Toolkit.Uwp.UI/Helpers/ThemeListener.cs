@@ -10,7 +10,9 @@ using Windows.System;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
+#if !HAS_UNO
 [assembly: InternalsVisibleTo("UnitTests.XamlIslands.UWPApp")]
+#endif
 
 namespace Microsoft.Toolkit.Uwp.UI.Helpers
 {
@@ -69,6 +71,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Helpers
             if (ApiInformation.IsPropertyPresent("Windows.UI.ViewManagement.AccessibilitySettings", "HighContrast"))
             {
                 IsHighContrast = _accessible.HighContrast;
+            }
 
             DispatcherQueue = dispatcherQueue ?? DispatcherQueue.GetForCurrentThread();
 

@@ -2,6 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:xamarin="http://uno/xamarin"
+      xmlns:banner="using:Uno.UI.Sample.Banner"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:animations="using:Microsoft.Toolkit.Uwp.UI.Animations"
       xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
@@ -59,7 +60,8 @@
                 </winui:ParallaxView>
                 <Frame x:Name="NavigationFrame" />
                 <Grid>
-                    <Border x:Name="ContentShadow"
+					<!-- UNO TODO: UIElementExtensions.VisualFactory issue-->
+                    <win:Border x:Name="ContentShadow"
                             Background="{ThemeResource BackingTint}"
                             Tapped="ContentShadow_Tapped"
                             Visibility="{Binding Visibility, ElementName=SamplePickerGrid}">
@@ -78,7 +80,7 @@
                                                          To="0"
                                                          Duration="0:0:0.2" />
                         </animations:Implicit.HideAnimations>
-                    </Border>
+                    </win:Border>
 
                     <Grid x:Name="SamplePickerGrid"
                           VerticalAlignment="Top"
@@ -105,7 +107,7 @@
                                   win:ItemContainerTransitions="{x:Null}"
                                   ItemTemplate="{StaticResource SampleTemplate}"
                                   SelectionMode="Single"
-                                  Transitions="{x:Null}">
+                                  win:Transitions="{x:Null}">
                             <GridView.GroupStyle>
                                 <GroupStyle>
                                     <GroupStyle.HeaderTemplate>
@@ -122,7 +124,9 @@
                                                              Duration="0:0:0.3" />
                             </animations:Implicit.ShowAnimations>
                         </GridView>
-                        <animations:Implicit.ShowAnimations>
+                        <!--
+						UNO TODO https://github.com/unoplatform/uno/issues/5376
+						<animations:Implicit.ShowAnimations>
                             <animations:OpacityAnimation From="0"
                                                          To="1"
                                                          Duration="0:0:0.3" />
@@ -138,6 +142,7 @@
                                                              To="0, -1000, 0"
                                                              Duration="0:0:0.5" />
                         </animations:Implicit.HideAnimations>
+						-->
                     </Grid>
 
                 </Grid>
@@ -162,11 +167,13 @@
                                               Color="Black">
                         <Border Background="{ThemeResource Menu-DropDown-Background}"
                                 Opacity="0.96">
-                            <media:UIElementExtensions.VisualFactory>
+								<!-- UNO TODO: UIElementExtensions.VisualFactory issue
+							<media:UIElementExtensions.VisualFactory>
                                 <media:PipelineVisualFactory Source="{media:BackdropSource}">
                                     <media:BlurEffect Amount="8" />
                                 </media:PipelineVisualFactory>
                             </media:UIElementExtensions.VisualFactory>
+							-->
                         </Border>
                     </controls:DropShadowPanel>
 
@@ -206,7 +213,9 @@
                                            FontSize="10"
                                            Foreground="{ThemeResource Brush-Main}"
                                            Text="{Binding BadgeUpdateVersionRequired}" />
-                                <animations:Implicit.HideAnimations>
+                                <!--
+						        UNO TODO https://github.com/unoplatform/uno/issues/5376
+								<animations:Implicit.HideAnimations>
                                     <animations:OpacityAnimation To="0"
                                                                  Duration="0:0:0.01" />
                                 </animations:Implicit.HideAnimations>
@@ -220,8 +229,11 @@
                                                                      To="0"
                                                                      Duration="0:0:0.3" />
                                 </animations:Implicit.ShowAnimations>
+								-->
                             </Border>
 
+							<!--
+						    UNO TODO https://github.com/unoplatform/uno/issues/5376
                             <animations:Implicit.ShowAnimations>
                                 <animations:OpacityAnimation Delay="0:0:0.2"
                                                              From="0"
@@ -232,10 +244,13 @@
                                                                  To="0"
                                                                  Duration="0:0:0.3" />
                             </animations:Implicit.ShowAnimations>
+							-->
                         </StackPanel>
                     </Grid>
                 </Grid>
 
+				<!--
+				UNO TODO https://github.com/unoplatform/uno/issues/5376
                 <animations:Implicit.ShowAnimations>
                     <animations:OpacityAnimation From="0"
                                                  To="1"
@@ -252,6 +267,7 @@
                                                To="0.5"
                                                Duration="0:0:0.2" />
                 </animations:Implicit.HideAnimations>
+				-->
             </Grid>
         </Canvas>
     </Grid>

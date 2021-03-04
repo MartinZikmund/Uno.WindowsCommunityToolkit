@@ -16,7 +16,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Media
     /// <summary>
     /// A base pipeline effect.
     /// </summary>
-    public abstract class PipelineEffect : DependencyObject, IPipelineEffect
+    public abstract partial class PipelineEffect : DependencyObject, IPipelineEffect
     {
         /// <inheritdoc/>
         public CompositionBrush? Brush { get; private set; }

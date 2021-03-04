@@ -6,15 +6,6 @@
   </PropertyGroup>
 
 
-  <PropertyGroup>
-    <TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
-    <NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
-    <PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls</PackageId>
-		
-	  <!-- Validation fails as the generated document is too big -->
-	  <XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
-  </PropertyGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Primitives\Microsoft.Toolkit.Uwp.UI.Controls.Primitives.csproj" />
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Core\Microsoft.Toolkit.Uwp.UI.Controls.Core.csproj" />
@@ -26,25 +17,24 @@
   </ItemGroup>
 
 	<!-- BEGIN UNO SPECIFIC -->
+  <PropertyGroup>
+    <TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
+    <NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
+    <PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls</PackageId>
+		
+	  <!-- Validation fails as the generated document is too big -->
+	  <XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
+  </PropertyGroup>
+	
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
 		<PackageReference Include="Uno.UI"
-											Version="3.0.0-dev.1549" />
+											Version="3.4.0" />
 		<PackageReference Include="Uno.ColorCode.UWP"
 											Version="2.0.8-gd42a883502" />
 
-		<Page Remove="Eyedropper/**/*.xaml" />
-		<Page Remove="InfiniteCanvas/**/*.xaml" />
-		<Page Remove="ImageCropper/**/*.xaml" />
-		<Compile Remove="Eyedropper/**/*.cs" />
-		<Compile Remove="InfiniteCanvas/**/*.cs" />
-		<Compile Remove="ImageCropper/**/*.cs" />
-
-		<None Include="Eyedropper/**/*.*" />
-		<None Include="InfiniteCanvas/**/*.*" />
-		<None Include="ImageCropper/**/*.*" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'uap10.0' or '$(TargetFramework)' == 'uap10.0.16299'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'uap10.0' or '$(TargetFramework)' == 'uap10.0.17763'">
 		<PackageReference Include="ColorCode.UWP"
 											Version="2.0.6" />
 		<PackageReference Include="System.ValueTuple"

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType Condition="'$(Configuration)'=='Release'">WinExe</OutputType>
+    <OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+		<UnoUIUseRoslynSourceGenerators>false</UnoUIUseRoslynSourceGenerators>
+	</PropertyGroup>
+  <ItemGroup Condition="exists('..\Microsoft.Toolkit.Uwp.SampleApp.UWP')">
+    <EmbeddedResource Include="..\Microsoft.Toolkit.Uwp.SampleApp.UWP\Package.appxmanifest" LogicalName="Package.appxmanifest" />
+    <Content Include="..\Microsoft.Toolkit.Uwp.SampleApp.UWP\Assets\StoreLogo.png" Link="Assets\StoreLogo.png" />
+    <Content Include="Assets\Fonts\uno-fluentui-assets.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="..\Microsoft.Toolkit.Uwp.SampleApp.Shared\**\*.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Note that for WebAssembly version 1.1.1 of the console logger required -->
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
+    <PackageReference Include="Uno.UI.Skia.Gtk" Version="3.6.0-dev.294" />
+    <PackageReference Include="Uno.UI.RemoteControl" Version="3.5.1" Condition="'$(Configuration)'=='Debug'" />
+		<PackageReference Include="System.Text.Json" Version="4.7.2" />
+    <PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.33" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.Connectivity\Microsoft.Toolkit.Uwp.Connectivity.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.DeveloperTools\Microsoft.Toolkit.Uwp.DeveloperTools.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Animations\Microsoft.Toolkit.Uwp.UI.Animations.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Behaviors\Microsoft.Toolkit.Uwp.UI.Behaviors.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Media\Microsoft.Toolkit.Uwp.UI.Media.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI\Microsoft.Toolkit.Uwp.UI.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit.Uwp\Microsoft.Toolkit.Uwp.csproj" />
+		<ProjectReference Include="..\Microsoft.Toolkit\Microsoft.Toolkit.csproj" />
+	</ItemGroup>
+	<Import Project="..\Microsoft.Toolkit.Uwp.SampleApp\Microsoft.Toolkit.Uwp.SampleApp.Shared.projitems" Label="Shared" />
+	<Import Project="..\Microsoft.Toolkit.Uwp.SampleApp.iOS\Exclusions.props" />
+</Project>

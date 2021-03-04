@@ -43,4 +43,20 @@
 		<Message Text="CSFiles: @(GeneratedCSFiles->'&quot;%(Identity)&quot;')" />
 		<Exec Command="for %%f in (@(GeneratedCSFiles->'&quot;%(Identity)&quot;')) do echo #pragma warning disable &gt; %%f.temp &amp;&amp; type %%f &gt;&gt; %%f.temp &amp;&amp; move /y %%f.temp %%f &gt; NUL" />
 	</Target>
+
+	<!-- BEGIN UNO SPECIFIC -->
+	<PropertyGroup>
+		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
+		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
+		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Primitives</PackageId>
+
+		<!-- Validation fails as the generated document is too big -->
+		<XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+		<PackageReference Include="Uno.UI"
+											Version="3.4.0" />
+	</ItemGroup>
+	<!-- END UNO SPECIFIC -->
+
 </Project>

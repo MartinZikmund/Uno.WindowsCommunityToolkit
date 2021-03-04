@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using Microsoft.Toolkit.Extensions;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.UI;
 using Windows.UI.Xaml.Data;
@@ -105,10 +106,10 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls.ColorPickerConverters
                 }
 
                 return Uwp.Helpers.ColorHelper.FromHsv(
-                    Math.Clamp(colorHue,        0.0, 360.0),
-                    Math.Clamp(colorSaturation, 0.0, 1.0),
-                    Math.Clamp(colorValue,      0.0, 1.0),
-                    Math.Clamp(colorAlpha,      0.0, 1.0));
+                    MathEx.Clamp(colorHue,        0.0, 360.0),
+                    MathEx.Clamp(colorSaturation, 0.0, 1.0),
+                    MathEx.Clamp(colorValue,      0.0, 1.0),
+                    MathEx.Clamp(colorAlpha,      0.0, 1.0));
             }
         }
 

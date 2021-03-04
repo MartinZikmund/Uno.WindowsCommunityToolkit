@@ -9,6 +9,7 @@ using System.Numerics;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Hosting;
+using Windows.Foundation.Metadata;
 
 namespace Microsoft.Toolkit.Uwp.UI
 {
@@ -17,6 +18,8 @@ namespace Microsoft.Toolkit.Uwp.UI
     /// </summary>
     public static class VisualExtensions
     {
+        private static bool IsSupported { get; } = ApiInformation.IsMethodPresent("Windows.UI.Composition.Compositor", "CreateDropShadow");
+
         /// <summary>
         /// Converts a <see cref="string"/> to <see cref="Vector2"/>
         /// </summary>
@@ -188,7 +191,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>A <see cref="Vector2"/> string representation of the <see cref="Visual.AnchorPoint"/></returns>
         public static string GetAnchorPoint(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetAnchorPointForElement(element);
             }
@@ -203,7 +206,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The string representation of the <see cref="Vector2"/> to be set</param>
         public static void SetAnchorPoint(DependencyObject obj, string value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetAnchorPointForElement(value, element);
             }
@@ -218,7 +221,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>A <see cref="Vector3"/> string representation of the <see cref="Visual.CenterPoint"/></returns>
         public static string GetCenterPoint(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetCenterPointForElement(element);
             }
@@ -233,7 +236,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The string representation of the <see cref="Vector3"/> to be set</param>
         public static void SetCenterPoint(DependencyObject obj, string value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetCenterPointForElement(value, element);
             }
@@ -248,7 +251,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>A <see cref="Vector3"/> string representation of the <see cref="Visual.Offset"/></returns>
         public static string GetOffset(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetOffsetForElement(element);
             }
@@ -263,7 +266,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The string representation of the <see cref="Vector3"/> to be set</param>
         public static void SetOffset(DependencyObject obj, string value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetOffsetForElement(value, element);
             }
@@ -278,7 +281,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>The <see cref="Visual.Opacity"/> of the <see cref="UIElement"/></returns>
         public static double GetOpacity(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetOpacityForElement(element);
             }
@@ -293,7 +296,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The opacity to be set between 0.0 and 1.0</param>
         public static void SetOpacity(DependencyObject obj, double value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetOpacityForElement(value, element);
             }
@@ -308,7 +311,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>The <see cref="Visual.RotationAngle"/> of the <see cref="UIElement"/></returns>
         public static double GetRotationAngle(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetRotationAngleForElement(element);
             }
@@ -323,7 +326,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The rotation in radians</param>
         public static void SetRotationAngle(DependencyObject obj, double value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetRotationAngleForElement(value, element);
             }
@@ -338,7 +341,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>The <see cref="Visual.RotationAngleInDegrees"/> of the <see cref="UIElement"/></returns>
         public static double GetRotationAngleInDegrees(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetRotationAngleInDegreesForElement(element);
             }
@@ -353,7 +356,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The rotation in degrees</param>
         public static void SetRotationAngleInDegrees(DependencyObject obj, double value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetRotationAngleInDegreesForElement(value, element);
             }
@@ -368,7 +371,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>A <see cref="Vector3"/> string representation of the <see cref="Visual.RotationAxis"/></returns>
         public static string GetRotationAxis(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetRotationAxisForElement(element);
             }
@@ -383,7 +386,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The string representation of the <see cref="Vector3"/> to be set</param>
         public static void SetRotationAxis(DependencyObject obj, string value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetRotationAxisForElement(value, element);
             }
@@ -398,7 +401,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>A <see cref="Vector3"/> string representation of the <see cref="Visual.Scale"/></returns>
         public static string GetScale(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetScaleForElement(element);
             }
@@ -413,7 +416,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The string representation of the <see cref="Vector3"/> to be set</param>
         public static void SetScale(DependencyObject obj, string value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetScaleForElement(value, element);
             }
@@ -428,7 +431,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <returns>A <see cref="Vector2"/> string representation of the <see cref="Visual.Size"/></returns>
         public static string GetSize(DependencyObject obj)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 return GetSizeForElement(element);
             }
@@ -443,7 +446,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <param name="value">The string representation of the <see cref="Vector2"/> to be set</param>
         public static void SetSize(DependencyObject obj, string value)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && obj is UIElement element)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && obj is UIElement element)
             {
                 SetSizeForElement(value, element);
             }
@@ -609,6 +612,7 @@ namespace Microsoft.Toolkit.Uwp.UI
         {
             if (d is FrameworkElement element &&
                 !DesignTimeHelpers.IsRunningInLegacyDesignerMode &&
+                IsSupported &&
                 e.NewValue is string newValue)
             {
                 Vector2 center = newValue.ToVector2();

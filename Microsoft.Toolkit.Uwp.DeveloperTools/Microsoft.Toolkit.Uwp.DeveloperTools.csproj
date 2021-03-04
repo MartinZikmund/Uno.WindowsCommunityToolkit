@@ -13,16 +13,6 @@
     <!-- ARM64 builds for managed apps use .NET Native. We can't use the Reflection Provider for that. -->
     <EnableTypeInfoReflection Condition="'$(Configuration)' == 'Debug'">false</EnableTypeInfoReflection>
   </PropertyGroup>
-	
-  <PropertyGroup>
-    <TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
-    <NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
-    <PackageId>Uno.Microsoft.Toolkit.Uwp.DeveloperTools</PackageId>
-  </PropertyGroup>
-
-  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
-    <PackageReference Include="Uno.UI" Version="3.0.0-dev.1549" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="VisualStudioToolsManifest.xml" Pack="true" PackagePath="tools" />
@@ -36,4 +26,18 @@
     <Message Text="CSFiles: @(GeneratedCSFiles->'&quot;%(Identity)&quot;')" />
     <Exec Command="for %%f in (@(GeneratedCSFiles->'&quot;%(Identity)&quot;')) do echo #pragma warning disable &gt; %%f.temp &amp;&amp; type %%f &gt;&gt; %%f.temp &amp;&amp; move /y %%f.temp %%f &gt; NUL" />
   </Target>
+
+	<!-- BEGIN UNO SPECIFIC -->
+	<PropertyGroup>
+		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
+		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
+		<PackageId>Uno.Microsoft.Toolkit.Uwp.DeveloperTools</PackageId>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+		<PackageReference Include="Uno.UI"
+											Version="3.4.0" />
+	</ItemGroup>
+	<!-- END UNO SPECIFIC -->
+
 </Project>

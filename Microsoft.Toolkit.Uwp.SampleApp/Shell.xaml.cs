@@ -12,16 +12,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
-#if HAS_UNO
-using NavigationView = Windows.UI.Xaml.Controls.NavigationView;
-using NavigationViewItemInvokedEventArgs = Windows.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
-using NavigationViewBackRequestedEventArgs = Windows.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs;
-#else
-using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
-using NavigationViewItemInvokedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
-using NavigationViewBackRequestedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs;
-#endif
-
 namespace Microsoft.Toolkit.Uwp.SampleApp
 {
     public sealed partial class Shell
@@ -137,7 +127,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             System.Console.WriteLine($"Done navigating");
         }
 
-        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        private void NavView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
         {
             if (NavigationFrame.CanGoBack)
             {

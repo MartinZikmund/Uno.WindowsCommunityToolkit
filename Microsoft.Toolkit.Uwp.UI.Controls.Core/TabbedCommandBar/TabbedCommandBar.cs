@@ -18,7 +18,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
     [TemplatePart(Name = "PART_RibbonContent", Type = typeof(ContentControl))]
     [TemplatePart(Name = "PART_RibbonContentBorder", Type = typeof(Border))]
     [TemplatePart(Name = "PART_TabChangedStoryboard", Type = typeof(Storyboard))]
-    public class TabbedCommandBar : NavigationView
+    public partial class TabbedCommandBar : NavigationView
     {
         private ContentControl _ribbonContent = null;
         private Border _ribbonContentBorder = null;

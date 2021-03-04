@@ -213,11 +213,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
             // TODO: Add InApp Notification?
             if (data is SampleDataType sample)
             {
-                Debug.WriteLine("Added Token: " + sample.Text);
+                System.Diagnostics.Debug.WriteLine("Added Token: " + sample.Text);
             }
             else
             {
-                Debug.WriteLine("Added Token: " + data);
+                System.Diagnostics.Debug.WriteLine("Added Token: " + data);
             }
         }
 
@@ -225,11 +225,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
         {
             if (args.Item is SampleDataType sample)
             {
-                Debug.WriteLine("Removed Token: " + sample.Text);
+                System.Diagnostics.Debug.WriteLine("Removed Token: " + sample.Text);
             }
             else
             {
-                Debug.WriteLine("Removed Token: " + args.Item);
+                System.Diagnostics.Debug.WriteLine("Removed Token: " + args.Item);
             }
         }
 
@@ -262,11 +262,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
         {
             if (args is SampleEmailDataType sample)
             {
-                Debug.WriteLine("Added Email: " + sample.DisplayName);
+                System.Diagnostics.Debug.WriteLine("Added Email: " + sample.DisplayName);
             }
             else
             {
-                Debug.WriteLine("Added Token: " + args);
+                System.Diagnostics.Debug.WriteLine("Added Token: " + args);
             }
 
             _acvEmail.RefreshFilter();
@@ -276,11 +276,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
         {
             if (args is SampleEmailDataType sample)
             {
-                Debug.WriteLine("Removed Email: " + sample.DisplayName);
+                System.Diagnostics.Debug.WriteLine("Removed Email: " + sample.DisplayName);
             }
             else
             {
-                Debug.WriteLine("Removed Token: " + args);
+                System.Diagnostics.Debug.WriteLine("Removed Token: " + args);
             }
 
             _acvEmail.RefreshFilter();

@@ -6,7 +6,9 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
+#if !HAS_UNO
 [assembly: InternalsVisibleTo("UnitTests.UWP")]
+#endif
 
 namespace Microsoft.Toolkit.Uwp.UI.Media.Geometry.Core
 {

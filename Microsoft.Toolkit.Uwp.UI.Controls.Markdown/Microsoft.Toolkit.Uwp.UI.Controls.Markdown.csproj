@@ -7,7 +7,7 @@
 
     </Description>
     <PackageTags>UWP Toolkit Windows Controls XAML Markdown MarkdownTextBlock</PackageTags>
-    <RootNamespace>Microsoft.Toolkit.Uwp.UI.Controls</RootNamespace>
+    <RootNamespace>Microsoft.Toolkit.Uwp.UI.Controls.Markdown</RootNamespace>
     <!-- ARM64 builds for managed apps use .NET Native. We can't use the Reflection Provider for that. -->
     <EnableTypeInfoReflection Condition="'$(Configuration)' == 'Debug'">false</EnableTypeInfoReflection>
   </PropertyGroup>
@@ -17,8 +17,10 @@
     <None Include="$(OutDir)\Design\$(MSBuildProjectName).Design*.dll;$(OutDir)\Design\$(MSBuildProjectName).Design*.pdb" Pack="true" PackagePath="lib\$(TargetFramework)\Design" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763'">
     <PackageReference Include="ColorCode.UWP" Version="2.0.6" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Core\Microsoft.Toolkit.Uwp.UI.Controls.Core.csproj" />
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI\Microsoft.Toolkit.Uwp.UI.csproj" />
   </ItemGroup>
@@ -47,4 +49,28 @@
     </ItemGroup>
     <!--<Message Text="Files After: @(PackagingOutputs)" Importance="high" />-->
   </Target>
+	
+	<!-- BEGIN UNO SPECIFIC -->
+	<PropertyGroup>
+		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
+		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
+		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Markdown</PackageId>
+
+		<!-- Validation fails as the generated document is too big -->
+		<XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+		<PackageReference Include="Uno.UI"
+											Version="3.4.0" />
+		<PackageReference Include="Uno.ColorCode.UWP"
+											Version="2.0.8-gd42a883502" />
+	</ItemGroup>
+		
+	<ItemGroup Condition="'$(TargetFramework)' == 'monoandroid10.0' or '$(TargetFramework)' == 'xamarinios10' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+		<Reference Include="System.Xml" />
+		<Reference Include="System.Xml.Linq" />
+	</ItemGroup>
+
+	<!-- END UNO SPECIFIC -->
+
 </Project>

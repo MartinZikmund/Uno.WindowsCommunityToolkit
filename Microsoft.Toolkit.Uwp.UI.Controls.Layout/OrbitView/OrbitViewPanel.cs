@@ -69,7 +69,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                 }
                 else
                 {
-                    width = Window.Current.Bounds.Width;
+                    width = Windows.UI.Xaml.Window.Current.Bounds.Width;
                 }
             }
 
@@ -81,7 +81,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                 }
                 else
                 {
-                    height = Window.Current.Bounds.Height;
+                    height = Windows.UI.Xaml.Window.Current.Bounds.Height;
                 }
             }
 

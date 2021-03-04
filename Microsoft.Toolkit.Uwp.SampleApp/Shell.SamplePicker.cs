@@ -16,14 +16,6 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media.Animation;
 
-#if HAS_UNO
-using NavigationView = Windows.UI.Xaml.Controls.NavigationView;
-using NavigationViewItemInvokedEventArgs = Windows.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
-#else
-using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
-using NavigationViewItemInvokedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
-#endif
-
 namespace Microsoft.Toolkit.Uwp.SampleApp
 {
     public sealed partial class Shell
@@ -134,7 +126,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             SamplePickerGrid.Visibility = Windows.UI.Xaml.Visibility.Visible;
         }
 
-        private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        private void NavView_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
         {
             //// Temp Workaround for WinUI Bug https://github.com/microsoft/microsoft-ui-xaml/issues/2520
             var invokedItem = args.InvokedItem;

@@ -12,7 +12,7 @@ namespace Microsoft.Toolkit.Uwp.UI
     /// <summary>
     /// A model containing options for configuring the Surface Dial support through <see cref="TextBoxExtensions"/>.
     /// </summary>
-    public sealed class SurfaceDialOptions : DependencyObject
+    public sealed partial class SurfaceDialOptions : DependencyObject
     {
         /// <summary>
         /// Gets an internal cached instance to avoid allocations from <see cref="TextBoxExtensions"/>.

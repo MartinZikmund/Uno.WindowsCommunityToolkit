@@ -11,7 +11,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
     /// <summary>
     /// A base model representing an animation that can be used in XAML.
     /// </summary>
-    public abstract class Animation : DependencyObject, ITimeline
+    public abstract partial class Animation : DependencyObject, ITimeline
     {
         /// <summary>
         /// Gets or sets the optional initial delay for the animation.

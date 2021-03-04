@@ -4,6 +4,7 @@
 
 using System;
 using Windows.ApplicationModel;
+using Windows.Foundation.Metadata;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -18,6 +19,9 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
     /// </summary>
     public static class ItemsReorderAnimation
     {
+        private static bool IsSupported { get; } = ApiInformation.IsMethodPresent("Windows.UI.Composition.Compositor", "CreateDropShadow");
+
+
         /// <summary>
         /// Identifies the attached "Duration" <see cref="DependencyProperty"/>.
         /// </summary>
@@ -63,7 +67,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
         /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs"/> instance for the current event.</param>
         private static void OnDurationChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (DesignMode.DesignModeEnabled)
+            if (DesignMode.DesignModeEnabled || !IsSupported)
             {
                 return;
             }

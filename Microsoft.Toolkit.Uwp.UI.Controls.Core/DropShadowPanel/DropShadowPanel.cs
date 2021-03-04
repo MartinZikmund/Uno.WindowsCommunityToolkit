@@ -5,6 +5,7 @@
 using System;
 using System.Numerics;
 using System.Threading.Tasks;
+using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
@@ -27,6 +28,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         private readonly SpriteVisual _shadowVisual;
         private Border _border;
 
+        private static bool IsSupported { get; } = ApiInformation.IsMethodPresent("Windows.UI.Composition.Compositor", "CreateDropShadow");
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DropShadowPanel"/> class.
         /// </summary>
@@ -34,7 +37,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         {
             this.DefaultStyleKey = typeof(DropShadowPanel);
 
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported)
             {
                 Compositor compositor = ElementCompositionPreview.GetElementVisual(this).Compositor;
 
@@ -93,7 +96,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported)
             {
                 UpdateShadowSize();
             }
@@ -103,7 +106,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         {
             UpdateShadowMask();
 
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported)
             {
                 UpdateShadowSize();
             }
@@ -127,7 +130,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private void OnOffsetXChanged(double newValue)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && _dropShadow != null)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && _dropShadow != null)
             {
                 UpdateShadowOffset((float)newValue, _dropShadow.Offset.Y, _dropShadow.Offset.Z);
             }
@@ -135,7 +138,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private void OnOffsetYChanged(double newValue)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && _dropShadow != null)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && _dropShadow != null)
             {
                 UpdateShadowOffset(_dropShadow.Offset.X, (float)newValue, _dropShadow.Offset.Z);
             }
@@ -143,7 +146,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private void OnOffsetZChanged(double newValue)
         {
-            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && _dropShadow != null)
+            if (!DesignTimeHelpers.IsRunningInLegacyDesignerMode && IsSupported && _dropShadow != null)
             {
                 UpdateShadowOffset(_dropShadow.Offset.X, _dropShadow.Offset.Y, (float)newValue);
             }
@@ -159,7 +162,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
         private void UpdateShadowMask()
         {
-            if (DesignTimeHelpers.IsRunningInLegacyDesignerMode)
+            if (DesignTimeHelpers.IsRunningInLegacyDesignerMode || !IsSupported)
             {
                 return;
             }

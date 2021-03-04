@@ -38,7 +38,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Predicates
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Match(FrameworkElement element)
         {
-            return element.Name.Equals(this.name, this.comparisonType);
+            // UNO TODO https://github.com/unoplatform/uno/issues/2240
+            return element.Name?.Equals(this.name, this.comparisonType) ?? false;
         }
     }
 }

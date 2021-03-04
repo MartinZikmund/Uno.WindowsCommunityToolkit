@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Toolkit.Extensions;
 using System;
 using Windows.UI.Input;
 using Windows.UI.Xaml;
@@ -108,7 +109,7 @@ namespace Microsoft.Toolkit.Uwp.UI
 
                 if (options.EnableMinMaxValue)
                 {
-                    number = Math.Clamp(number, options.MinValue, options.MaxValue);
+                    number = MathEx.Clamp(number, options.MinValue, options.MaxValue);
                 }
             }
             else

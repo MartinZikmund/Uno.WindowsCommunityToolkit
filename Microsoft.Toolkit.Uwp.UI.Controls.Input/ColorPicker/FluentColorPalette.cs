@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Toolkit.Extensions;
 using System;
 using Color = Windows.UI.Color; // Type can be changed to CoreColor, etc.
 
@@ -168,8 +169,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             int shadeIndex)
         {
             return colorChart[
-                Math.Clamp(colorIndex, 0, colorChart.GetLength(0)),
-                Math.Clamp(shadeIndex, 0, colorChart.GetLength(1))];
+                MathEx.Clamp(colorIndex, 0, colorChart.GetLength(0)),
+                MathEx.Clamp(shadeIndex, 0, colorChart.GetLength(1))];
         }
     }
 }

@@ -57,12 +57,12 @@
 
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
 		<PackageReference Include="Uno.UI"
-											Version="3.0.0-dev.1549" />
+											Version="3.4.0" />
 		<PackageReference Include="Uno.Microsoft.Xaml.Behaviors.Uwp.Managed"
 											Version="2.0.2-uno.74" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)'=='uap10.0.16299'">
+	<ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763'">
 		<PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed"
 											Version="2.0.1" />
 	</ItemGroup>

@@ -24,7 +24,9 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.Controls
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register(nameof(Text), typeof(string), typeof(XamlCodeEditor), new PropertyMetadata(string.Empty));
 
+#if !HAS_UNO
         private ThemeListener _themeListener = new ThemeListener();
+#endif
 
         public XamlCodeEditor()
         {

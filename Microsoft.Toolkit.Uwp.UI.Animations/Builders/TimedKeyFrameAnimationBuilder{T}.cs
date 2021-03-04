@@ -4,6 +4,7 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using Microsoft.Toolkit.Extensions;
 using Microsoft.Toolkit.Uwp.UI.Animations.Builders.Helpers;
 using Windows.UI.Composition;
 using Windows.UI.Xaml.Media.Animation;
@@ -172,7 +173,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public float GetNormalizedProgress(TimeSpan duration)
             {
-                return (float)Math.Clamp(this.progress.TotalMilliseconds * 100 / duration.TotalMilliseconds, 0, 1);
+                return (float)MathEx.Clamp(this.progress.TotalMilliseconds * 100 / duration.TotalMilliseconds, 0, 1);
             }
 
             /// <inheritdoc/>

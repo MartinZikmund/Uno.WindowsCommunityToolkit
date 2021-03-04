@@ -86,17 +86,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
         {
             var categories = await Samples.GetCategoriesAsync();
 
-#if HAS_UNO
-            return categories?
-                .SelectMany(c => c.Samples)
-                .FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-#else
             // Replace any spaces in the category name as it's used for the host part of the URI in deep links and that can't have spaces.
             return categories?
                 .FirstOrDefault(c => c.Name.Replace(" ", string.Empty).Equals(category, StringComparison.OrdinalIgnoreCase))?
                 .Samples
                 .FirstOrDefault(s => s.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-#endif
         }
 
         private PropertyDescriptor _propertyDescriptor;
@@ -105,7 +99,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
 
         public string Type { get; set; }
 
-        public bool? IsUno { get; set; }
+        public bool IsUno { get; set; }
 
         public string Subcategory { get; set; }
 
@@ -116,7 +110,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
         /// <summary>
         /// Gets the Page Type.
         /// </summary>
-        public Type PageType => this.GetType().Assembly.GetType("Microsoft.Toolkit.Uwp.SampleApp.SamplePages." + Type);
+        public Type PageType => System.Type.GetType("Microsoft.Toolkit.Uwp.SampleApp.SamplePages." + Type);
 
         /// <summary>
         /// Gets or sets the Category Name.
@@ -199,22 +193,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
 
         public async Task<string> GetCSharpSourceAsync()
         {
-            using (var codeStream = await StreamHelper.GetEmbeddedFileStreamAsync(GetType(), CodeFile.StartsWith("/") ? CodeFile : $"SamplePages/{Name}/{CodeFile}"))
+            using (var codeStream = await StreamHelper.GetPackagedFileStreamAsync(CodeFile.StartsWith('/') ? CodeFile : $"SamplePages/{Name}/{CodeFile}"))
             {
                 using (var streamReader = new StreamReader(codeStream.AsStream()))
                 {
                     return await streamReader.ReadToEndAsync();
-                }
-            }
-        }
-
-        public async Task<string> GetJavaScriptSourceAsync()
-        {
-            using (var codeStream = await StreamHelper.GetEmbeddedFileStreamAsync(GetType(), JavaScriptCodeFile.StartsWith("/") ? JavaScriptCodeFile : $"SamplePages/{Name}/{JavaScriptCodeFile}"))
-            {
-                using (var streamreader = new StreamReader(codeStream.AsStream()))
-                {
-                    return await streamreader.ReadToEndAsync();
                 }
             }
         }
@@ -288,7 +271,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             {
                 try
                 {
-                    using (var localDocsStream = await StreamHelper.GetEmbeddedFileStreamAsync(GetType(), $"docs.{filepath}"))
+                    using (var localDocsStream = await StreamHelper.GetPackagedFileStreamAsync($"docs/{filepath}"))
                     {
                         var result = await localDocsStream.ReadTextAsync(Encoding.UTF8);
                         _cachedDocumentation = ProcessDocs(result);
@@ -485,7 +468,8 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                 // Get Xaml code
                 using (var codeStream = typeof(Samples).GetTypeInfo().Assembly.GetManifestResourceStream(manifestName))
 #else
-                using (var codeStream = await StreamHelper.GetEmbeddedFileStreamAsync(GetType(), XamlCodeFile.StartsWith("/") ? XamlCodeFile : $"SamplePages/{Name}/{XamlCodeFile}"))
+                // Get Xaml code
+                using (var codeStream = await StreamHelper.GetPackagedFileStreamAsync(XamlCodeFile.StartsWith('/') ? XamlCodeFile : $"SamplePages/{Name}/{XamlCodeFile}"))
 #endif
                 {
                     XamlCode = await codeStream.ReadTextAsync(Encoding.UTF8);
@@ -585,9 +569,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                                     catch (Exception ex)
                                     {
                                         Debug.WriteLine($"Unable to extract slider info from {value}({ex.Message})");
-#if NETFX_CORE // UNO TODO
-                                       TrackingManager.TrackException(ex);
-#endif
+                                        TrackingManager.TrackException(ex);
                                         continue;
                                     }
 
@@ -600,17 +582,12 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                                         var split = value.Split('.');
                                         var typeName = string.Join(".", split.Take(split.Length - 1));
                                         var enumType = LookForTypeByName(typeName);
-                                        if (enumType != null)
-                                        {
-                                            options.DefaultValue = Enum.Parse(enumType, split.Last());
-                                        }
+                                        options.DefaultValue = Enum.Parse(enumType, split.Last());
                                     }
                                     catch (Exception ex)
                                     {
                                         Debug.WriteLine($"Unable to parse enum from {value}({ex.Message})");
-#if NETFX_CORE // UNO TODO
                                         TrackingManager.TrackException(ex);
-#endif
                                         continue;
                                     }
 
@@ -637,9 +614,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                                     catch (Exception ex)
                                     {
                                         Debug.WriteLine($"Unable to parse bool from {value}({ex.Message})");
-#if NETFX_CORE // UNO TODO
                                         TrackingManager.TrackException(ex);
-#endif
                                         continue;
                                     }
 
@@ -695,12 +670,16 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
               // TODO Reintroduce graph controls
               // typeof(UserToPersonConverter)) // Search in Microsoft.Toolkit.Graph.Controls
                 EasingType.Default.GetType(), // Microsoft.Toolkit.Uwp.UI.Animations
-                ImageBlendMode.Multiply.GetType(), // Search in Microsoft.Toolkit.Uwp.UI
+                typeof(UI.SortDirection), // Search in Microsoft.Toolkit.Uwp.UI
+#if !HAS_UNO
                 Interaction.Enabled.GetType(), // Microsoft.Toolkit.Uwp.Input.GazeInteraction
+#endif
                 DataGridGridLinesVisibility.None.GetType(), // Microsoft.Toolkit.Uwp.UI.Controls.DataGrid
                 GridSplitter.GridResizeDirection.Auto.GetType(), // Microsoft.Toolkit.Uwp.UI.Controls.Layout
                 typeof(MarkdownTextBlock), // Microsoft.Toolkit.Uwp.UI.Controls.Markdown
+#if !HAS_UNO
                 BitmapFileFormat.Bmp.GetType(), // Microsoft.Toolkit.Uwp.UI.Controls.Media
+#endif
                 StretchChild.Last.GetType() // Microsoft.Toolkit.Uwp.UI.Controls.Primitivs
             };
 

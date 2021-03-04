@@ -130,6 +130,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
         /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs"/> instance for the current event.</param>
         private static void OnShowAnimationsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+#if !HAS_UNO
             static void OnAnimationsChanged(IObservableVector<DependencyObject> sender, IVectorChangedEventArgs args)
             {
                 var collection = (ImplicitAnimationSet)sender;
@@ -199,6 +200,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
         /// <param name="e">The <see cref="DependencyPropertyChangedEventArgs"/> instance for the current event.</param>
         private static void OnAnimationsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+#if !HAS_UNO
             static void OnAnimationsChanged(IObservableVector<DependencyObject> sender, IVectorChangedEventArgs args)
             {
                 var collection = (ImplicitAnimationSet)sender;
@@ -224,6 +226,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
                 ElementCompositionPreview.SetIsTranslationEnabled(element, true);
                 ElementCompositionPreview.GetElementVisual(element).ImplicitAnimations = collection.GetImplicitAnimationCollection();
             }
+#endif
         }
     }
 }

@@ -58,6 +58,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.Styles
                     FallbackColor = Helpers.ColorHelper.ToColor("#FFDDDDDD")
                 }
             });
+#endif
         }
 
 #if !HAS_UNO

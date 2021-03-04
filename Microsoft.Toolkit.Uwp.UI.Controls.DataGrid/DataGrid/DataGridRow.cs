@@ -795,7 +795,6 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             {
                 _detailsElement.InvalidateMeasure();
             }
-#endif
 
             bool currentAddItemIsDataContext = false;
 #if FEATURE_IEDITABLECOLLECTIONVIEW

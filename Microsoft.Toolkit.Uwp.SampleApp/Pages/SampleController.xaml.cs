@@ -246,6 +246,8 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
 
                 async Task SetSampleDataContext()
                 {
+                    InfoAreaPivot.Items.Clear();
+
                     DataContext = CurrentSample;
 
                     // Load Sample Properties before we load sample (if we haven't before)
@@ -264,8 +266,6 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                         InfoAreaPivot.Items.Add(PropertiesPivotItem);
                     }
                 }
-
-                InfoAreaPivot.Items.Clear();
 
                 if (CurrentSample.HasXAMLCode)
                 {

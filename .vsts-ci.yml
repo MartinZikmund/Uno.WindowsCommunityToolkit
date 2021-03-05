@@ -43,9 +43,9 @@ jobs:
     displayName: Setup Environment Variables
     
   - task: NuGetToolInstaller@0
-    displayName: Use NuGet 5.0.0
+    displayName: Use NuGet 5.6.0
     inputs:
-      versionSpec: 5.0.0
+      versionSpec: 5.6.0
 
   - task: UseDotNet@2
     inputs:

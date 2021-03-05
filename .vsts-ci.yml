@@ -51,7 +51,13 @@ jobs:
     inputs:
       packageType: 'sdk'
       version: '3.1.101'
-    displayName: Use .NET Core sdk
+    displayName: Use .NET Core SDK 3.1.101
+
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '5.0.103'
+    displayName: Use .NET SDK 5.0.103
 
   - task: DotNetCoreCLI@2  
     inputs:
@@ -83,7 +89,6 @@ jobs:
 
   variables:
     NUGET_PACKAGES: $(build.sourcesdirectory)/.nuget
-    EMSCRIPTEN_VERSION: 1.39.20
 
   steps:
   - checkout: self
@@ -116,21 +121,6 @@ jobs:
     displayName: Use .NETCore 3.0.x  sdk
 
   - bash: |
-      cd ~
-      git clone --branch $(EMSCRIPTEN_VERSION) https://github.com/emscripten-core/emsdk
-      cd emsdk
-      ./emsdk install $(EMSCRIPTEN_VERSION)
-      ./emsdk activate $(EMSCRIPTEN_VERSION)
-
-    displayName: 'Setup Emscripten'
-  - bash: |
-      cd ~/emsdk
-      wget https://raw.githubusercontent.com/mono/mono/27247739c68faee7b2a63ae805222d4b375d2161/sdks/builds/fix-emscripten-8511.diff
-      cd ~/emsdk/upstream/emscripten
-      patch -N -p1 < ~/emsdk/fix-emscripten-8511.diff
-
-  - bash: |
-      source ~/emsdk/emsdk_env.sh
       cd $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm
       msbuild /r /p:Configuration=Release $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm/Microsoft.Toolkit.Uwp.SampleApp.Wasm.csproj /p:TargetFrameworksOverride=netstandard2.0 /bl:$(build.artifactstagingdirectory)\build.binlog
 

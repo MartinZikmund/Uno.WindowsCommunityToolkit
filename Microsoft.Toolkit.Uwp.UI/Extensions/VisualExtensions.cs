@@ -6,10 +6,10 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Windows.Foundation.Metadata;
 using Windows.UI.Composition;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Hosting;
-using Windows.Foundation.Metadata;
 
 namespace Microsoft.Toolkit.Uwp.UI
 {

@@ -122,7 +122,7 @@ jobs:
 
   - bash: |
       cd $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm
-      msbuild /r /p:Configuration=Release $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm/Microsoft.Toolkit.Uwp.SampleApp.Wasm.csproj /p:TargetFrameworksOverride=netstandard2.0 /bl:$(build.artifactstagingdirectory)\build.binlog
+      dotnet msbuild /r /p:Configuration=Release $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm/Microsoft.Toolkit.Uwp.SampleApp.Wasm.csproj /p:TargetFrameworksOverride=netstandard2.0 /bl:$(build.artifactstagingdirectory)\build.binlog
 
   - task: CopyFiles@2
     displayName: 'Publish Wasm Binaries'

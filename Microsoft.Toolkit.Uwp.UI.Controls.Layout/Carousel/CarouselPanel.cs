@@ -74,7 +74,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             for (int i = 0; i < Children.Count; i++)
             {
                 var child = Children[i];
-                
+
                 var rect = child.TransformToVisual(this).TransformBounds(new Rect(0, 0, child.DesiredSize.Width, child.DesiredSize.Height));
 
                 if (!(position.X >= rect.Left && position.X <= rect.Right && position.Y >= rect.Top && position.Y <= rect.Bottom))
@@ -146,7 +146,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             for (int i = 0; i < Children.Count - 1; i++)
             {
                 var child = Children[i];
-                
+
                 PlaneProjection projection = child.Projection as PlaneProjection;
                 CompositeTransform compositeTransform = child.RenderTransform as CompositeTransform;
 

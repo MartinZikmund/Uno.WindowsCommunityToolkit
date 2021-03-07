@@ -135,7 +135,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     var y_normalized = (finalSize.Height / 2) - y - (element.DesiredSize.Height / 2);
                     var point = new Point(x_normalized, y_normalized);
 
-                element.Arrange(point.ToRect(element.DesiredSize));
+                    element.Arrange(point.ToRect(element.DesiredSize));
 
                     var elementProperties = new OrbitViewElementProperties()
                     {

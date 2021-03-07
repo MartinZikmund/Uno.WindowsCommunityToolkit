@@ -134,6 +134,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         private static void OnSelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var view = (ListDetailsView)d;
+
             // UNO TODO
             var index = e.NewValue == null ? -1 : view.GetItems()?.IndexOf(e.NewValue) ?? -1;
 

@@ -21,7 +21,6 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
     {
         private static bool IsSupported { get; } = ApiInformation.IsMethodPresent("Windows.UI.Composition.Compositor", "CreateDropShadow");
 
-
         /// <summary>
         /// Identifies the attached "Duration" <see cref="DependencyProperty"/>.
         /// </summary>
@@ -44,7 +43,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
         /// Gets the value of the <see cref="DurationProperty"/> property.
         /// </summary>
         /// <param name="listView">The <see cref="ListViewBase"/> to get the value for.</param>
-        /// <returns>The retrieved <see cref="TimeSpan"/> value.</returns>
+        /// <returns>The retrieved <see cref="System.TimeSpan"/> value.</returns>
         public static TimeSpan GetDuration(ListViewBase listView)
         {
             return (TimeSpan)listView.GetValue(DurationProperty);

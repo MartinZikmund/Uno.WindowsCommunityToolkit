@@ -37,6 +37,7 @@
     <PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.33" />
     <Reference Include="System.Net.Http" />
 		<PackageReference Include="System.Text.Json" Version="4.7.2" />
+		<PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.1" />
 	</ItemGroup>
 
   <ItemGroup>

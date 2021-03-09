@@ -117,7 +117,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
     <PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.33" />
     <PackageReference Include="Uno.Microsoft.Xaml.Behaviors.Uwp.Managed" Version="2.0.2-uno.74" />
-    <PackageReference Include="Uno.UI" Version="3.4.0" />
+    <PackageReference Include="Uno.UI" Version="3.6.0-dev.300" />
     <PackageReference Include="System.Text.Json" Version="4.7.2" />
   </ItemGroup>
   <ItemGroup>

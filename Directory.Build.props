@@ -132,11 +132,6 @@
 		<JavaSdkDirectory Condition="'$(JavaSdkDirectory)'=='' and '$(JAVA_HOME_8_X64)'!=''">$(JAVA_HOME_8_X64)</JavaSdkDirectory>
 	</PropertyGroup>
 
-	<ItemGroup Condition="'$(UnoUIVersionOverride)'!=''">
-		<!-- Force all projects to use the same uno version to avoid net5 build issues on linux -->
-		<PackageReference Update="Uno.UI" Version="3.6.0-dev.359" />
-	</ItemGroup>
-
 	<!-- END Uno Specific -->
 
 </Project>

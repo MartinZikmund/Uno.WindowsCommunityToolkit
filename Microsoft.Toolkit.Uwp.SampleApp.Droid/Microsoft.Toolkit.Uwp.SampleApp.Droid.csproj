@@ -91,7 +91,7 @@
     <PackageReference Include="Uno.Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.2-uno.74</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI" Version="3.6.0-dev.347" />
+    <PackageReference Include="Uno.UI" Version="3.6.0-dev.359" />
 		<PackageReference Include="System.Text.Json"
 											Version="4.7.2" />
 	</ItemGroup>

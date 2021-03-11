@@ -229,10 +229,17 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             }
             else if (targetType.IsEnum && value is string str)
             {
+#if NETSTANDARD2_0
+                if (Enum.IsDefined(targetType, str))
+                {
+                    return Enum.Parse(targetType, str);
+                }
+#else
                 if (Enum.TryParse(targetType, str, out object result))
                 {
                     return result;
                 }
+#endif
 
                 static object ThrowExceptionForKeyNotFound()
                 {

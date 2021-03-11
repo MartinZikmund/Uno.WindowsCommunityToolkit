@@ -5,6 +5,7 @@
     <OutputType Condition="'$(Configuration)'=='Debug'">Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
 		<UnoUIUseRoslynSourceGenerators>false</UnoUIUseRoslynSourceGenerators>
+		<IsPackable>false</IsPackable>
 	</PropertyGroup>
   <ItemGroup Condition="exists('..\Microsoft.Toolkit.Uwp.SampleApp.UWP')">
     <EmbeddedResource Include="..\Microsoft.Toolkit.Uwp.SampleApp.UWP\Package.appxmanifest" LogicalName="Package.appxmanifest" />

@@ -19,8 +19,8 @@
 
                 <StackPanel x:Name="ButtonsStackPanel" Grid.RowSpan="2" Grid.Column="1" 
                             Orientation="Horizontal" VerticalAlignment="Center">
-                    <Button x:Name="YesButton" Content="Yes" Width="150" Height="30" Click="YesButton_Click" />
-                    <Button x:Name="NoButton" Content="No" Width="150" Height="30" Margin="10 0 0 0" Click="NoButton_Click" />
+                    <Button x:Name="YesButton" Content="Yes" Width="100" Height="32" Click="YesButton_Click" />
+                    <Button x:Name="NoButton" Content="No" Width="100" Height="32" Margin="10 0 0 0" Click="NoButton_Click" />
                 </StackPanel>
             </Grid>
         </Grid>
@@ -46,6 +46,14 @@ if (isTemplatePresent && inAppNotificationWithButtonsTemplate is DataTemplate)
     ExampleInAppNotification.Show(inAppNotificationWithButtonsTemplate as DataTemplate);
 }
 
+// Show notification using an object
+<controls:InAppNotification
+    x:Name="ExampleInAppNotification"
+    ContentTemplate="{StaticResource MyNotificationDataTemplate}" />
+
+var notificationData = new MyNotificationData("Title", "Message");
+ExampleInAppNotification.Show(notificationData, duration: 2000);
+
 // Dismiss notification
 ExampleInAppNotification.Dismiss();
 
@@ -53,14 +61,14 @@ ExampleInAppNotification.Dismiss();
 
 private void YesButton_Click(object sender, RoutedEventArgs e)
 {
-	// TODO : Do something when user accepted
+    // TODO : Do something when user accepted
 
     ExampleInAppNotification.Dismiss();
 }
 
 private void NoButton_Click(object sender, RoutedEventArgs e)
 {
-	// TODO : Do something when user refused
+    // TODO : Do something when user refused
 
     ExampleInAppNotification.Dismiss();
 }

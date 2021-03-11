@@ -1,7 +1,8 @@
 #module nuget:?package=Cake.LongPath.Module&version=0.7.0
 
 #addin nuget:?package=Cake.FileHelpers&version=3.2.1
-#addin nuget:?package=Cake.Powershell&version=0.4.7
+#addin nuget:?package=Cake.Powershell&version=0.4.8
+#addin nuget:?package=Cake.GitVersioning&version=3.3.37
 
 #tool nuget:?package=MSTest.TestAdapter&version=2.1.0
 #tool nuget:?package=vswhere&version=2.8.4
@@ -20,7 +21,6 @@ var target = Argument("target", "Default");
 // VERSIONS
 //////////////////////////////////////////////////////////////////////
 
-var gitVersioningVersion = "3.0.50";
 var inheritDocVersion = "2.5.2";
 
 //////////////////////////////////////////////////////////////////////
@@ -35,10 +35,11 @@ var toolsDir = buildDir + "/tools";
 var binDir = baseDir + "/bin";
 var nupkgDir = binDir + "/nupkg";
 
+var taefBinDir = baseDir + "/UITests/UITests.Tests.TAEF/bin/Release/netcoreapp3.1/win10-x86";
+
 var styler = toolsDir + "/XamlStyler.Console/tools/xstyler.exe";
 var stylerFile = baseDir + "/settings.xamlstyler";
 
-var versionClient = toolsDir + "/nerdbank.gitversioning/tools/Get-Version.ps1";
 string Version = null;
 
 var inheritDoc = toolsDir + "/InheritDoc/tools/InheritDoc.exe";
@@ -97,8 +98,7 @@ void VerifyHeaders(bool Replace)
 void RetrieveVersion()
 {
 	Information("\nRetrieving version...");
-    var results = StartPowershellFile(versionClient);
-    Version = results[1].Properties["NuGetPackageVersion"].Value.ToString();
+    Version = GitVersioningGetVersion().NuGetPackageVersion;
     Information("\nBuild Version: " + Version);
 }
 
@@ -133,18 +133,8 @@ Task("Verify")
 
 Task("Version")
     .Description("Updates the version information in all Projects")
-    .IsDependentOn("Verify")
     .Does(() =>
 {
-    Information("\nDownloading NerdBank GitVersioning...");
-    var installSettings = new NuGetInstallSettings {
-        ExcludeVersion  = true,
-        Version = gitVersioningVersion,
-        OutputDirectory = toolsDir
-    };
-
-    NuGetInstall(new []{"nerdbank.gitversioning"}, installSettings);
-
 	RetrieveVersion();
 });
 
@@ -208,6 +198,7 @@ Task("InheritDoc")
 
 Task("Build")
     .Description("Build all projects runs InheritDoc")
+    .IsDependentOn("Verify")
     .IsDependentOn("BuildProjects")
     .IsDependentOn("InheritDoc");
 
@@ -226,39 +217,6 @@ Task("Package")
 	.WithProperty("PackageOutputPath", nupkgDir);
 
     MSBuild(Solution, buildSettings);
-
-    // Build and pack C++ packages
-    buildSettings = new MSBuildSettings
-    {
-        MaxCpuCount = 0
-    }
-    .SetConfiguration("Native");
-
-    buildSettings.SetPlatformTarget(PlatformTarget.ARM);
-    MSBuild(Solution, buildSettings);
-	
-	buildSettings.SetPlatformTarget(PlatformTarget.ARM64);
-    MSBuild(Solution, buildSettings);
-
-    buildSettings.SetPlatformTarget(PlatformTarget.x64);
-    MSBuild(Solution, buildSettings);
-
-    buildSettings.SetPlatformTarget(PlatformTarget.x86);
-    MSBuild(Solution, buildSettings);
-
-    // RetrieveVersion();
-    // 
-    // var nuGetPackSettings = new NuGetPackSettings
-	// {
-	// 	OutputDirectory = nupkgDir,
-    //     Version = Version
-	// };
-	// 
-    // var nuspecs = GetFiles("./*.nuspec");
-    // foreach (var nuspec in nuspecs)
-    // {
-    //     NuGetPack(nuspec, nuGetPackSettings);
-    // }
 });
 
 public string getMSTestAdapterPath(){
@@ -275,35 +233,82 @@ public string getMSTestAdapterPath(){
 }
 
 Task("Test")
-	.Description("Runs all Tests")
+	.Description("Runs all Unit Tests")
     .Does(() =>
 {
-	var vswhere = VSWhereLatest(new VSWhereLatestSettings
-	{
-		IncludePrerelease = false
-	});
+    Information("\nRunning Unit Tests");
+    var vswhere = VSWhereLatest(new VSWhereLatestSettings
+    {
+        IncludePrerelease = false
+    });
 
-	var testSettings = new VSTestSettings
-	{
-	    ToolPath = vswhere + "/Common7/IDE/CommonExtensions/Microsoft/TestWindow/vstest.console.exe",
-		TestAdapterPath = getMSTestAdapterPath(),
+    var testSettings = new VSTestSettings
+    {
+        ToolPath = vswhere + "/Common7/IDE/CommonExtensions/Microsoft/TestWindow/vstest.console.exe",
+        TestAdapterPath = getMSTestAdapterPath(),
         ArgumentCustomization = arg => arg.Append("/logger:trx;LogFileName=VsTestResultsUwp.trx /framework:FrameworkUap10"),
-	};
+    };
 
-	VSTest(baseDir + "/**/Release/**/UnitTests.*.appxrecipe", testSettings);
+    VSTest(baseDir + "/**/Release/**/UnitTests.*.appxrecipe", testSettings);
 }).DoesForEach(GetFiles(baseDir + "/**/UnitTests.*.NetCore.csproj"), (file) => 
 {
+    Information("\nRunning NetCore Unit Tests");
     var testSettings = new DotNetCoreTestSettings
-	{
-		Configuration = "Release",
-		NoBuild = true,
-		Logger = "trx;LogFilePrefix=VsTestResults",
-		Verbosity = DotNetCoreVerbosity.Normal,
-		ArgumentCustomization = arg => arg.Append($"-s {baseDir}/.runsettings"),
-	};
+    {
+        Configuration = "Release",
+        NoBuild = true,
+        Logger = "trx;LogFilePrefix=VsTestResults",
+        Verbosity = DotNetCoreVerbosity.Normal,
+        ArgumentCustomization = arg => arg.Append($"-s {baseDir}/.runsettings"),
+    };
     DotNetCoreTest(file.FullPath, testSettings);
 }).DeferOnError();
 
+Task("UITest")
+	.Description("Runs all UI Tests")
+    .DoesForEach(GetFiles(taefBinDir + "/**/UITests.Tests.TAEF.dll"), (file) =>
+{
+    Information("\nRunning TAEF Interaction Tests");
+
+    var result = StartProcess(System.IO.Path.GetDirectoryName(file.FullPath) + "/TE.exe", file.FullPath + " /screenCaptureOnError /enableWttLogging /logFile:UITestResults.wtl");
+    if (result != 0)
+    {
+        throw new InvalidOperationException("TAEF Tests failed!");
+    }
+}).DeferOnError();
+
+Task("SmokeTest")
+	.Description("Runs all Smoke Tests")
+    .IsDependentOn("Version")
+    .Does(() =>
+{
+    // Need to do full NuGet restore here to grab proper UWP dependencies...
+    NuGetRestore(baseDir + "/SmokeTests/SmokeTest.csproj");
+
+    var buildSettings = new MSBuildSettings()
+    {
+        Restore = true,
+    }
+    .WithProperty("NuGetPackageVersion", Version);
+
+    MSBuild(baseDir + "/SmokeTests/SmokeTests.proj", buildSettings);
+}).DeferOnError();
+
+Task("MSTestUITest")
+	.Description("Runs UITests using MSTest")
+    .DoesForEach(GetFiles(baseDir + "/**/UITests.*.MSTest.csproj"), (file) =>
+{
+    Information("\nRunning UI Interaction Tests");
+
+    var testSettings = new DotNetCoreTestSettings
+    {
+        Configuration = "Release",
+        NoBuild = true,
+        Logger = "trx;LogFilePrefix=VsTestResults",
+        Verbosity = DotNetCoreVerbosity.Normal
+    };
+    DotNetCoreTest(file.FullPath, testSettings);
+});
 
 
 //////////////////////////////////////////////////////////////////////
@@ -313,6 +318,7 @@ Task("Test")
 Task("Default")
     .IsDependentOn("Build")
     .IsDependentOn("Test")
+    .IsDependentOn("UITest")
     .IsDependentOn("Package");
 
 Task("UpdateHeaders")

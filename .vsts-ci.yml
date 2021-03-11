@@ -43,15 +43,21 @@ jobs:
     displayName: Setup Environment Variables
     
   - task: NuGetToolInstaller@0
-    displayName: Use NuGet 5.0.0
+    displayName: Use NuGet 5.6.0
     inputs:
-      versionSpec: 5.0.0
+      versionSpec: 5.6.0
 
   - task: UseDotNet@2
     inputs:
       packageType: 'sdk'
       version: '3.1.101'
-    displayName: Use .NET Core sdk
+    displayName: Use .NET Core SDK 3.1.101
+
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '5.0.103'
+    displayName: Use .NET SDK 5.0.103
 
   - task: DotNetCoreCLI@2  
     inputs:
@@ -83,7 +89,6 @@ jobs:
 
   variables:
     NUGET_PACKAGES: $(build.sourcesdirectory)/.nuget
-    EMSCRIPTEN_VERSION: 1.39.20
 
   steps:
   - checkout: self
@@ -108,36 +113,26 @@ jobs:
       summaryFile: '$(Build.ArtifactStagingDirectory)/Canary.md'
       resultFile: '$(Build.ArtifactStagingDirectory)/update_result.json'
 
+  - task: UseDotNet@2
+    inputs:
+      packageType: 'sdk'
+      version: '3.1.101'
+    displayName: Use .NET Core SDK 3.1.101
 
   - task: UseDotNet@2
     inputs:
       packageType: 'sdk'
-      version: '3.0.x'
-    displayName: Use .NETCore 3.0.x  sdk
+      version: '5.0.103'
+    displayName: Use .NET SDK 5.0.103
 
   - bash: |
-      cd ~
-      git clone --branch $(EMSCRIPTEN_VERSION) https://github.com/emscripten-core/emsdk
-      cd emsdk
-      ./emsdk install $(EMSCRIPTEN_VERSION)
-      ./emsdk activate $(EMSCRIPTEN_VERSION)
-
-    displayName: 'Setup Emscripten'
-  - bash: |
-      cd ~/emsdk
-      wget https://raw.githubusercontent.com/mono/mono/27247739c68faee7b2a63ae805222d4b375d2161/sdks/builds/fix-emscripten-8511.diff
-      cd ~/emsdk/upstream/emscripten
-      patch -N -p1 < ~/emsdk/fix-emscripten-8511.diff
-
-  - bash: |
-      source ~/emsdk/emsdk_env.sh
       cd $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm
-      msbuild /r /p:Configuration=Release $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm/Microsoft.Toolkit.Uwp.SampleApp.Wasm.csproj /p:TargetFrameworksOverride=netstandard2.0 /bl:$(build.artifactstagingdirectory)\build.binlog
+      dotnet msbuild /r /nr:false /m:1 /p:Configuration=Release /p:UnoUIUseRoslynSourceGenerators=false /p:UnoUIVersionOverride=true $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm/Microsoft.Toolkit.Uwp.SampleApp.Wasm.csproj /p:TargetFrameworksOverride=netstandard2.0 /bl:$(build.artifactstagingdirectory)/build.binlog
 
   - task: CopyFiles@2
     displayName: 'Publish Wasm Binaries'
     inputs:
-      SourceFolder: $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm/bin/Release/netstandard2.0/dist
+      SourceFolder: $(build.sourcesdirectory)/Microsoft.Toolkit.Uwp.SampleApp.Wasm/bin/Release/net5.0/dist
       Contents: '**/*.*'
       TargetFolder: $(build.artifactstagingdirectory)
       CleanTargetFolder: false
@@ -145,8 +140,7 @@ jobs:
       flattenFolders: false
 
   - task: PublishBuildArtifacts@1
-    # https://developercommunity.visualstudio.com/content/problem/284991/public-vsts-previouw-cant-set-build-number-of-pr-b.html
-    condition: eq(variables['System.PullRequest.IsFork'], 'False')
+    condition: always()
     inputs:
       PathtoPublish: $(build.artifactstagingdirectory)
       ArtifactName: wct-aot-drop

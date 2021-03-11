@@ -5,9 +5,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-
 #if !HAS_UNO
 using Windows.Web.Http;
 #else
@@ -42,7 +41,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.Data
 
                         var uri = $"{_root}/repos/{_repoOwner}/{_repoName}/releases";
                         var result = await client.GetStringAsync(new Uri(uri));
-                        _releases = JsonConvert.DeserializeObject<List<GitHubRelease>>(result).Take(5).ToList();
+                        _releases = JsonSerializer.Deserialize<List<GitHubRelease>>(result).Take(5).ToList();
                     }
                 }
                 catch (Exception)

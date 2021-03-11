@@ -107,9 +107,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\BluetoothLEHelper\BluetoothLEHelperPage.xaml.cs">
       <DependentUpon>BluetoothLEHelperPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Blur\BlurBehaviorPage.xaml.cs">
-      <DependentUpon>BlurBehaviorPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\CameraHelper\CameraHelperPage.xaml.cs">
       <DependentUpon>CameraHelperPage.xaml</DependentUpon>
     </Compile>
@@ -134,9 +131,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DataGrid\DataGridPage.xaml.cs">
       <DependentUpon>DataGridPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DispatcherHelper\DispatcherHelperPage.xaml.cs">
-      <DependentUpon>DispatcherHelperPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanelPage.xaml.cs">
       <DependentUpon>DockPanelPage.xaml</DependentUpon>
     </Compile>
@@ -151,9 +145,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\FadeHeader\FadeHeaderBehaviorPage.xaml.cs">
       <DependentUpon>FadeHeaderBehaviorPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Fade\FadeBehaviorPage.xaml.cs">
-      <DependentUpon>FadeBehaviorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\FocusTracker\FocusTrackerPage.xaml.cs">
       <DependentUpon>FocusTrackerPage.xaml</DependentUpon>
@@ -175,9 +166,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedItemsControl\HeaderedItemsControlPage.xaml.cs">
       <DependentUpon>HeaderedItemsControlPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedTextBlock\HeaderedTextBlockPage.xaml.cs">
-      <DependentUpon>HeaderedTextBlockPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ImageBlendBrush\ImageBlendBrushPage.xaml.cs">
       <DependentUpon>ImageBlendBrushPage.xaml</DependentUpon>
@@ -212,12 +200,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\LayoutTransformControl\LayoutTransformControlPage.xaml.cs">
       <DependentUpon>LayoutTransformControlPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Light\LightBehaviorPage.xaml.cs">
-      <DependentUpon>LightBehaviorPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\LinkedIn Service\LinkedInPage.xaml.cs">
-      <DependentUpon>LinkedInPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ListViewExtensions\ListViewExtensionsPage.xaml.cs">
       <DependentUpon>ListViewExtensionsPage.xaml</DependentUpon>
     </Compile>
@@ -227,24 +209,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Loading\LoadingPage.xaml.cs">
       <DependentUpon>LoadingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\LoginButton\LoginButtonPage.xaml.cs">
-      <DependentUpon>LoginButtonPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\MarkdownParser\MarkdownParserPage.xaml.cs">
-      <DependentUpon>MarkdownParserPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\MarkdownTextBlock\MarkdownTextBlockPage.xaml.cs">
       <DependentUpon>MarkdownTextBlockPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\MasterDetailsView\MasterDetailsViewPage.xaml.cs">
-      <DependentUpon>MasterDetailsViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Menu\Commands\VsCommands.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Menu\MenuPage.xaml.cs">
       <DependentUpon>MenuPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Microsoft Translator Service\MicrosoftTranslatorPage.xaml.cs">
-      <DependentUpon>MicrosoftTranslatorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Mouse\MouseCursorPage.xaml.cs">
       <DependentUpon>MouseCursorPage.xaml</DependentUpon>
@@ -255,20 +225,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Object Storage\ObjectStoragePage.xaml.cs">
       <DependentUpon>ObjectStoragePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Offset\OffsetBehaviorPage.xaml.cs">
-      <DependentUpon>OffsetBehaviorPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\OnDevice\OnDevicePage.xaml.cs">
       <DependentUpon>OnDevicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\OrbitView\OrbitViewPage.xaml.cs">
       <DependentUpon>OrbitViewPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\PeoplePicker\PeoplePickerPage.xaml.cs">
-      <DependentUpon>PeoplePickerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\PersonView\PersonViewPage.xaml.cs">
-      <DependentUpon>PersonViewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\PrintHelper\PrintHelperPage.xaml.cs">
       <DependentUpon>PrintHelperPage.xaml</DependentUpon>
@@ -282,28 +243,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\RadialProgressBar\RadialProgressBarPage.xaml.cs">
       <DependentUpon>RadialProgressBarPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\RangeSelector\RangeSelectorPage.xaml.cs">
-      <DependentUpon>RangeSelectorPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDeviceHelper\RemoteDeviceHelperPage.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDevicePicker\RemoteDevicePickerControlPage.xaml.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ReorderGridAnimation\ReorderGridPage.xaml.cs">
-      <DependentUpon>ReorderGridPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Rotate\RotateBehaviorPage.xaml.cs">
-      <DependentUpon>RotateBehaviorPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\RotatorTile\RotatorTilePage.xaml.cs">
       <DependentUpon>RotatorTilePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\RssParser\RssParserPage.xaml.cs">
-      <DependentUpon>RssParserPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Saturation\SaturationBehaviorPage.xaml.cs">
-      <DependentUpon>SaturationBehaviorPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Scale\ScaleBehaviorPage.xaml.cs">
-      <DependentUpon>ScaleBehaviorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ScrollHeader\ScrollHeaderPage.xaml.cs">
       <DependentUpon>ScrollHeaderPage.xaml</DependentUpon>
@@ -317,13 +260,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\StringExtensions\StringExtensionsPage.xaml.cs">
       <DependentUpon>StringExtensionsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\SurfaceDialTextbox\SurfaceDialTextboxPage.xaml.cs">
-      <DependentUpon>SurfaceDialTextboxPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\SystemInformation\SystemInformationPage.xaml.cs">
       <DependentUpon>SystemInformationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\TabView\TabViewPage.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\TextBoxMask\TextBoxMaskPage.xaml.cs">
       <DependentUpon>TextBoxMaskPage.xaml</DependentUpon>
     </Compile>
@@ -343,42 +282,18 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Toast\ToastPage.xaml.cs">
       <DependentUpon>ToastPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\TokenizingTextBox\NameToColorConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\TokenizingTextBox\SampleDataType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\TokenizingTextBox\SampleEmailDataType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\TokenizingTextBox\TokenizingTextBoxPage.xaml.cs">
       <DependentUpon>TokenizingTextBoxPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\CompareStateTriggerPage.xaml.cs">
-      <DependentUpon>CompareStateTriggerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\FullScreenModeStateTriggerPage.xaml.cs">
       <DependentUpon>FullScreenModeStateTriggerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\IsEqualStateTriggerPage.xaml.cs">
-      <DependentUpon>IsEqualStateTriggerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\IsNotEqualStateTriggerPage.xaml.cs">
-      <DependentUpon>IsNotEqualStateTriggerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\IsNullOrEmptyStateTriggerPage.xaml.cs">
       <DependentUpon>IsNullOrEmptyStateTriggerPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\NetworkConnectionStateTriggerPage.xaml.cs">
-      <DependentUpon>NetworkConnectionStateTriggerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\RegexStateTriggerPage.xaml.cs">
-      <DependentUpon>RegexStateTriggerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\UserHandPreferenceStateTriggerPage.xaml.cs">
-      <DependentUpon>UserHandPreferenceStateTriggerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\UserInteractionModeStateTriggerPage.xaml.cs">
-      <DependentUpon>UserInteractionModeStateTriggerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Twitter Service\TwitterPage.xaml.cs">
-      <DependentUpon>TwitterPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Twitter Service\TwitterTemplateSelector.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\UniformGrid\UniformGridPage.xaml.cs">
       <DependentUpon>UniformGridPage.xaml</DependentUpon>
     </Compile>
@@ -394,7 +309,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\WeatherLiveTileAndToast\WeatherLiveTileAndToastPage.xaml.cs">
       <DependentUpon>WeatherLiveTileAndToastPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Weibo Service\WeiboPage.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\WrapPanel\WrapPanelPage.xaml.cs">
       <DependentUpon>WrapPanelPage.xaml</DependentUpon>
     </Compile>
@@ -459,18 +373,13 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\UWPCommunityToolkit_Uno_SplashScreen.scale-200.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\DataGrid\DataGrid.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Eyedropper\Eyedropper.png" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Facebook Service\icon.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\GazeInteraction\GazeInteraction.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\ImageCropper\ImageCropper.png" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\LoginButton\LoginButton.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\OnDevice\OnDevice.png" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\PersonView\PersonView.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDeviceHelper\RemoteDeviceHelper.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDevicePicker\RemoteDevicePicker.png" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\TabView\TabView.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\TokenizingTextBox\TokenizingTextBox.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\ViewportBehavior\ViewportBehavior.png" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Weibo Service\WeiboLogo.png" />
     <None Include="$(MSBuildThisFileDirectory)Assets\Photos\OnlinePhotos.json" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Photos\OregonWineryNamaste.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Photos\Owl.jpg" />
@@ -571,7 +480,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Icons\More.png" />
     <Content Include="$(MSBuildThisFileDirectory)Icons\Notifications.png" />
     <Content Include="$(MSBuildThisFileDirectory)Icons\Services.png" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)landingPageLinks.json" />
+    <Content Include="$(MSBuildThisFileDirectory)landingPageLinks.json" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\AdaptiveGridView\AdaptiveGridView.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\AdaptiveGridView\AdaptiveGridViewCode.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\AdvancedCollectionView\AdvancedCollectionView.bind" />
@@ -594,9 +503,6 @@
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\BladeView\BladeView.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\BluetoothLEHelper\BluetoothLEHelper.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\BluetoothLEHelper\BluetoothLEHelperCode.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Blur\BlurBehavior.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Blur\BlurBehaviorCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Blur\BlurBehaviorXaml.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\CameraHelper\CameraHelper.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\CameraHelper\CameraHelperCode.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\CameraPreview\CameraPreview.png" />
@@ -606,8 +512,6 @@
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Carousel\CarouselCode.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Connected Animations\ConnectedAnimations.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Connected Animations\ConnectedAnimationsCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\DispatcherHelper\DispatcherHelperCode.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\DispatcherHelper\DispatchHelper.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanel.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanel.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\DropShadowPanel.png" />
@@ -616,14 +520,9 @@
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\Unicorn.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Expander\Expander.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Expander\ExpanderXaml.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Facebook Service\FacebookCode.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Facebook Service\FacebookLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\FadeHeader\FadeHeaderBehavior.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\FadeHeader\FadeHeaderBehaviorCode.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\FadeHeader\FadeHeaderBehaviorXaml.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Fade\FadeBehavior.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Fade\FadeBehaviorCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Fade\FadeBehaviorXaml.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\FocusTracker\FocusTracker.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\FocusTracker\FocusTrackerXaml.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\FrameworkElementExtensions\FrameworkElementExtensionsCode.bind" />
@@ -636,8 +535,6 @@
     <None Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedContentControl\HeaderedContentControlXaml.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedItemsControl\HeaderedItemsControl.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedItemsControl\HeaderedItemsControlXaml.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedTextBlock\HeaderedTextBlock.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedTextBlock\HeaderedTextBlockCode.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\ImageBlendBrush\ImageBlendBrush.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\ImageBlendBrush\ImageBlendBrushXaml.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\ImageCache\ImageCache.png" />
@@ -656,43 +553,25 @@
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\InfiniteCanvas\InfiniteCanvas.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\LayoutTransformControl\LayoutTransformControl.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\LayoutTransformControl\LayoutTransformControlXaml.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Light\LightBehavior.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Light\LightBehaviorCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Light\LightBehaviorXaml.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\LinkedIn Service\LinkedInCode.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\LinkedIn Service\LinkedInLogo.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\ListViewExtensions\ListViewExtensionsCode.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\LiveTile\LiveTile.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\LiveTile\LiveTileCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\LiveTile\LiveTileCodeJavaScript.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Loading\Loading.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Loading\LoadingCode.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\MarkdownTextBlock\InitialContent.md" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\MarkdownTextBlock\MarkdownTextBlock.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\MarkdownTextBlock\MarkdownTextBlock.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\MarkdownTextBlock\MarkdownTextBlockCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\MasterDetailsView\MasterDetailsView.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\MasterDetailsView\MasterDetailsView.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\MasterDetailsView\MasterDetailsViewCode.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\MasterDetailsView\OneDriveLogo.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Menu\Menu.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Menu\Menu.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Microsoft Translator Service\MicrosoftTranslatorCode.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Microsoft Translator Service\TranslatorService.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Mouse\MouseCursor.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Mouse\MouseCursorPage.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\NetworkHelper\NetworkHelper.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\NetworkHelper\NetworkHelperCode.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Object Storage\ObjectStorage.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Object Storage\ObjectStorageCode.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Offset\OffsetBehavior.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Offset\OffsetBehaviorCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Offset\OffsetBehaviorXaml.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\OneDrive Service\OneDriveLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\OrbitView\OrbitView.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\OrbitView\OrbitViewXaml.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\PeoplePicker\PeoplePicker.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\PeoplePicker\PeoplePickerXaml.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\PrintHelper\PrintHelper.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\PrintHelper\PrintHelperCode.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\PrintHelper\PrintHelperXaml.bind" />
@@ -704,22 +583,11 @@
     <None Include="$(MSBuildThisFileDirectory)SamplePages\RadialProgressBar\RadialProgressBarCode.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\RangeSelector\RangeSelector.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\RangeSelector\RangeSelectorCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\ReorderGridAnimation\ReorderGrid.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\ReorderGridAnimation\ReorderGrid.png" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Rotate\RotateBehavior.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Rotate\RotateBehaviorCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Rotate\RotateBehaviorXaml.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\RotatorTile\RotatorTile.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\RotatorTile\RotatorTileCode.bind" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)SamplePages\samples.json">
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\samples.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Saturation\SaturationBehavior.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Saturation\SaturationBehaviorCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Saturation\SaturationBehaviorXaml.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Scale\ScaleBehavior.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Scale\ScaleBehaviorCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Scale\ScaleBehaviorXaml.bind" />
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\ScrollHeader\ScrollHeader.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\ScrollHeader\ScrollHeaderCode.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\ScrollViewerExtensions\ScrollViewerExtensionsCode.bind" />
@@ -741,10 +609,6 @@
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\TileControl\TileControl.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Toast\Toast.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Toast\ToastCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Toast\ToastCodeJavaScript.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Twitter Service\icon.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Twitter Service\TwitterCode.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Twitter Service\TwitterLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\UniformGrid\UniformGrid.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\UniformGrid\UniformGridXaml.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\ViewExtensions\ViewExtensions.png" />
@@ -753,7 +617,6 @@
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Visual Extensions\VisualExtensionsCode.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\WeatherLiveTileAndToast\WeatherLiveTileAndToast.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\WeatherLiveTileAndToast\WeatherLiveTileAndToastCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\WeatherLiveTileAndToast\WeatherLiveTileAndToastCodeJavaScript.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\WrapPanel\WrapPanel.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\WrapPanel\WrapPanel.png" />
   </ItemGroup>
@@ -822,10 +685,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Blur\BlurBehaviorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\CameraHelper\CameraHelperPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -858,10 +717,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\DispatcherHelper\DispatcherHelperPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -879,10 +734,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\FadeHeader\FadeHeaderBehaviorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Fade\FadeBehaviorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -911,10 +762,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedItemsControl\HeaderedItemsControlPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedTextBlock\HeaderedTextBlockPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -958,14 +805,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Light\LightBehaviorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\LinkedIn Service\LinkedInPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\ListViewExtensions\ListViewExtensionsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -978,27 +817,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\LoginButton\LoginButtonPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\MarkdownParser\MarkdownParserPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\MarkdownTextBlock\MarkdownTextBlockPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\MasterDetailsView\MasterDetailsViewPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\Menu\MenuPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Microsoft Translator Service\MicrosoftTranslatorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1014,23 +837,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Offset\OffsetBehaviorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\OnDevice\OnDevicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\OrbitView\OrbitViewPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\PeoplePicker\PeoplePickerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\PersonView\PersonViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1050,10 +861,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\RangeSelector\RangeSelectorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDeviceHelper\RemoteDeviceHelperPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -1062,27 +869,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\ReorderGridAnimation\ReorderGridPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Rotate\RotateBehaviorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\RotatorTile\RotatorTilePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\RssParser\RssParserPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Saturation\SaturationBehaviorPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Scale\ScaleBehaviorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1102,15 +889,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\SurfaceDialTextbox\SurfaceDialTextboxPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\SystemInformation\SystemInformationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\TabView\TabViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1142,43 +921,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\CompareStateTriggerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\FullScreenModeStateTriggerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\IsEqualStateTriggerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\IsNotEqualStateTriggerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\IsNullOrEmptyStateTriggerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\NetworkConnectionStateTriggerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\RegexStateTriggerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\UserHandPreferenceStateTriggerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Triggers\UserInteractionModeStateTriggerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Twitter Service\TwitterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1199,10 +946,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\WeatherLiveTileAndToast\WeatherLiveTileAndToastPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\Weibo Service\WeiboPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -1237,11 +980,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)SamplePages\DataGrid\DataGridCode.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\TabView\TabViewXaml.bind" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\Weibo Service\WeiboCode.bind" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Assets\mtns.csv" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\mtns.csv" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="C:\s\nv.github\Uno.WindowsCommunityToolkit\Microsoft.Toolkit.Uwp.SampleApp.Shared\SamplePages\RemoteDeviceHelper\RemoteDeviceHelperPage.xaml.cs">
@@ -1261,7 +1002,11 @@
     <None Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDeviceHelper\RemoteDeviceHelperCode.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDevicePicker\RemoteDevicePickerCode.bind" />
   </ItemGroup>
+  <!-- BEGIN UNO SPECIFIC -->
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)SamplePages\**\*.bind" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)SamplePages\**\*.bind" Exclude="$(MSBuildThisFileDirectory)bin\**;$(MSBuildThisFileDirectory)obj\**" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)SamplePages\**\*.csv" Exclude="$(MSBuildThisFileDirectory)bin\**;$(MSBuildThisFileDirectory)obj\**" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)**\*.json" Exclude="$(MSBuildThisFileDirectory)bin\**;$(MSBuildThisFileDirectory)obj\**" />
   </ItemGroup>
+  <!-- END UNO SPECIFIC -->
 </Project>

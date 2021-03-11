@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 
-namespace Microsoft.Toolkit.Uwp.UI.Media.Extensions
+namespace Microsoft.Toolkit.Uwp.UI.Media
 {
     /// <summary>
     /// An extension <see langword="class"/> for the <see cref="System.Collections.Generic"/> <see langword="namespace"/>
@@ -32,7 +32,18 @@ namespace Microsoft.Toolkit.Uwp.UI.Media.Extensions
                 throw new InvalidOperationException($"The key {key} already exists in the current pipeline");
             }
 
+#if HAS_UNO
+            var ret = new Dictionary<TKey, TValue>();
+
+            foreach(var pair in a.Concat(b))
+            {
+                ret.Add(pair.Key, pair.Value);
+            }
+
+            return ret;
+#else
             return new Dictionary<TKey, TValue>(a.Concat(b));
+#endif
         }
 
         /// <summary>

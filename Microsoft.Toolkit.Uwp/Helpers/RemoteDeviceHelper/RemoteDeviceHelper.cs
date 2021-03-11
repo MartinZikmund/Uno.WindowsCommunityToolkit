@@ -6,9 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Windows.Foundation.Metadata;
+using Windows.System;
 using Windows.System.RemoteSystems;
-using Windows.System.Threading;
 
 namespace Microsoft.Toolkit.Uwp.Helpers
 {
@@ -25,10 +24,17 @@ namespace Microsoft.Toolkit.Uwp.Helpers
         private RemoteSystemWatcher _remoteSystemWatcher;
 
         /// <summary>
+        /// Gets or sets which DispatcherQueue is used to dispatch UI updates.
+        /// </summary>
+        public DispatcherQueue DispatcherQueue { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="RemoteDeviceHelper"/> class.
         /// </summary>
-        public RemoteDeviceHelper()
+        /// <param name="dispatcherQueue">The DispatcherQueue that should be used to dispatch UI updates, or null if this is being called from the UI thread.</param>
+        public RemoteDeviceHelper(DispatcherQueue dispatcherQueue = null)
         {
+            DispatcherQueue = dispatcherQueue ?? DispatcherQueue.GetForCurrentThread();
             RemoteSystems = new ObservableCollection<RemoteSystem>();
             GenerateSystems();
         }
@@ -36,8 +42,11 @@ namespace Microsoft.Toolkit.Uwp.Helpers
         /// <summary>
         /// Initializes a new instance of the <see cref="RemoteDeviceHelper"/> class.
         /// </summary>
-        public RemoteDeviceHelper(List<IRemoteSystemFilter> filter)
+        /// <param name="filter">Initiate Enumeration with specific RemoteSystemKind with Filters</param>
+        /// <param name="dispatcherQueue">The DispatcherQueue that should be used to dispatch UI updates, or null if this is being called from the UI thread.</param>
+        public RemoteDeviceHelper(List<IRemoteSystemFilter> filter, DispatcherQueue dispatcherQueue = null)
         {
+            DispatcherQueue = dispatcherQueue ?? DispatcherQueue.GetForCurrentThread();
             RemoteSystems = new ObservableCollection<RemoteSystem>();
             GenerateSystemsWithFilterAsync(filter);
         }
@@ -51,7 +60,7 @@ namespace Microsoft.Toolkit.Uwp.Helpers
         }
 
         /// <summary>
-        /// Initiate Enumeration with specific RemoteSysemKind with Filters
+        /// Initiate Enumeration with specific RemoteSystemKind with Filters
         /// </summary>
         private async void GenerateSystemsWithFilterAsync(List<IRemoteSystemFilter> filter)
         {
@@ -62,18 +71,7 @@ namespace Microsoft.Toolkit.Uwp.Helpers
                 _remoteSystemWatcher.RemoteSystemAdded += RemoteSystemWatcher_RemoteSystemAdded;
                 _remoteSystemWatcher.RemoteSystemRemoved += RemoteSystemWatcher_RemoteSystemRemoved;
                 _remoteSystemWatcher.RemoteSystemUpdated += RemoteSystemWatcher_RemoteSystemUpdated;
-                if (ApiInformation.IsEventPresent("Windows.System.RemoteSystems.RemoteSystemWatcher", "EnumerationCompleted"))
-                {
-                    _remoteSystemWatcher.EnumerationCompleted += RemoteSystemWatcher_EnumerationCompleted;
-                }
-                else
-                {
-                    ThreadPoolTimer.CreateTimer(
-                        (e) =>
-                        {
-                            RemoteSystemWatcher_EnumerationCompleted(_remoteSystemWatcher, null);
-                        }, TimeSpan.FromSeconds(2));
-                }
+                _remoteSystemWatcher.EnumerationCompleted += RemoteSystemWatcher_EnumerationCompleted;
 
                 _remoteSystemWatcher.Start();
             }
@@ -86,7 +84,7 @@ namespace Microsoft.Toolkit.Uwp.Helpers
 
         private async void RemoteSystemWatcher_RemoteSystemUpdated(RemoteSystemWatcher sender, RemoteSystemUpdatedEventArgs args)
         {
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            await DispatcherQueue.EnqueueAsync(() =>
             {
                 RemoteSystems.Remove(RemoteSystems.First(a => a.Id == args.RemoteSystem.Id));
                 RemoteSystems.Add(args.RemoteSystem);
@@ -95,7 +93,7 @@ namespace Microsoft.Toolkit.Uwp.Helpers
 
         private async void RemoteSystemWatcher_RemoteSystemRemoved(RemoteSystemWatcher sender, RemoteSystemRemovedEventArgs args)
         {
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            await DispatcherQueue.EnqueueAsync(() =>
             {
                 RemoteSystems.Remove(RemoteSystems.First(a => a.Id == args.RemoteSystemId));
             });
@@ -103,7 +101,7 @@ namespace Microsoft.Toolkit.Uwp.Helpers
 
         private async void RemoteSystemWatcher_RemoteSystemAdded(RemoteSystemWatcher sender, RemoteSystemAddedEventArgs args)
         {
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            await DispatcherQueue.EnqueueAsync(() =>
             {
                 RemoteSystems.Add(args.RemoteSystem);
             });

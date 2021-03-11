@@ -38,7 +38,13 @@ namespace Microsoft.Toolkit.Uwp.UI.Media.Helpers.Cache
 
                 // Create a new instance when needed
                 var fallback = producer(compositor);
+
+#if HAS_UNO
+                this.cache.Remove(compositor);
+                this.cache.Add(compositor, new WeakReference<T>(fallback));
+#else
                 this.cache.AddOrUpdate(compositor, new WeakReference<T>(fallback));
+#endif
 
                 return fallback;
             }

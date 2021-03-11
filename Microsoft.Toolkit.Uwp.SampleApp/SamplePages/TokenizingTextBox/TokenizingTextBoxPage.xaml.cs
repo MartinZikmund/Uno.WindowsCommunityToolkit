@@ -9,7 +9,6 @@ using System.Diagnostics;
 using System.Linq;
 using Microsoft.Toolkit.Uwp.UI;
 using Microsoft.Toolkit.Uwp.UI.Controls;
-using Microsoft.Toolkit.Uwp.UI.Extensions;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -22,31 +21,36 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
         //// TODO: We should use images here.
         private readonly List<SampleEmailDataType> _emailSamples = new List<SampleEmailDataType>()
         {
-            new SampleEmailDataType() { FirstName = "Marcus", FamilyName = "Perryman", Icon = Symbol.Account },
-            new SampleEmailDataType() { FirstName = "Ian", FamilyName = "Smith", Icon = Symbol.AddFriend },
-            new SampleEmailDataType() { FirstName = "Peter", FamilyName = "Strange", Icon = Symbol.Attach },
-            new SampleEmailDataType() { FirstName = "Alex", FamilyName = "Wilber", Icon = Symbol.AttachCamera },
-            new SampleEmailDataType() { FirstName = "Allan", FamilyName = "Deyoung", Icon = Symbol.Audio },
-            new SampleEmailDataType() { FirstName = "Adele", FamilyName = "Vance", Icon = Symbol.BlockContact },
-            new SampleEmailDataType() { FirstName = "Grady", FamilyName = "Archie", Icon = Symbol.Calculator },
-            new SampleEmailDataType() { FirstName = "Megan", FamilyName = "Bowen", Icon = Symbol.Calendar },
-            new SampleEmailDataType() { FirstName = "Ben", FamilyName = "Walters", Icon = Symbol.Camera },
-            new SampleEmailDataType() { FirstName = "Debra", FamilyName = "Berger", Icon = Symbol.Contact },
-            new SampleEmailDataType() { FirstName = "Emily", FamilyName = "Braun", Icon = Symbol.Favorite },
-            new SampleEmailDataType() { FirstName = "Christine", FamilyName = "Cline", Icon = Symbol.Link },
-            new SampleEmailDataType() { FirstName = "Enrico", FamilyName = "Catteneo", Icon = Symbol.Mail },
-            new SampleEmailDataType() { FirstName = "Davit", FamilyName = "Badalyan", Icon = Symbol.Map },
-            new SampleEmailDataType() { FirstName = "Diego", FamilyName = "Siciliani", Icon = Symbol.Phone },
-            new SampleEmailDataType() { FirstName = "Raul", FamilyName = "Razo", Icon = Symbol.Pin },
-            new SampleEmailDataType() { FirstName = "Miriam", FamilyName = "Graham", Icon = Symbol.Rotate },
-            new SampleEmailDataType() { FirstName = "Lynne", FamilyName = "Robbins", Icon = Symbol.RotateCamera },
-            new SampleEmailDataType() { FirstName = "Lydia", FamilyName = "Holloway", Icon = Symbol.Send },
-            new SampleEmailDataType() { FirstName = "Nestor", FamilyName = "Wilke", Icon = Symbol.Tag },
-            new SampleEmailDataType() { FirstName = "Patti", FamilyName = "Fernandez", Icon = Symbol.UnFavorite },
-            new SampleEmailDataType() { FirstName = "Pradeep", FamilyName = "Gupta", Icon = Symbol.UnPin },
-            new SampleEmailDataType() { FirstName = "Joni", FamilyName = "Sherman", Icon = Symbol.Zoom },
-            new SampleEmailDataType() { FirstName = "Isaiah", FamilyName = "Langer", Icon = Symbol.ZoomIn },
-            new SampleEmailDataType() { FirstName = "Irvin", FamilyName = "Sayers", Icon = Symbol.ZoomOut },
+            new SampleEmailDataType() { FirstName = "Marcus", FamilyName = "Perryman" },
+            new SampleEmailDataType() { FirstName = "Michael", FamilyName = "Hawker" },
+            new SampleEmailDataType() { FirstName = "Matt", FamilyName = "Lacey" },
+            new SampleEmailDataType() { FirstName = "Alexandre", FamilyName = "Chohfi" },
+            new SampleEmailDataType() { FirstName = "Filip", FamilyName = "Wallberg" },
+            new SampleEmailDataType() { FirstName = "Shane", FamilyName = "Weaver" },
+            new SampleEmailDataType() { FirstName = "Vincent", FamilyName = "Gromfeld" },
+            new SampleEmailDataType() { FirstName = "Sergio", FamilyName = "Pedri" },
+            new SampleEmailDataType() { FirstName = "Alex", FamilyName = "Wilber" },
+            new SampleEmailDataType() { FirstName = "Allan", FamilyName = "Deyoung" },
+            new SampleEmailDataType() { FirstName = "Adele", FamilyName = "Vance" },
+            new SampleEmailDataType() { FirstName = "Grady", FamilyName = "Archie" },
+            new SampleEmailDataType() { FirstName = "Megan", FamilyName = "Bowen" },
+            new SampleEmailDataType() { FirstName = "Ben", FamilyName = "Walters" },
+            new SampleEmailDataType() { FirstName = "Debra", FamilyName = "Berger" },
+            new SampleEmailDataType() { FirstName = "Emily", FamilyName = "Braun" },
+            new SampleEmailDataType() { FirstName = "Christine", FamilyName = "Cline" },
+            new SampleEmailDataType() { FirstName = "Enrico", FamilyName = "Catteneo" },
+            new SampleEmailDataType() { FirstName = "Davit", FamilyName = "Badalyan" },
+            new SampleEmailDataType() { FirstName = "Diego", FamilyName = "Siciliani" },
+            new SampleEmailDataType() { FirstName = "Raul", FamilyName = "Razo" },
+            new SampleEmailDataType() { FirstName = "Miriam", FamilyName = "Graham" },
+            new SampleEmailDataType() { FirstName = "Lynne", FamilyName = "Robbins" },
+            new SampleEmailDataType() { FirstName = "Lydia", FamilyName = "Holloway" },
+            new SampleEmailDataType() { FirstName = "Nestor", FamilyName = "Wilke" },
+            new SampleEmailDataType() { FirstName = "Patti", FamilyName = "Fernandez" },
+            new SampleEmailDataType() { FirstName = "Pradeep", FamilyName = "Gupta" },
+            new SampleEmailDataType() { FirstName = "Joni", FamilyName = "Sherman" },
+            new SampleEmailDataType() { FirstName = "Isaiah", FamilyName = "Langer" },
+            new SampleEmailDataType() { FirstName = "Irvin", FamilyName = "Sayers" },
         };
 
         // TODO: Setup ACV for this collection as well.
@@ -118,7 +122,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
                 _ttb.TokenItemAdding -= TokenItemCreating;
             }
 
-            if (control.FindChildByName("TokenBox") is TokenizingTextBox ttb)
+            if (control.FindChild("TokenBox") is TokenizingTextBox ttb)
             {
                 _ttb = ttb;
                 _ttb.TokenItemAdded += TokenItemAdded;
@@ -142,7 +146,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
                 _ttbEmail.PreviewKeyDown -= EmailPreviewKeyDown;
             }
 
-            if (control.FindChildByName("TokenBoxEmail") is TokenizingTextBox ttbEmail)
+            if (control.FindChild("TokenBoxEmail") is TokenizingTextBox ttbEmail)
             {
                 _ttbEmail = ttbEmail;
 
@@ -163,7 +167,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
                 _ttbEmailSuggestions.PreviewKeyDown -= EmailList_PreviewKeyDown;
             }
 
-            if (control.FindChildByName("EmailList") is ListView ttbList)
+            if (control.FindChild("EmailList") is ListView ttbList)
             {
                 _ttbEmailSuggestions = ttbList;
 
@@ -209,11 +213,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
             // TODO: Add InApp Notification?
             if (data is SampleDataType sample)
             {
-                Debug.WriteLine("Added Token: " + sample.Text);
+                System.Diagnostics.Debug.WriteLine("Added Token: " + sample.Text);
             }
             else
             {
-                Debug.WriteLine("Added Token: " + data);
+                System.Diagnostics.Debug.WriteLine("Added Token: " + data);
             }
         }
 
@@ -221,11 +225,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
         {
             if (args.Item is SampleDataType sample)
             {
-                Debug.WriteLine("Removed Token: " + sample.Text);
+                System.Diagnostics.Debug.WriteLine("Removed Token: " + sample.Text);
             }
             else
             {
-                Debug.WriteLine("Removed Token: " + args.Item);
+                System.Diagnostics.Debug.WriteLine("Removed Token: " + args.Item);
             }
         }
 
@@ -258,11 +262,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
         {
             if (args is SampleEmailDataType sample)
             {
-                Debug.WriteLine("Added Email: " + sample.DisplayName);
+                System.Diagnostics.Debug.WriteLine("Added Email: " + sample.DisplayName);
             }
             else
             {
-                Debug.WriteLine("Added Token: " + args);
+                System.Diagnostics.Debug.WriteLine("Added Token: " + args);
             }
 
             _acvEmail.RefreshFilter();
@@ -272,11 +276,11 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
         {
             if (args is SampleEmailDataType sample)
             {
-                Debug.WriteLine("Removed Email: " + sample.DisplayName);
+                System.Diagnostics.Debug.WriteLine("Removed Email: " + sample.DisplayName);
             }
             else
             {
-                Debug.WriteLine("Removed Token: " + args);
+                System.Diagnostics.Debug.WriteLine("Removed Token: " + args);
             }
 
             _acvEmail.RefreshFilter();

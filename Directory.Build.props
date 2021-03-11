@@ -5,8 +5,9 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <PackageIconUrl>https://raw.githubusercontent.com/windows-toolkit/WindowsCommunityToolkit/master/build/nuget.png</PackageIconUrl>
+    <PackageIcon>images\nuget.png</PackageIcon>
     <PackageProjectUrl>https://github.com/windows-toolkit/WindowsCommunityToolkit</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/windows-toolkit/WindowsCommunityToolkit/blob/master/license.md</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>    
     <PackageReleaseNotes>https://github.com/windows-toolkit/WindowsCommunityToolkit/releases</PackageReleaseNotes>
     <Copyright>(c) .NET Foundation and Contributors.  All rights reserved.</Copyright>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -14,8 +15,9 @@
     <IsTestProject>$(MSBuildProjectName.Contains('Test'))</IsTestProject>
     <IsUwpProject Condition="'$(IsDesignProject)' != 'true'">$(MSBuildProjectName.Contains('Uwp'))</IsUwpProject>
     <IsSampleProject>$(MSBuildProjectName.Contains('Sample'))</IsSampleProject>
-    <DefaultTargetPlatformVersion>17763</DefaultTargetPlatformVersion>
-    <DefaultTargetPlatformMinVersion>16299</DefaultTargetPlatformMinVersion>
+    <TargetPlatformBaseVersion>10.0</TargetPlatformBaseVersion>
+    <TargetPlatformRevision>19041</TargetPlatformRevision>
+    <TargetPlatformMinRevision>17763</TargetPlatformMinRevision>
     <PackageOutputPath>$(MSBuildThisFileDirectory)bin\nupkg</PackageOutputPath>
   </PropertyGroup>
 
@@ -38,6 +40,16 @@
     <When Condition="('$(IsUwpProject)' == 'true') and '$(IsSampleProject)' != 'true' and '$(IsDesignProject)' != 'true'">
       <PropertyGroup>
         <GenerateLibraryLayout>true</GenerateLibraryLayout>
+      </PropertyGroup>
+    </When>
+  </Choose>
+
+  <Choose>
+    <When Condition="'$(Configuration)' == 'Debug' and '$(IsDesignProject)' != 'true'">
+      <!-- Debug builds have this turned on by default, but it breaks our Xaml Islands Scenarios -->
+      <PropertyGroup>
+        <EnableTypeInfoReflection>false</EnableTypeInfoReflection>
+        <EnableXBindDiagnostics>false</EnableXBindDiagnostics>
       </PropertyGroup>
     </When>
   </Choose>
@@ -81,26 +93,31 @@
   </Choose>
 
   <PropertyGroup Condition="'$(IsUwpProject)' == 'true'">
-
     <!-- 8002 is a strong named -> non-strong-named reference -->
     <!-- This is valid for platforms other than .NET Framework (and is needed for the UWP targets -->
     <NoWarn>$(NoWarn);8002</NoWarn>
   </PropertyGroup>
 
   <ItemGroup Condition="!$([MSBuild]::IsOsUnixLike()) and '$(BuildingInsideVisualStudio)'=='' ">
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.1.91" PrivateAssets="all" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.3.37" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)stylecop.json">
       <Link>stylecop.json</Link>
     </AdditionalFiles>
+    <None Include="$(MSBuildThisFileDirectory)license.md" Pack="true" PackagePath="\"/>
+    <None Include="$(MSBuildThisFileDirectory)build\nuget.png" Pack="true" PackagePath="images\"/>
   </ItemGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)build\Windows.Toolkit.VisualStudio.Design.props" Condition="'$(IsDesignProject)' == 'true'"/>
+
 
 	<!-- BEGIN Uno Specific -->
 
 	<PropertyGroup>
-		<TargetFrameworksOverride>uap10.0.16299;MonoAndroid10.0;xamarinios10;netstandard2.0;xamarinmac20</TargetFrameworksOverride>
+		<TargetFrameworksOverride>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0;xamarinmac20</TargetFrameworksOverride>
+		<!--<TargetFrameworksOverride>netstandard2.0</TargetFrameworksOverride>-->
 	</PropertyGroup>
 
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'MonoAndroid80' or '$(TargetFramework)' == 'xamarinios10' ">
@@ -114,7 +131,7 @@
 		<!-- Workaround for android build using the Uno Source Generators: https://github.com/nventive/Uno.SourceGeneration/issues/109 -->
 		<JavaSdkDirectory Condition="'$(JavaSdkDirectory)'=='' and '$(JAVA_HOME_8_X64)'!=''">$(JAVA_HOME_8_X64)</JavaSdkDirectory>
 	</PropertyGroup>
-	
+
 	<!-- END Uno Specific -->
 
 </Project>

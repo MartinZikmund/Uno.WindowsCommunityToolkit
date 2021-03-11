@@ -2,7 +2,6 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-// #define DEBUG_AUTOMATION
 using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.Toolkit.Uwp.UI.Controls;
@@ -15,6 +14,8 @@ using Windows.UI.Xaml.Automation.Provider;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
+
+using DiagnosticsDebug = System.Diagnostics.Debug;
 
 namespace Microsoft.Toolkit.Uwp.UI.Automation.Peers
 {
@@ -184,7 +185,11 @@ namespace Microsoft.Toolkit.Uwp.UI.Automation.Peers
         /// <returns>The string that contains the name.</returns>
         protected override string GetClassNameCore()
         {
-            return Owner.GetType().Name;
+            string classNameCore = Owner.GetType().Name;
+#if DEBUG_AUTOMATION
+            Debug.WriteLine("DataGridAutomationPeer.GetClassNameCore returns " + classNameCore);
+#endif
+            return classNameCore;
         }
 
         /// <summary>
@@ -211,6 +216,10 @@ namespace Microsoft.Toolkit.Uwp.UI.Automation.Peers
                     name = this.GetClassName();
                 }
             }
+
+#if DEBUG_AUTOMATION
+            Debug.WriteLine("DataGridAutomationPeer.GetNameCore returns " + name);
+#endif
 
             return name;
         }
@@ -279,8 +288,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Automation.Peers
                     column++;
                 }
 
-                Debug.Assert(column >= 0, "Expected positive column value.");
-                Debug.Assert(column < this.OwningDataGrid.ColumnsItemsInternal.Count, "Expected smaller column value.");
+                DiagnosticsDebug.Assert(column >= 0, "Expected positive column value.");
+                DiagnosticsDebug.Assert(column < this.OwningDataGrid.ColumnsItemsInternal.Count, "Expected smaller column value.");
                 DataGridCell cell = dgr.Cells[column];
                 AutomationPeer peer = CreatePeerForElement(cell);
                 if (peer != null)
@@ -550,8 +559,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Automation.Peers
                 DataGridRow row = this.OwningDataGrid.DisplayData.GetDisplayedElement(slot) as DataGridRow;
                 if (row != null)
                 {
-                    Debug.Assert(column >= 0, "Expected positive column value.");
-                    Debug.Assert(column < this.OwningDataGrid.ColumnsItemsInternal.Count, "Expected smaller column value.");
+                    DiagnosticsDebug.Assert(column >= 0, "Expected positive column value.");
+                    DiagnosticsDebug.Assert(column < this.OwningDataGrid.ColumnsItemsInternal.Count, "Expected smaller column value.");
                     DataGridCell cell = row.Cells[column];
                     return CreatePeerForElement(cell);
                 }

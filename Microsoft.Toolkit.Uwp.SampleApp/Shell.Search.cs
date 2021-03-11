@@ -2,10 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System;
 using System.Linq;
-using Microsoft.Toolkit.Uwp.Helpers;
-using Microsoft.Toolkit.Uwp.UI.Extensions;
+using Microsoft.Toolkit.Uwp.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -16,7 +14,18 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
     {
         internal void StartSearch(string startingText = null)
         {
-            if (FocusManager.GetFocusedElement() == SearchBox.FindDescendant<TextBox>())
+            object focusedElement;
+
+            if (Windows.Foundation.Metadata.ApiInformation.IsPropertyPresent("Windows.UI.Xaml.UIElement", "XamlRoot") && XamlRoot != null)
+            {
+                focusedElement = FocusManager.GetFocusedElement(XamlRoot);
+            }
+            else
+            {
+                focusedElement = FocusManager.GetFocusedElement();
+            }
+
+            if (focusedElement == SearchBox.FindDescendant<TextBox>())
             {
                 return;
             }
@@ -66,7 +75,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             if (e.Key == Windows.System.VirtualKey.Down && SamplePickerGrid.Visibility == Windows.UI.Xaml.Visibility.Visible)
             {
                 // If we try and navigate down out of the textbox (and there's search results), go to the search results.
-                DispatcherHelper.ExecuteOnUIThreadAsync(() => SamplePickerGridView.Focus(FocusState.Keyboard));
+                dispatcherQueue.EnqueueAsync(() => SamplePickerGridView.Focus(FocusState.Keyboard));
             }
         }
 

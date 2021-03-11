@@ -20,6 +20,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
+using DiagnosticsDebug = System.Diagnostics.Debug;
+
 namespace Microsoft.Toolkit.Uwp.UI.Controls
 {
     /// <summary>
@@ -216,9 +218,9 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         private static void OnDetailsTemplatePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             DataGridRow source = d as DataGridRow;
-            System.Diagnostics.Debug.Assert(source != null, "The source is not an instance of DataGridRow!");
+            DiagnosticsDebug.Assert(source != null, "The source is not an instance of DataGridRow!");
 
-            System.Diagnostics.Debug.Assert(
+            DiagnosticsDebug.Assert(
                 (e.NewValue == null) ||
                 typeof(DataTemplate).IsInstanceOfType(e.NewValue),
                 "The e.NewValue is not an instance of DataTemplate.");
@@ -394,7 +396,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             {
                 if (_bottomGridLine != null && this.OwningGrid != null && this.OwningGrid.AreRowBottomGridLinesRequired)
                 {
-                    // Unfortunately, _bottomGridLine has no size yet so we can't get its actualheight
+                    // Unfortunately, _bottomGridLine has no size yet so we can't get its actual height
                     return DataGrid.HorizontalGridLinesThickness;
                 }
 
@@ -453,7 +455,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         {
             get
             {
-                System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Exptected non-null owning DataGrid.");
+                DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null owning DataGrid.");
 
                 if (_fillerCell == null)
                 {
@@ -579,7 +581,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     return false;
                 }
 
-                System.Diagnostics.Debug.Assert(this.Index != -1, "Expected Index other than -1.");
+                DiagnosticsDebug.Assert(this.Index != -1, "Expected Index other than -1.");
                 return this.OwningGrid.GetRowSelection(this.Slot);
             }
         }
@@ -616,8 +618,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     this.EnsureMeasured();
                     if (_detailsElement != null && _appliedDetailsVisibility == Visibility.Visible && _appliedDetailsTemplate != null)
                     {
-                        System.Diagnostics.Debug.Assert(!double.IsNaN(_detailsElement.ContentHeight), "Expected _detailsElement.ContentHeight different from double.NaN.");
-                        System.Diagnostics.Debug.Assert(!double.IsNaN(_detailsDesiredHeight), "Expected _detailsDesiredHeight different from double.NaN.");
+                        DiagnosticsDebug.Assert(!double.IsNaN(_detailsElement.ContentHeight), "Expected _detailsElement.ContentHeight different from double.NaN.");
+                        DiagnosticsDebug.Assert(!double.IsNaN(_detailsDesiredHeight), "Expected _detailsDesiredHeight different from double.NaN.");
                         return this.DesiredSize.Height + _detailsDesiredHeight - _detailsElement.ContentHeight;
                     }
                     else
@@ -628,13 +630,13 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             }
         }
 
-        // Returns the actual template that should be sued for Details: either explicity set on this row
+        // Returns the actual template that should be sued for Details: either explicitly set on this row
         // or inherited from the DataGrid
         private DataTemplate ActualDetailsTemplate
         {
             get
             {
-                System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Exptected non-null owning DataGrid.");
+                DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null owning DataGrid.");
                 DataTemplate currentDetailsTemplate = this.DetailsTemplate;
 
                 return currentDetailsTemplate != null ? currentDetailsTemplate : this.OwningGrid.RowDetailsTemplate;
@@ -778,11 +780,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                 return base.MeasureOverride(availableSize);
             }
 
-#if !__IOS__ && !__MACOS__
-            // This section is commented out for iOS until the measure
-            // infinite loop is fixed. https://github.com/unoplatform/uno/issues/2842
-
-            // Allow the DataGrid specific componets to adjust themselves based on new values
+            // Allow the DataGrid specific components to adjust themselves based on new values
             if (_headerElement != null)
             {
                 _headerElement.InvalidateMeasure();
@@ -797,7 +795,6 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             {
                 _detailsElement.InvalidateMeasure();
             }
-#endif
 
             bool currentAddItemIsDataContext = false;
 #if FEATURE_IEDITABLECOLLECTIONVIEW
@@ -981,7 +978,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         {
             if (this.RootElement != null && this.OwningGrid != null && this.Visibility == Visibility.Visible)
             {
-                System.Diagnostics.Debug.Assert(this.Index != -1, "Expected Index other than -1.");
+                DiagnosticsDebug.Assert(this.Index != -1, "Expected Index other than -1.");
                 byte idealStateMappingIndex = 0;
                 if (this.IsSelected || this.IsEditing)
                 {
@@ -1004,7 +1001,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                 }
 
                 byte stateCode = _idealStateMapping[idealStateMappingIndex];
-                System.Diagnostics.Debug.Assert(stateCode != DATAGRIDROW_stateNullCode, "stateCode other than DATAGRIDROW_stateNullCode.");
+                DiagnosticsDebug.Assert(stateCode != DATAGRIDROW_stateNullCode, "stateCode other than DATAGRIDROW_stateNullCode.");
 
                 string storyboardName;
                 while (stateCode != DATAGRIDROW_stateNullCode)
@@ -1079,14 +1076,14 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             this.Slot = -1;
         }
 
-        // Make sure the row's background is set to its correct value.  It could be explicity set or inherit
+        // Make sure the row's background is set to its correct value.  It could be explicitly set or inherit
         // DataGrid.RowBackground or DataGrid.AlternatingRowBackground
         internal void EnsureBackground()
         {
-            // Inherit the DataGrid's RowBackground properties only if this row doesn't explicity have a background set
+            // Inherit the DataGrid's RowBackground properties only if this row doesn't explicitly have a background set
             if (this.RootElement != null && this.OwningGrid != null)
             {
-                System.Diagnostics.Debug.Assert(this.Index != -1, "Expected Index other than -1.");
+                DiagnosticsDebug.Assert(this.Index != -1, "Expected Index other than -1.");
 
                 Brush newBackground = null;
                 if (this.Background == null)
@@ -1120,14 +1117,14 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             }
         }
 
-        // Make sure the row's foreground is set to its correct value.  It could be explicity set or inherit
+        // Make sure the row's foreground is set to its correct value.  It could be explicitly set or inherit
         // DataGrid.RowForeground or DataGrid.AlternatingRowForeground
         internal void EnsureForeground()
         {
-            // Inherit the DataGrid's RowForeground properties only if this row doesn't explicity have a foreground set
+            // Inherit the DataGrid's RowForeground properties only if this row doesn't explicitly have a foreground set
             if (this.OwningGrid != null)
             {
-                System.Diagnostics.Debug.Assert(this.Index != -1, "Expected Index other than -1.");
+                DiagnosticsDebug.Assert(this.Index != -1, "Expected Index other than -1.");
 
                 PropertyMetadata metadataInfo = DataGridRow.ForegroundProperty.GetMetadata(typeof(DataGridRow));
                 Brush defaultForeground = metadataInfo == null ? null : metadataInfo.DefaultValue as Brush;
@@ -1255,8 +1252,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             Visibility visibility,
             bool raiseNotification)
         {
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Exptected non-null owning DataGrid.");
-            System.Diagnostics.Debug.Assert(this.Index != -1, "Expected Index other than -1.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null owning DataGrid.");
+            DiagnosticsDebug.Assert(this.Index != -1, "Expected Index other than -1.");
 
             if (_appliedDetailsVisibility != visibility)
             {
@@ -1420,12 +1417,12 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         // height we want to animate to.  Subsequently, we just update that height in response to SizeChanged.
         private void EnsureDetailsDesiredHeight()
         {
-            System.Diagnostics.Debug.Assert(_detailsElement != null, "Expected non-null _detailsElement.");
-            System.Diagnostics.Debug.Assert(this.OwningGrid != null, "Expected non-null owning DataGrid.");
+            DiagnosticsDebug.Assert(_detailsElement != null, "Expected non-null _detailsElement.");
+            DiagnosticsDebug.Assert(this.OwningGrid != null, "Expected non-null owning DataGrid.");
 
             if (_detailsContent != null)
             {
-                System.Diagnostics.Debug.Assert(_detailsElement.Children.Contains(_detailsContent), "Expected _detailsElement parent of _detailsContent.");
+                DiagnosticsDebug.Assert(_detailsElement.Children.Contains(_detailsContent), "Expected _detailsElement parent of _detailsContent.");
 
                 _detailsContent.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
                 _detailsDesiredHeight = _detailsContent.DesiredSize.Height;

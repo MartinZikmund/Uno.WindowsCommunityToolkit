@@ -2,8 +2,8 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+using Microsoft.Toolkit.Uwp.UI;
 using Microsoft.Toolkit.Uwp.UI.Controls;
-using Microsoft.Toolkit.Uwp.UI.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting.AppContainer;
 using Windows.UI.Xaml;
@@ -36,7 +36,7 @@ namespace UnitTests.UI.Controls
 
             Assert.IsNotNull(treeroot, "Could not load XAML tree.");
 
-            var grid = treeroot.FindChildByName("UniformGrid") as UniformGrid;
+            var grid = treeroot.FindChild("UniformGrid") as UniformGrid;
 
             Assert.IsNotNull(grid, "Could not find UniformGrid in tree.");
 
@@ -110,7 +110,7 @@ namespace UnitTests.UI.Controls
 
             Assert.IsNotNull(treeroot, "Could not load XAML tree.");
 
-            var grid = treeroot.FindChildByName("UniformGrid") as UniformGrid;
+            var grid = treeroot.FindChild("UniformGrid") as UniformGrid;
 
             Assert.IsNotNull(grid, "Could not find UniformGrid in tree.");
 
@@ -125,7 +125,7 @@ namespace UnitTests.UI.Controls
             Assert.AreEqual(3, grid.RowDefinitions.Count);
 
             var rdo = grid.RowDefinitions[0];
-            
+
             // Did we mark that our row is special?
             Assert.AreEqual(false, UniformGrid.GetAutoLayout(rdo));
 
@@ -206,7 +206,7 @@ namespace UnitTests.UI.Controls
 
             Assert.IsNotNull(treeroot, "Could not load XAML tree.");
 
-            var grid = treeroot.FindChildByName("UniformGrid") as UniformGrid;
+            var grid = treeroot.FindChild("UniformGrid") as UniformGrid;
 
             Assert.IsNotNull(grid, "Could not find UniformGrid in tree.");
 
@@ -310,7 +310,7 @@ namespace UnitTests.UI.Controls
 
             Assert.IsNotNull(treeroot, "Could not load XAML tree.");
 
-            var grid = treeroot.FindChildByName("UniformGrid") as UniformGrid;
+            var grid = treeroot.FindChild("UniformGrid") as UniformGrid;
 
             Assert.IsNotNull(grid, "Could not find UniformGrid in tree.");
 
@@ -437,7 +437,7 @@ namespace UnitTests.UI.Controls
 
             Assert.IsNotNull(treeroot, "Could not load XAML tree.");
 
-            var grid = treeroot.FindChildByName("UniformGrid") as UniformGrid;
+            var grid = treeroot.FindChild("UniformGrid") as UniformGrid;
 
             Assert.IsNotNull(grid, "Could not find UniformGrid in tree.");
 
@@ -465,7 +465,7 @@ namespace UnitTests.UI.Controls
 
             //// DO IT AGAIN
             //// This is so we can check that it will behave the same again on another pass.
-            
+
             // We'll have three columns in this setup
             grid.SetupColumnDefinitions(3);
 
@@ -511,7 +511,7 @@ namespace UnitTests.UI.Controls
 
             Assert.IsNotNull(treeroot, "Could not load XAML tree.");
 
-            var grid = treeroot.FindChildByName("UniformGrid") as UniformGrid;
+            var grid = treeroot.FindChild("UniformGrid") as UniformGrid;
 
             Assert.IsNotNull(grid, "Could not find UniformGrid in tree.");
 
@@ -609,7 +609,7 @@ namespace UnitTests.UI.Controls
 
             Assert.IsNotNull(treeroot, "Could not load XAML tree.");
 
-            var grid = treeroot.FindChildByName("UniformGrid") as UniformGrid;
+            var grid = treeroot.FindChild("UniformGrid") as UniformGrid;
 
             Assert.IsNotNull(grid, "Could not find UniformGrid in tree.");
 
@@ -713,7 +713,7 @@ namespace UnitTests.UI.Controls
 
             Assert.IsNotNull(treeroot, "Could not load XAML tree.");
 
-            var grid = treeroot.FindChildByName("UniformGrid") as UniformGrid;
+            var grid = treeroot.FindChild("UniformGrid") as UniformGrid;
 
             Assert.IsNotNull(grid, "Could not find UniformGrid in tree.");
 

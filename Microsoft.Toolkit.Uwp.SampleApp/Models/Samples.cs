@@ -4,12 +4,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Reflection;
+using System.Text.Json;
 using System.Threading;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.Toolkit.Uwp.Helpers;
-using Newtonsoft.Json;
+using Windows.UI.Composition;
 
 namespace Microsoft.Toolkit.Uwp.SampleApp
 {
@@ -21,9 +23,9 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
         private static SemaphoreSlim _semaphore = new SemaphoreSlim(1);
 
         private static LinkedList<Sample> _recentSamples;
-        private static RoamingObjectStorageHelper _roamingObjectStorageHelper = new RoamingObjectStorageHelper();
-
+        private static LocalObjectStorageHelper _localObjectStorageHelper = new LocalObjectStorageHelper(new SystemSerializer());
         public static bool ShowUnoUnsupported { get; set; } = false;
+
 
         public static async Task<SampleCategory> GetCategoryBySample(Sample sample)
         {
@@ -58,44 +60,48 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             {
                 List<SampleCategory> allCategories;
 
-                var manifestName = typeof(Samples).GetTypeInfo().Assembly
-                    .GetManifestResourceNames()
-                    .FirstOrDefault(n => n.EndsWith("samples.json", StringComparison.OrdinalIgnoreCase));
-
-                if (manifestName != null)
+                using (var jsonStream = await StreamHelper.GetEmbeddedFileStreamAsync(typeof(Samples), "samples.json"))
                 {
-                    var jsonString = await typeof(Samples).GetTypeInfo().Assembly.GetManifestResourceStream(manifestName).ReadTextAsync();
-                    allCategories = JsonConvert.DeserializeObject<List<SampleCategory>>(jsonString);
+                    using var reader = new StreamReader(jsonStream);
+                    var t = reader.ReadToEnd();
+                }
 
-                    // Check API
-                    var supportedCategories = new List<SampleCategory>();
-                    foreach (var category in allCategories)
+#if HAS_UNO
+                using (var jsonStream = await StreamHelper.GetEmbeddedFileStreamAsync(typeof(Samples), "samples.json"))
+#else
+                using (var jsonStream = await StreamHelper.GetPackagedFileStreamAsync("SamplePages/samples.json"))
+#endif
+                {
+                    allCategories = await JsonSerializer.DeserializeAsync<List<SampleCategory>>(jsonStream.AsStream(), new JsonSerializerOptions
                     {
-                        var finalSamples = new List<Sample>();
+                        ReadCommentHandling = JsonCommentHandling.Skip
+                    });
+                }
 
-                        foreach (var sample in category.Samples)
-                        {
-                            sample.CategoryName = category.Name;
+                // Check API
+                var supportedCategories = new List<SampleCategory>();
+                foreach (var category in allCategories)
+                {
+                    var finalSamples = new List<Sample>();
 
-                        if (sample.IsSupported && (sample.IsUno ?? ShowUnoUnsupported))
+                    foreach (var sample in category.Samples)
+                    {
+                        sample.CategoryName = category.Name;
+
+                        if (sample.IsSupported && (sample.IsUno || ShowUnoUnsupported))
                         {
                             finalSamples.Add(sample);
                         }
                     }
 
-                        if (finalSamples.Count > 0)
-                        {
-                            supportedCategories.Add(category);
-                            category.Samples = finalSamples.OrderBy(s => s.Name).ToArray();
-                        }
+                    if (finalSamples.Count > 0)
+                    {
+                        supportedCategories.Add(category);
+                        category.Samples = finalSamples.OrderBy(s => s.Name).ToArray();
                     }
+                }
 
-                    _samplesCategories = supportedCategories.ToList();
-                }
-                else
-                {
-                    throw new Exception("samples.json cannot be found in resources");
-                }
+                _samplesCategories = supportedCategories.ToList();
             }
 
             _semaphore.Release();
@@ -107,7 +113,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             if (_recentSamples == null)
             {
                 _recentSamples = new LinkedList<Sample>();
-                var savedSamples = _roamingObjectStorageHelper.Read<string>(_recentSamplesStorageKey);
+                var savedSamples = _localObjectStorageHelper.Read<string>(_recentSamplesStorageKey);
 
                 if (savedSamples != null)
                 {
@@ -153,7 +159,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             }
 
             var str = string.Join(";", _recentSamples.Take(10).Select(s => s.Name).ToArray());
-            _roamingObjectStorageHelper.Save<string>(_recentSamplesStorageKey, str);
+            _localObjectStorageHelper.Save<string>(_recentSamplesStorageKey, str);
         }
     }
 }

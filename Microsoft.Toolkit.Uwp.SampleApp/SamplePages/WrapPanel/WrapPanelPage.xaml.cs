@@ -5,8 +5,8 @@
 using System;
 using System.Collections.ObjectModel;
 using Microsoft.Toolkit.Uwp.SampleApp.Data;
+using Microsoft.Toolkit.Uwp.UI;
 using Microsoft.Toolkit.Uwp.UI.Controls;
-using Microsoft.Toolkit.Uwp.UI.Extensions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -29,7 +29,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
 
         public void OnXamlRendered(FrameworkElement control)
         {
-            _itemControl = control.FindChildByName("WrapPanelContainer") as ListView;
+            _itemControl = control.FindChild("WrapPanelContainer") as ListView;
 
             if (_itemControl != null)
             {
@@ -64,8 +64,8 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
             {
                 Category = "Remove",
                 Thumbnail = "ms-appx:///Assets/Photos/BigFourSummerHeat.jpg",
-                Width = Rand.Next(120, 180),
-                Height = Rand.Next(80, 130)
+                Width = Rand.Next(60, 180),
+                Height = Rand.Next(40, 140)
             });
         }
 

@@ -6,25 +6,18 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Microsoft.Toolkit.Uwp.SampleApp.Pages;
-using Microsoft.Toolkit.Uwp.UI.Extensions;
+using Microsoft.Toolkit.Uwp.UI;
+using Windows.System;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
-
-#if HAS_UNO
-using NavigationView = Windows.UI.Xaml.Controls.NavigationView;
-using NavigationViewItemInvokedEventArgs = Windows.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
-using NavigationViewBackRequestedEventArgs = Windows.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs;
-#else
-using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
-using NavigationViewItemInvokedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs;
-using NavigationViewBackRequestedEventArgs = Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs;
-#endif
 
 namespace Microsoft.Toolkit.Uwp.SampleApp
 {
     public sealed partial class Shell
     {
+        private readonly DispatcherQueue dispatcherQueue = DispatcherQueue.GetForCurrentThread();
+
         public static Shell Current { get; private set; }
 
         public Shell()
@@ -78,7 +71,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
         }
 
         /// <summary>
-        /// Attach a ScrollViewer to Parallax hosting the backround image
+        /// Attach a ScrollViewer to Parallax hosting the background image
         /// </summary>
         /// <param name="viewer">The ScrollViewer</param>
         public void AttachScroll(ScrollViewer viewer)
@@ -134,7 +127,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             System.Console.WriteLine($"Done navigating");
         }
 
-        private void NavView_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        private void NavView_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
         {
             if (NavigationFrame.CanGoBack)
             {

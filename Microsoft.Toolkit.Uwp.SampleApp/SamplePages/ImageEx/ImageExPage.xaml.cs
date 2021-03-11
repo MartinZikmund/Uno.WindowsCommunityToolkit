@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Microsoft.Toolkit.Uwp.SampleApp.Data;
 using Microsoft.Toolkit.Uwp.UI;
 using Microsoft.Toolkit.Uwp.UI.Controls;
-using Microsoft.Toolkit.Uwp.UI.Extensions;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
@@ -32,9 +31,9 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
         public void OnXamlRendered(FrameworkElement control)
         {
             // Need to use logical tree here as scrollviewer hasn't initialized yet even with dispatch.
-            container = control.FindChildByName("Container") as StackPanel;
+            container = control.FindChild("Container") as StackPanel;
             resources = control.Resources;
-            lazyLoadingControlHost = control.FindChildByName("LazyLoadingControlHost") as Border;
+            lazyLoadingControlHost = control.FindChild("LazyLoadingControlHost") as Border;
         }
 
         private async void Load()
@@ -69,32 +68,32 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.SamplePages
                 AddImage(false, false, true);
             });
 
-            if (ImageExBase.IsLazyLoadingSupported)
+            SampleController.Current.RegisterNewCommand("Lazy loading sample", (sender, args) =>
             {
-                SampleController.Current.RegisterNewCommand("Lazy loading sample (17763 or higher supported)", (sender, args) =>
+                var imageExLazyLoadingControl = new ImageExLazyLoadingControl();
+                imageExLazyLoadingControl.CloseButtonClick += (s, a) =>
                 {
-                    var imageExLazyLoadingControl = new ImageExLazyLoadingControl();
-                    imageExLazyLoadingControl.CloseButtonClick += (s, a) =>
-                    {
-                        if (lazyLoadingControlHost != null)
-                        {
-                            lazyLoadingControlHost.Child = null;
-                        }
-                    };
-
                     if (lazyLoadingControlHost != null)
+                    {
+                        lazyLoadingControlHost.Child = null;
+                    }
+                };
+
+                if (lazyLoadingControlHost != null)
+                {
+                    // Allow this to act as a toggle.
+                    if (lazyLoadingControlHost.Child == null)
                     {
                         lazyLoadingControlHost.Child = imageExLazyLoadingControl;
                     }
-                });
-            }
-
-            SampleController.Current.RegisterNewCommand("Clear image cache", async (sender, args) =>
-            {
-                container?.Children?.Clear();
-                GC.Collect(); // Force GC to free file locks
-                await ImageCache.Instance.ClearAsync();
+                    else
+                    {
+                        lazyLoadingControlHost.Child = null;
+                    }
+                }
             });
+
+            SampleController.Current.RegisterNewCommand("Remove images", (sender, args) => container?.Children?.Clear());
 
             await LoadDataAsync();
         }

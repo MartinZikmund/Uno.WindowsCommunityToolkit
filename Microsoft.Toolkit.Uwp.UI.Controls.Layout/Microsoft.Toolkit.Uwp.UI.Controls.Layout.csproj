@@ -62,7 +62,13 @@
 	<PropertyGroup>
 		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
 		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
-    <PackageReference Remove="Microsoft.UI.Xaml" />
+		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Layout</PackageId>
+
+		<!-- Validation fails as the generated document is too big -->
+		<XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
+	</PropertyGroup>
+	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+		<PackageReference Remove="Microsoft.UI.Xaml" />
 		<PackageReference Include="Uno.UI"
 											Version="3.4.0" />
 	</ItemGroup>

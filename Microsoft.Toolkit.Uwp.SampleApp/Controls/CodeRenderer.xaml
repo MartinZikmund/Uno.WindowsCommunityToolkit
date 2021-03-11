@@ -35,8 +35,8 @@
                                                Padding="10" />
                         </ScrollViewer>
                         <StackPanel Grid.Row="1"
-                                        HorizontalAlignment="Center"
-                                        Orientation="Horizontal">
+                                    HorizontalAlignment="Center"
+                                    Orientation="Horizontal">
                             <Button x:Name="CopyButton"
                                         Margin="5"
                                         Content="Copy" />

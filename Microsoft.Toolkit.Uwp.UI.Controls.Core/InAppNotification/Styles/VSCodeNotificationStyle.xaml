@@ -163,7 +163,11 @@
                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                   HorizontalContentAlignment="Stretch"
                                   VerticalContentAlignment="Center"
-                                  TextWrapping="NoWrap" />
+                                  TextWrapping="NoWrap"
+								  Content="{TemplateBinding Content}"
+								  ContentTemplate="{TemplateBinding ContentTemplate}"
+								  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+ />
             </Grid>
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="State">

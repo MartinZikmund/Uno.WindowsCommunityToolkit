@@ -82,6 +82,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\AlignmentGrid\AlignmentGridPage.xaml.cs">
       <DependentUpon>AlignmentGridPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\AutoFocusBehavior\AutoFocusBehaviorPage.xaml.cs">
+      <DependentUpon>AutoFocusBehaviorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\BackdropBlurBrush\BackdropBlurBrushPage.xaml.cs">
       <DependentUpon>BackdropBlurBrushPage.xaml</DependentUpon>
     </Compile>
@@ -113,8 +116,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\CameraPreview\CameraPreviewPage.xaml.cs">
       <DependentUpon>CameraPreviewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\CanvasPathGeometry\CanvasPathGeometryPage.xaml.cs">
+      <DependentUpon>CanvasPathGeometryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\CanvasPathGeometry\GeometryStreamReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Carousel\CarouselPage.xaml.cs">
       <DependentUpon>CarouselPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ClipToBounds\ClipToBoundsPage.xaml.cs">
+      <DependentUpon>ClipToBoundsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Connected Animations\ConnectedAnimationsPage.xaml.cs">
       <DependentUpon>ConnectedAnimationsPage.xaml</DependentUpon>
@@ -131,11 +141,19 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DataGrid\DataGridPage.xaml.cs">
       <DependentUpon>DataGridPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DispatcherQueueHelper\DispatcherQueueHelperPage.xaml.cs">
+      <DependentUpon>DispatcherQueueHelperPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanelPage.xaml.cs">
       <DependentUpon>DockPanelPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\DropShadowPanelPage.xaml.cs">
       <DependentUpon>DropShadowPanelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\EnumValuesExtension\Animal.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\EnumValuesExtension\AnimalToColorConverter.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\EnumValuesExtension\EnumValuesExtensionPage.xaml.cs">
+      <DependentUpon>EnumValuesExtensionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Expander\ExpanderPage.xaml.cs">
       <DependentUpon>ExpanderPage.xaml</DependentUpon>
@@ -145,6 +163,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\FadeHeader\FadeHeaderBehaviorPage.xaml.cs">
       <DependentUpon>FadeHeaderBehaviorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\FocusBehavior\FocusBehaviorPage.xaml.cs">
+      <DependentUpon>FocusBehaviorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\FocusTracker\FocusTrackerPage.xaml.cs">
       <DependentUpon>FocusTrackerPage.xaml</DependentUpon>
@@ -166,6 +187,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedItemsControl\HeaderedItemsControlPage.xaml.cs">
       <DependentUpon>HeaderedItemsControlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\IconExtensions\IconExtensionsPage.xaml.cs">
+      <DependentUpon>IconExtensionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ImageBlendBrush\ImageBlendBrushPage.xaml.cs">
       <DependentUpon>ImageBlendBrushPage.xaml</DependentUpon>
@@ -197,9 +221,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\InfiniteCanvas\InfiniteCanvasPage.xaml.cs">
       <DependentUpon>InfiniteCanvasPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ItemsReorderAnimation\ItemsReorderAnimationPage.xaml.cs">
+      <DependentUpon>ItemsReorderAnimationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\LayoutTransformControl\LayoutTransformControlPage.xaml.cs">
       <DependentUpon>LayoutTransformControlPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ListDetailsView\ListDetailsViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ListViewExtensions\ListViewExtensionsPage.xaml.cs">
       <DependentUpon>ListViewExtensionsPage.xaml</DependentUpon>
     </Compile>
@@ -225,11 +253,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Object Storage\ObjectStoragePage.xaml.cs">
       <DependentUpon>ObjectStoragePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ObservableGroup\ObservableGroupPage.xaml.cs">
+      <DependentUpon>ObservableGroupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\OnDevice\OnDevicePage.xaml.cs">
       <DependentUpon>OnDevicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\OrbitView\OrbitViewPage.xaml.cs">
       <DependentUpon>OrbitViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\PipelineBrush\PipelineBrushPage.xaml.cs">
+      <DependentUpon>PipelineBrushPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\PrintHelper\PrintHelperPage.xaml.cs">
       <DependentUpon>PrintHelperPage.xaml</DependentUpon>
@@ -253,6 +287,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\ScrollViewerExtensions\ScrollViewerExtensionsPage.xaml.cs">
       <DependentUpon>ScrollViewerExtensionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\StaggeredLayout\StaggeredLayoutPage.xaml.cs">
+      <DependentUpon>StaggeredLayoutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\StaggeredPanel\StaggeredPanelPage.xaml.cs">
       <DependentUpon>StaggeredPanelPage.xaml</DependentUpon>
@@ -278,6 +315,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\TileControl\TileControlPage.xaml.cs">
       <DependentUpon>TileControlPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\TilesBrush\TilesBrushPage.xaml.cs">
+      <DependentUpon>TilesBrushPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\Toast\ToastPage.xaml.cs">
       <DependentUpon>ToastPage.xaml</DependentUpon>
@@ -308,6 +348,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\WeatherLiveTileAndToast\WeatherLiveTileAndToastPage.xaml.cs">
       <DependentUpon>WeatherLiveTileAndToastPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\WrapLayout\WrapLayoutPage.xaml.cs">
+      <DependentUpon>WrapLayoutPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\WrapPanel\WrapPanelPage.xaml.cs">
       <DependentUpon>WrapPanelPage.xaml</DependentUpon>
@@ -371,15 +414,38 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogo_small.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UWPCommunityToolkit_Uno_SplashScreen.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\AcrylicBrush\AcrylicBrush.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Animations\Behaviors\BlurBehavior.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Animations\Behaviors\OffsetBehavior.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Animations\Behaviors\RotateBehavior.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Animations\Behaviors\SaturationBehavior.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Animations\Behaviors\ScaleBehavior.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Animations\Effects\EffectAnimations.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Animations\Effects\FadeBehavior.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\CanvasPathGeometry\CanvasPathGeometry.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\ColorPicker\ColorPicker.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\DataGrid\DataGrid.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\DispatcherQueueHelper\DispatchQueueHelper.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Eyedropper\Eyedropper.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\GazeInteraction\GazeInteraction.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Graph\LoginButton.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Graph\PeoplePicker.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Graph\PersonView.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\ImageCropper\ImageCropper.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\ItemsReorderAnimation\ItemsReorderAnimation.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\ListDetailsView\ListDetailsView.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\ListDetailsView\OneDriveLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\OnDevice\OnDevice.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\PipelineBrush\PipelineBrush.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\Primitives\SwitchPresenter.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDeviceHelper\RemoteDeviceHelper.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\RemoteDevicePicker\RemoteDevicePicker.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\StaggeredLayout\StaggeredLayout.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\TabbedCommandBar\TabbedCommandBar.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\TilesBrush\TilesBrush.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\TokenizingTextBox\TokenizingTextBox.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\ViewportBehavior\ViewportBehavior.png" />
+    <Content Include="$(MSBuildThisFileDirectory)SamplePages\WrapLayout\WrapLayout.png" />
     <None Include="$(MSBuildThisFileDirectory)Assets\Photos\OnlinePhotos.json" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Photos\OregonWineryNamaste.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Photos\Owl.jpg" />
@@ -653,6 +719,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\AutoFocusBehavior\AutoFocusBehaviorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\BackdropBlurBrush\BackdropBlurBrushPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -693,7 +763,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\CanvasPathGeometry\CanvasPathGeometryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\Carousel\CarouselPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\ClipToBounds\ClipToBoundsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -717,11 +795,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\DispatcherQueueHelper\DispatcherQueueHelperPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\DropShadowPanelPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\EnumValuesExtension\EnumValuesExtensionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -734,6 +820,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\FadeHeader\FadeHeaderBehaviorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\FocusBehavior\FocusBehaviorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -762,6 +852,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\HeaderedItemsControl\HeaderedItemsControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\IconExtensions\IconExtensionsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -801,7 +895,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\ItemsReorderAnimation\ItemsReorderAnimationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\LayoutTransformControl\LayoutTransformControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\ListDetailsView\ListDetailsViewPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -837,11 +939,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\ObservableGroup\ObservableGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\OnDevice\OnDevicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\OrbitView\OrbitViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\PipelineBrush\PipelineBrushPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -881,6 +991,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\StaggeredLayout\StaggeredLayoutPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\StaggeredPanel\StaggeredPanelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -910,6 +1024,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\TileControl\TileControlPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\TilesBrush\TilesBrushPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -946,6 +1064,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\WeatherLiveTileAndToast\WeatherLiveTileAndToastPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)SamplePages\WrapLayout\WrapLayoutPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

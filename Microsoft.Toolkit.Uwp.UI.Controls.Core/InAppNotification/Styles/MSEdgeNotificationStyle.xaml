@@ -139,6 +139,9 @@
                                   VerticalContentAlignment="Center"
                                   FontWeight="SemiBold"
                                   ContentTransitions="{TemplateBinding ContentTransitions}"
+								  Content="{TemplateBinding Content}"
+								  ContentTemplate="{TemplateBinding ContentTemplate}"
+								  ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
                                   TextWrapping="WrapWholeWords" />
 
                 <Button x:Name="PART_DismissButton"

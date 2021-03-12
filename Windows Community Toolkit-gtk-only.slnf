@@ -1,0 +1,38 @@
+{
+  "solution": {
+    "path": "Windows%20Community%20Toolkit.sln",
+    "projects": [
+      "Microsoft.Toolkit.Diagnostics\\Microsoft.Toolkit.Diagnostics.csproj",
+      "Microsoft.Toolkit.HighPerformance\\Microsoft.Toolkit.HighPerformance.csproj",
+      "Microsoft.Toolkit.Mvvm\\Microsoft.Toolkit.Mvvm.csproj",
+      "Microsoft.Toolkit.Uwp.Connectivity\\Microsoft.Toolkit.Uwp.Connectivity.csproj",
+      "Microsoft.Toolkit.Uwp.DeveloperTools\\Microsoft.Toolkit.Uwp.DeveloperTools.csproj",
+      "Microsoft.Toolkit.Uwp.Input.GazeInteraction\\Microsoft.Toolkit.Uwp.Input.GazeInteraction.csproj",
+      "Microsoft.Toolkit.Uwp.Notifications\\Microsoft.Toolkit.Uwp.Notifications.csproj",
+      "Microsoft.Toolkit.Uwp.SampleApp.Skia.Gtk\\Microsoft.Toolkit.Uwp.SampleApp.Skia.Gtk.csproj",
+      "Microsoft.Toolkit.Uwp.SampleApp\\Microsoft.Toolkit.Uwp.SampleApp.Shared.shproj",
+      "Microsoft.Toolkit.Uwp.UI.Animations\\Microsoft.Toolkit.Uwp.UI.Animations.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Behaviors\\Microsoft.Toolkit.Uwp.UI.Behaviors.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Core.Design\\Microsoft.Toolkit.Uwp.UI.Controls.Core.DesignTools.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Core\\Microsoft.Toolkit.Uwp.UI.Controls.Core.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.Design\\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.DesignTools.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Input.Design\\Microsoft.Toolkit.Uwp.UI.Controls.Input.DesignTools.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Input\\Microsoft.Toolkit.Uwp.UI.Controls.Input.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Layout.Design\\Microsoft.Toolkit.Uwp.UI.Controls.Layout.DesignTools.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Layout\\Microsoft.Toolkit.Uwp.UI.Controls.Layout.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Markdown.Design\\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.DesignTools.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Markdown\\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Media\\Microsoft.Toolkit.Uwp.UI.Controls.Media.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Primitives.Design\\Microsoft.Toolkit.Uwp.UI.Controls.Primitives.DesignTools.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls.Primitives\\Microsoft.Toolkit.Uwp.UI.Controls.Primitives.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Controls\\Microsoft.Toolkit.Uwp.UI.Controls.csproj",
+      "Microsoft.Toolkit.Uwp.UI.Media\\Microsoft.Toolkit.Uwp.UI.Media.csproj",
+      "Microsoft.Toolkit.Uwp.UI\\Microsoft.Toolkit.Uwp.UI.csproj",
+      "Microsoft.Toolkit.Uwp\\Microsoft.Toolkit.Uwp.csproj",
+      "Microsoft.Toolkit\\Microsoft.Toolkit.csproj",
+      "UnitTests\\UnitTests.Notifications.NetCore\\UnitTests.Notifications.NetCore.csproj",
+      "UnitTests\\UnitTests.Shared\\UnitTests.Shared.shproj"
+    ]
+  }
+}

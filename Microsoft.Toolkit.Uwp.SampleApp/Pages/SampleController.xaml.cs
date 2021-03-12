@@ -248,13 +248,13 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                 {
                     InfoAreaPivot.Items.Clear();
 
-                    DataContext = CurrentSample;
-
                     // Load Sample Properties before we load sample (if we haven't before)
                     await CurrentSample.PreparePropertyDescriptorAsync();
 
                     // We only have properties on examples with live XAML
                     var propertyDesc = CurrentSample.PropertyDescriptor;
+
+                    DataContext = CurrentSample;
 
                     if (propertyDesc != null)
                     {
@@ -265,6 +265,9 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                     {
                         InfoAreaPivot.Items.Add(PropertiesPivotItem);
                     }
+
+                    // Uno todo (Adding a pivot item does not refresh SelectedItem)
+                    UpdateXamlRender(CurrentSample.BindedXamlCode);
                 }
 
                 if (CurrentSample.HasXAMLCode)
@@ -558,7 +561,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                         (root as Panel).Children.Clear();
                         (root as Panel).Children.Add(element);
                     }
-                    else
+                    else if(SamplePage != null) // UNO TODO
                     {
                         // if we didn't find a XamlRoot host, then we replace the entire content of
                         // the provided sample page with the XAML.

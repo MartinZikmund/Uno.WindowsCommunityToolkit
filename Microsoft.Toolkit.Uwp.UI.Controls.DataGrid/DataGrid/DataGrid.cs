@@ -3349,9 +3349,9 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
 
                 desiredSize = base.MeasureOverride(availableSize);
 
-#if !HAS_UNO
                 ComputeScrollBarsLayout();
-#else
+
+#if HAS_UNO
                 UpdateDisplayedRows(this.DisplayData.FirstScrollingSlot, this.CellsHeight);
 #endif
             }

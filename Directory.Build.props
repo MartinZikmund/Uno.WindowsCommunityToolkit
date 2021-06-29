@@ -7,7 +7,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/windows-toolkit/WindowsCommunityToolkit/master/build/nuget.png</PackageIconUrl>
     <PackageIcon>images\nuget.png</PackageIcon>
     <PackageProjectUrl>https://github.com/windows-toolkit/WindowsCommunityToolkit</PackageProjectUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>    
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReleaseNotes>https://github.com/windows-toolkit/WindowsCommunityToolkit/releases</PackageReleaseNotes>
     <Copyright>(c) .NET Foundation and Contributors.  All rights reserved.</Copyright>
     <DefaultLanguage>en-US</DefaultLanguage>
@@ -117,8 +117,10 @@
 
 	<PropertyGroup>
 		<TargetFrameworksOverride>MonoAndroid10.0;xamarinios10;netstandard2.0;xamarinmac20</TargetFrameworksOverride>
-		
-		<!-- 
+
+		<NoWarn>$(NoWarn);SA1633</NoWarn>
+
+		<!--
 		UWP is not supported for this build, users must reference
 		the official toolkit packages instead.
 		-->
@@ -131,7 +133,7 @@
 		<NoWarn>$(NoWarn);CS0649;CS0067;CS1998</NoWarn>
 	</PropertyGroup>
 
-	<PropertyGroup>		
+	<PropertyGroup>
 		<!--https://github.com/xamarin/AndroidSupportComponents/issues/176-->
 		<XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
 

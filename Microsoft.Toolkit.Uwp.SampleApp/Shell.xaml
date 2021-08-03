@@ -1,4 +1,4 @@
-﻿<Page x:Class="Microsoft.Toolkit.Uwp.SampleApp.Shell"
+<Page x:Class="Microsoft.Toolkit.Uwp.SampleApp.Shell"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:xamarin="http://uno/xamarin"
@@ -42,6 +42,9 @@
                               MenuItemTemplate="{StaticResource CategoryTemplate}"
                               PaneDisplayMode="Top"
                               SelectionFollowsFocus="Disabled">
+            <winui:NavigationView.Resources>
+                <CornerRadius x:Key="NavigationViewContentGridCornerRadius">0,0,0,0</CornerRadius>
+            </winui:NavigationView.Resources>
             <winui:NavigationView.AutoSuggestBox>
                 <AutoSuggestBox x:Name="SearchBox"
                                 MinWidth="150"

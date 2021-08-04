@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFrameworks>uap10.0.17763</TargetFrameworks>
@@ -22,8 +22,6 @@
     <PackageReference Include="ColorCode.UWP" Version="2.0.6" />
   </ItemGroup>
 
-  <Import Project="$(BuildToolsDirectory)Windows.Toolkit.UWP.Controls.targets" />
-
   <!--
     HACK: Fix the 'ProjectReference' inclusion of duplicate UWP resources.
     The UWP project system includes the 'Controls.Core' project's resources because
@@ -44,15 +42,14 @@
 		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
 		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
 		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Markdown</PackageId>
+        <RootNamespace>Microsoft.Toolkit.Uwp.UI.Controls.Markdown</RootNamespace>
 
-		<!-- Validation fails as the generated document is too big -->
+        <!-- Validation fails as the generated document is too big -->
 		<XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
-		<PackageReference Include="Uno.UI"
-											Version="3.4.0" />
-		<PackageReference Include="Uno.ColorCode.UWP"
-											Version="2.0.8-gd42a883502" />
+		<PackageReference Include="Uno.UI" Version="3.4.0" />
+		<PackageReference Include="Uno.ColorCode.UWP" Version="2.0.8-gd42a883502" />
 	</ItemGroup>
 		
 	<ItemGroup Condition="'$(TargetFramework)' == 'monoandroid10.0' or '$(TargetFramework)' == 'xamarinios10' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
@@ -61,5 +58,7 @@
 	</ItemGroup>
 
 	<!-- END UNO SPECIFIC -->
+
+  <Import Project="$(BuildToolsDirectory)Windows.Toolkit.UWP.Controls.targets" />
 
 </Project>

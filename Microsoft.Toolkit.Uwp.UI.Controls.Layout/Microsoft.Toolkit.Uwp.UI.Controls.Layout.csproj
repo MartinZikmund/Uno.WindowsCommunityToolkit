@@ -1,4 +1,4 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFrameworks>uap10.0.17763</TargetFrameworks>
@@ -34,13 +34,6 @@
       Orbit;View              ;OrbitView             ;
     </PackageTags>
   </PropertyGroup>
-	
-	<PropertyGroup>
-		<!-- This is a temporary workaround for https://github.com/dotnet/sdk/issues/955 -->
-		<DebugType>Full</DebugType>
-		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
-		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Layout</PackageId>
-	</PropertyGroup>
 
   <ItemGroup>
     <Compile Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Core\ControlHelpers.XamlHost.cs" Link="ControlHelpers.XamlHost.cs" />
@@ -49,21 +42,26 @@
   <ItemGroup>
     <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
+  <ItemGroup>
+    
+    <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI\Microsoft.Toolkit.Uwp.UI.csproj" />
+  </ItemGroup>
+  
+  <!-- BEGIN UNO SPECIFIC -->
+  <PropertyGroup>
+      <TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
+      <NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
+      <PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Layout</PackageId>
+      <RootNamespace>Microsoft.Toolkit.Uwp.UI.Controls.Layout</RootNamespace>
 
-	<!-- BEGIN UNO SPECIFIC -->
-	<PropertyGroup>
-		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
-		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
-		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Layout</PackageId>
+    <!-- Validation fails as the generated document is too big -->
+      <XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+      <PackageReference Remove="Microsoft.UI.Xaml" />
+      <PackageReference Include="Uno.UI" Version="3.4.0" />
+  </ItemGroup>
+  <!-- END UNO SPECIFIC -->
 
-		<!-- Validation fails as the generated document is too big -->
-		<XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
-	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
-		<PackageReference Remove="Microsoft.UI.Xaml" />
-		<PackageReference Include="Uno.UI"
-											Version="3.4.0" />
-	</ItemGroup>
-	<!-- END UNO SPECIFIC -->
-
+  <Import Project="$(BuildToolsDirectory)Windows.Toolkit.UWP.Controls.targets" />
 </Project>

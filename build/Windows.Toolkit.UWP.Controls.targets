@@ -34,5 +34,12 @@
       </BuildOutputInPackage>
     </ItemGroup>
   </Target>
+  
+  <!-- BEGIN UNO SPECIFIC -->
+  <ItemGroup Condition="'$(TargetFramework)'!='uap10.0.17763'">
+    <PackageReference Remove="Microsoft.UI.Xaml" />
+  </ItemGroup>
+  <!-- END UNO SPECIFIC -->
+  
 
 </Project>

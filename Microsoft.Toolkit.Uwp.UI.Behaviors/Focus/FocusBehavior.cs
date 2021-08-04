@@ -213,7 +213,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Behaviors
     /// <summary>
     /// A target for the <see cref="FocusBehavior"/>.
     /// </summary>
-    public sealed class FocusTarget : DependencyObject
+    public sealed partial class FocusTarget : DependencyObject
     {
         /// <summary>
         /// The DP to store the <see cref="Control"/> property value.

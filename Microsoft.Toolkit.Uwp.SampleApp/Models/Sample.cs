@@ -363,7 +363,6 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                 {
                 }
             }
-#endif
 
             // If we don't have internet, then try to see if we have a packaged copy
             if (imageStream == null)
@@ -376,6 +375,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
                 {
                 }
             }
+#endif
 
             return imageStream;
         }
@@ -706,8 +706,8 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
               // typeof(UserToPersonConverter)) // Search in Microsoft.Toolkit.Graph.Controls
                 ScrollItemPlacement.Default.GetType(), // Search in Microsoft.Toolkit.Uwp.UI
                 EasingType.Default.GetType(), // Microsoft.Toolkit.Uwp.UI.Animations
-                ImageBlendMode.Multiply.GetType(), // Search in Microsoft.Toolkit.Uwp.UI.Media
 #if !HAS_UNO
+                ImageBlendMode.Multiply.GetType(), // Search in Microsoft.Toolkit.Uwp.UI.Media
                 Interaction.Enabled.GetType(), // Microsoft.Toolkit.Uwp.Input.GazeInteraction
 #endif
                 DataGridGridLinesVisibility.None.GetType(), // Microsoft.Toolkit.Uwp.UI.Controls.DataGrid

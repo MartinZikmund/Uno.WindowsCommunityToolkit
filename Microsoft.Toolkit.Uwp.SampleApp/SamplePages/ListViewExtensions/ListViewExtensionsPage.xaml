@@ -9,12 +9,12 @@
 
     <Page.Resources>
         <local:SampleCommand x:Key="SampleCommand" />
-        
-        <DataTemplate x:Name="NormalTemplate">
+
+        <DataTemplate x:Key="NormalTemplate">
             <TextBlock Text="{Binding}" Foreground="Green" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
         </DataTemplate>
 
-        <DataTemplate x:Name="AlternateTemplate">
+        <DataTemplate x:Key="AlternateTemplate">
             <TextBlock Text="{Binding}" Foreground="Red" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
         </DataTemplate>
     </Page.Resources>

@@ -31,7 +31,7 @@
 	<!-- BEGIN UNO SPECIFIC -->
   <PropertyGroup>
     <TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
-    <NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
+    <NoWarn>$(NoWarn);Uno0001;NU1701;CS0436</NoWarn>
     <PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls</PackageId>
 		
 	  <!-- Validation fails as the generated document is too big -->

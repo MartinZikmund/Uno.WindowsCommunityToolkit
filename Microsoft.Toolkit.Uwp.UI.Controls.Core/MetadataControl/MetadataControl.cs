@@ -17,7 +17,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
     /// Display <see cref="MetadataItem"/>s separated by bullets.
     /// </summary>
     [TemplatePart(Name = TextContainerPart, Type = typeof(TextBlock))]
-    public sealed class MetadataControl : Control
+    public sealed partial class MetadataControl : Control
     {
         /// <summary>
         /// The DP to store the <see cref="Separator"/> property value.

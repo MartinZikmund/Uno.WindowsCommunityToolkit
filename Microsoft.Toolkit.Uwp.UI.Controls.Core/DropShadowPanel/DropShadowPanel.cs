@@ -26,7 +26,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         private readonly SpriteVisual _shadowVisual;
         private Border _border;
 
-        private static bool IsSupported { get; } = ApiInformation.IsMethodPresent("Windows.UI.Composition.Compositor", "CreateDropShadow");
+        private static bool IsSupported { get; } = Windows.Foundation.Metadata.ApiInformation.IsMethodPresent("Windows.UI.Composition.Compositor", "CreateDropShadow");
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DropShadowPanel"/> class.

@@ -20,6 +20,8 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
     {
         private const string _recentSamplesStorageKey = "uct-recent-samples";
 
+        public static bool ShowUnoUnsupported { get; set; } = false;
+
         private static List<SampleCategory> _samplesCategories;
         private static SemaphoreSlim _semaphore = new SemaphoreSlim(1);
 

@@ -320,13 +320,13 @@ Task("MSTestUITest")
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
 
-Task("Default")
-    .IsDependentOn("Build")
-    .IsDependentOn("Test")
-    .IsDependentOn("UITest")
-    .IsDependentOn("Package");
+// Task("Default")
+//     .IsDependentOn("Build")
+//     .IsDependentOn("Test")
+//     .IsDependentOn("UITest")
+//     .IsDependentOn("Package");
 
-Task("UnoDefault")
+Task("Default")
     .IsDependentOn("Build")
     .IsDependentOn("Package");
 

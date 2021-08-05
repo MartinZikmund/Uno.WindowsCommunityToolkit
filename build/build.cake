@@ -326,6 +326,10 @@ Task("Default")
     .IsDependentOn("UITest")
     .IsDependentOn("Package");
 
+Task("UnoDefault")
+    .IsDependentOn("Build")
+    .IsDependentOn("Package");
+
 Task("UpdateHeaders")
     .Description("Updates the headers in *.cs files")
     .Does(() =>

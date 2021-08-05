@@ -30,7 +30,7 @@ var inheritDocVersion = "2.5.2";
 
 var baseDir = MakeAbsolute(Directory("../")).ToString();
 var buildDir = baseDir + "/build";
-var Solution = baseDir + "/Windows Community Toolkit.sln";
+var Solution = baseDir + "/Windows Community Toolkit (UNO).slnf";
 var toolsDir = buildDir + "/tools";
 
 var binDir = baseDir + "/bin";

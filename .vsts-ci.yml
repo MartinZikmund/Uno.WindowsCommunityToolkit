@@ -69,7 +69,7 @@ jobs:
   - script: nbgv cloud
     displayName: Set Version
     
-  - powershell: .\build\build.ps1 -target=Package
+  - powershell: .\build\build.ps1 -Target=Package
     displayName: Build 
   
   - task: PublishBuildArtifacts@1

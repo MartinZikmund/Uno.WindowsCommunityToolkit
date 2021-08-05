@@ -39,7 +39,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PRIResource Include="Strings\en-us\Resources.resw" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
   </ItemGroup>
 
   <ItemGroup>

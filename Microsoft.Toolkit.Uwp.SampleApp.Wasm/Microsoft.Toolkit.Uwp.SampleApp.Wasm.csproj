@@ -7,48 +7,49 @@
     <WasmPWAManifestFile Condition="'$(Configuration)'=='Release'">manifest.json</WasmPWAManifestFile>
     <NoWarn>$(NoWarm);Uno0001</NoWarn>
     <MonoRuntimeDebuggerEnabled Condition="'$(Configuration)'=='Debug'">true</MonoRuntimeDebuggerEnabled>
-		<UseAOT Condition="$([MSBuild]::IsOsPlatform('Linux')) or ( $([MSBuild]::IsOsPlatform('Windows')) and '$(BUILD_REPOSITORY_PROVIDER)'=='' )">true</UseAOT>
-		<!--<WasmShellMonoRuntimeExecutionMode Condition="'$(UseAOT)'=='true'">FullAOT</WasmShellMonoRuntimeExecutionMode>-->
-		<!--<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>-->
-		<WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
-		<WasmShellEnableLongPathSupport>false</WasmShellEnableLongPathSupport>
-		
-		<UnoUIUseRoslynSourceGenerators>false</UnoUIUseRoslynSourceGenerators>
-	</PropertyGroup>
-	
-  <ItemGroup>
-		<WasmShellMonoEnvironment Include="MONO_GC_PARAMS" Value="soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep" />
-	</ItemGroup>
+    <UseAOT Condition="$([MSBuild]::IsOsPlatform('Linux')) or ( $([MSBuild]::IsOsPlatform('Windows')) and '$(BUILD_REPOSITORY_PROVIDER)'=='' )">true</UseAOT>
+    <!--<WasmShellMonoRuntimeExecutionMode Condition="'$(UseAOT)'=='true'">FullAOT</WasmShellMonoRuntimeExecutionMode>-->
+    <!--<WasmShellGenerateAOTProfile>true</WasmShellGenerateAOTProfile>-->
+    <WasmShellEnableEmccProfiling>true</WasmShellEnableEmccProfiling>
+    <WasmShellEnableLongPathSupport>false</WasmShellEnableLongPathSupport>
 
-	<!--
+    <UnoUIUseRoslynSourceGenerators>false</UnoUIUseRoslynSourceGenerators>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <WasmShellMonoEnvironment Include="MONO_GC_PARAMS" Value="soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep" />
+  </ItemGroup>
+
+  <!--
 	<ItemGroup>
 		<WasmShellEnableAotProfile Condition="'$(UseAOT)'=='true'" Include="aot.profile" />
 	</ItemGroup>
 	-->
-      
+
   <ItemGroup>
-    <PackageReference Include="Uno.UI.WebAssembly" Version="3.6.0-dev.359" />
-    <PackageReference Include="Uno.Wasm.Bootstrap" Version="2.0.0-dev.180" />
-		<PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="2.0.0-dev.180" />
+    <PackageReference Include="Uno.UI.WebAssembly" Version="3.10.0-dev.156" />
+    <PackageReference Include="Uno.Wasm.Bootstrap" Version="3.0.0-dev.127" />
+    <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="3.0.0-dev.127" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
     <PackageReference Include="Microsoft.TypeScript.Compiler" Version="2.8.3" />
     <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="2.8.3" />
     <PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.33" />
     <Reference Include="System.Net.Http" />
-		<PackageReference Include="System.Text.Json" Version="4.7.2" />
-		<PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.1" />
-	</ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.1" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.Connectivity\Microsoft.Toolkit.Uwp.Connectivity.csproj" />
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.DeveloperTools\Microsoft.Toolkit.Uwp.DeveloperTools.csproj" />
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Animations\Microsoft.Toolkit.Uwp.UI.Animations.csproj" />
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid\Microsoft.Toolkit.Uwp.UI.Controls.DataGrid.csproj" />
-		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.csproj" />
-		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Behaviors\Microsoft.Toolkit.Uwp.UI.Behaviors.csproj" />
-		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Media\Microsoft.Toolkit.Uwp.UI.Media.csproj" />
-		<ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI\Microsoft.Toolkit.Uwp.UI.csproj" />
+    <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Markdown\Microsoft.Toolkit.Uwp.UI.Controls.Markdown.csproj" />
+    <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls\Microsoft.Toolkit.Uwp.UI.Controls.csproj" />
+    <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Behaviors\Microsoft.Toolkit.Uwp.UI.Behaviors.csproj" />
+    <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Media\Microsoft.Toolkit.Uwp.UI.Media.csproj" />
+    <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI\Microsoft.Toolkit.Uwp.UI.csproj" />
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp\Microsoft.Toolkit.Uwp.csproj" />
     <ProjectReference Include="..\Microsoft.Toolkit\Microsoft.Toolkit.csproj" />
   </ItemGroup>

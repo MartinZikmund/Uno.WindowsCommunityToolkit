@@ -10,6 +10,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Reflection;
 using System.Threading.Tasks;
+using Microsoft.Toolkit.Helpers;
 using Microsoft.Toolkit.Uwp.Helpers;
 using Windows.UI.Composition;
 
@@ -19,12 +20,13 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
     {
         private const string _recentSamplesStorageKey = "uct-recent-samples";
 
+        public static bool ShowUnoUnsupported { get; set; } = false;
+
         private static List<SampleCategory> _samplesCategories;
         private static SemaphoreSlim _semaphore = new SemaphoreSlim(1);
 
         private static LinkedList<Sample> _recentSamples;
-        private static LocalObjectStorageHelper _localObjectStorageHelper = new LocalObjectStorageHelper(new SystemSerializer());
-        public static bool ShowUnoUnsupported { get; set; } = false;
+        private static ApplicationDataStorageHelper _settingsStorage = ApplicationDataStorageHelper.GetCurrent();
 
 
         public static async Task<SampleCategory> GetCategoryBySample(Sample sample)
@@ -113,7 +115,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             if (_recentSamples == null)
             {
                 _recentSamples = new LinkedList<Sample>();
-                var savedSamples = _localObjectStorageHelper.Read<string>(_recentSamplesStorageKey);
+                var savedSamples = _settingsStorage.Read<string>(_recentSamplesStorageKey);
 
                 if (savedSamples != null)
                 {
@@ -159,7 +161,7 @@ namespace Microsoft.Toolkit.Uwp.SampleApp
             }
 
             var str = string.Join(";", _recentSamples.Take(10).Select(s => s.Name).ToArray());
-            _localObjectStorageHelper.Save<string>(_recentSamplesStorageKey, str);
+            _settingsStorage.Save<string>(_recentSamplesStorageKey, str);
         }
     }
 }

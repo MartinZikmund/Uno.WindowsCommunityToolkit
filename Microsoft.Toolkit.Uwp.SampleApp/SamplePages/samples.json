@@ -205,7 +205,8 @@
         "CodeUrl": "https://github.com/CommunityToolkit/WindowsCommunityToolkit/tree/main/Microsoft.Toolkit.Uwp.UI.Controls.Core/Loading",
         "XamlCodeFile": "LoadingCode.bind",
         "Icon": "/SamplePages/Loading/Loading.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/Loading.md"
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/Loading.md",
+        "IsUno": true
       },
       {
         "Name": "Expander",

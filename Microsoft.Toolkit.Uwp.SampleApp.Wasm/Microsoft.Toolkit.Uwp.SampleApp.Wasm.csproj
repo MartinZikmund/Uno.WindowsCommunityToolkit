@@ -27,7 +27,7 @@
 	-->
 
   <ItemGroup>
-    <PackageReference Include="Uno.UI.WebAssembly" Version="3.10.0-dev.156" />
+    <PackageReference Include="Uno.UI.WebAssembly" Version="3.10.0-dev.324" />
     <PackageReference Include="Uno.Wasm.Bootstrap" Version="3.0.0-dev.127" />
     <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="3.0.0-dev.127" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />

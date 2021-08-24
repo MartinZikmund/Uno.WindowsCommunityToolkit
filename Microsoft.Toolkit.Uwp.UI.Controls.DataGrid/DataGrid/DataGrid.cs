@@ -6739,7 +6739,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
             // Uno specific: Moving the edited element to the cell causes it to lose the native focus
             // while the managed focus remains. In UWP this does not happen, as the Loaded event for the
             // element is called *after* this method ends. Uno's control lifecycle is different, so
-            // we need to use this approach instead.
+            // we need to use this approach instead. Uno issue: https://github.com/unoplatform/uno/issues/2895
             if (isCellEdited && EditingRow != null)
             {
                 FocusEditingCell(this.ContainsFocus || _focusEditingControl /*setFocus*/);

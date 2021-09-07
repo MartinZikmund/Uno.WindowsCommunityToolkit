@@ -949,8 +949,10 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                     this.OwningGrid.OnLoadingRowDetails(this, _detailsContent);
                 }
 
-                if (initializeDetailsPreferredHeight && double.IsNaN(_detailsDesiredHeight) &&
-                    _appliedDetailsTemplate != null && _detailsElement.Children.Count > 0)
+                if (initializeDetailsPreferredHeight &&
+                    (double.IsNaN(_detailsDesiredHeight) || _detailsDesiredHeight == 0) &&
+                    _appliedDetailsTemplate != null &&
+                    _detailsElement.Children.Count > 0)
                 {
                     EnsureDetailsDesiredHeight();
                 }

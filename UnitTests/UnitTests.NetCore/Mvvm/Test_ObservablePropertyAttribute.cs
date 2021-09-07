@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,6 +15,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTests.Mvvm
 {
+    [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1601", Justification = "Type only used for testing")]
     [TestClass]
     public partial class Test_ObservablePropertyAttribute
     {
@@ -105,15 +107,52 @@ namespace UnitTests.Mvvm
             Assert.AreEqual(testAttribute.D, 6.28);
             CollectionAssert.AreEqual(testAttribute.Names, new[] { "Bob", "Ross" });
 
-            object[] nestedArray = (object[])testAttribute.NestedArray;
+            object[]? nestedArray = (object[]?)testAttribute.NestedArray;
 
-            Assert.AreEqual(nestedArray.Length, 3);
+            Assert.IsNotNull(nestedArray);
+            Assert.AreEqual(nestedArray!.Length, 3);
             Assert.AreEqual(nestedArray[0], 1);
             Assert.AreEqual(nestedArray[1], "Hello");
             Assert.IsTrue(nestedArray[2] is int[]);
             CollectionAssert.AreEqual((int[])nestedArray[2], new[] { 2, 3, 4 });
 
             Assert.AreEqual(testAttribute.Animal, Animal.Llama);
+        }
+
+        // See https://github.com/CommunityToolkit/WindowsCommunityToolkit/issues/4216
+        [TestCategory("Mvvm")]
+        [TestMethod]
+        public void Test_ObservablePropertyWithValueNamedField()
+        {
+            var model = new ModelWithValueProperty();
+
+            List<string?> propertyNames = new();
+
+            model.PropertyChanged += (s, e) => propertyNames.Add(e.PropertyName);
+
+            model.Value = "Hello world";
+
+            Assert.AreEqual(model.Value, "Hello world");
+
+            CollectionAssert.AreEqual(new[] { nameof(model.Value) }, propertyNames);
+        }
+
+        // See https://github.com/CommunityToolkit/WindowsCommunityToolkit/issues/4216
+        [TestCategory("Mvvm")]
+        [TestMethod]
+        public void Test_ObservablePropertyWithValueNamedField_WithValidationAttributes()
+        {
+            var model = new ModelWithValuePropertyWithValidation();
+
+            List<string?> propertyNames = new();
+
+            model.PropertyChanged += (s, e) => propertyNames.Add(e.PropertyName);
+
+            model.Value = "Hello world";
+
+            Assert.AreEqual(model.Value, "Hello world");
+
+            CollectionAssert.AreEqual(new[] { nameof(model.Value) }, propertyNames);
         }
 
         public partial class SampleModel : ObservableObject
@@ -181,7 +220,7 @@ namespace UnitTests.Mvvm
 
             public string[] Names { get; }
 
-            public object NestedArray { get; set; }
+            public object? NestedArray { get; set; }
 
             public Animal Animal { get; set; }
         }
@@ -191,6 +230,20 @@ namespace UnitTests.Mvvm
             Cat,
             Dog,
             Llama
+        }
+
+        public partial class ModelWithValueProperty : ObservableObject
+        {
+            [ObservableProperty]
+            private string value;
+        }
+
+        public partial class ModelWithValuePropertyWithValidation : ObservableValidator
+        {
+            [ObservableProperty]
+            [Required]
+            [MinLength(5)]
+            private string value;
         }
     }
 }

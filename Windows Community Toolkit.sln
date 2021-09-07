@@ -161,6 +161,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests.SourceGenerators"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Toolkit.Uwp.SampleApp.Skia.Gtk", "Microsoft.Toolkit.Uwp.SampleApp.Skia.Gtk\Microsoft.Toolkit.Uwp.SampleApp.Skia.Gtk.csproj", "{78E1235D-49D7-4E92-B670-66C555A54D9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests.NetStandard", "UnitTests\UnitTests.NetStandard\UnitTests.NetStandard.csproj", "{D9C82C0D-31D7-4888-B024-3CF3A4F54FE1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		UITests\UITests.Tests.Shared\UITests.Tests.Shared.projitems*{05c83067-fa46-45e2-bec4-edee84ad18d0}*SharedItemsImports = 4
@@ -2786,6 +2788,7 @@ Global
 		{3307BC1D-5D71-41C6-A1B3-B113B8242D08} = {F1AFFFA7-28FE-4770-BA48-10D76F3E59BC}
 		{099B60FD-DAD6-4648-9DE2-8DBF9DCD9557} = {F1AFFFA7-28FE-4770-BA48-10D76F3E59BC}
 		{338C3BE4-2E71-4F21-AD30-03FDBB47A272} = {B30036C4-D514-4E5B-A323-587A061772CE}
+		{D9C82C0D-31D7-4888-B024-3CF3A4F54FE1} = {B30036C4-D514-4E5B-A323-587A061772CE}
 		{78E1235D-49D7-4E92-B670-66C555A54D9F} = {9AD30620-667D-433C-9961-8D885EE7B762}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

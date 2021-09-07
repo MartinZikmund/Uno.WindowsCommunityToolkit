@@ -150,7 +150,8 @@ Task("BuildProjects")
     Information("\nBuilding Solution");
     var buildSettings = new MSBuildSettings
     {
-        MaxCpuCount = 0
+        MaxCpuCount = 0,
+        PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
     .WithTarget("Restore");
@@ -162,7 +163,8 @@ Task("BuildProjects")
     // Build once with normal dependency ordering
     buildSettings = new MSBuildSettings
     {
-        MaxCpuCount = 0
+        MaxCpuCount = 0,
+        PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
     .WithTarget("Build")
@@ -214,7 +216,8 @@ Task("Package")
     // Invoke the pack target in the end
     var buildSettings = new MSBuildSettings
     {
-        MaxCpuCount = 0
+        MaxCpuCount = 0,
+        PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
     .WithTarget("Restore")
@@ -265,7 +268,19 @@ Task("Test")
         NoBuild = true,
         Loggers = new[] { "trx;LogFilePrefix=VsTestResults" },
         Verbosity = DotNetCoreVerbosity.Normal,
-        ArgumentCustomization = arg => arg.Append($"-s {baseDir}/.runsettings"),
+        ArgumentCustomization = arg => arg.Append($"-s {baseDir}/.runsettings /p:Platform=AnyCPU"),
+    };
+    DotNetCoreTest(file.FullPath, testSettings);
+}).DoesForEach(GetFiles(baseDir + "/**/UnitTests.SourceGenerators.csproj"), (file) =>
+{
+    Information("\nRunning NetCore Source Generator Unit Tests");
+    var testSettings = new DotNetCoreTestSettings
+    {
+        Configuration = configuration,
+        NoBuild = true,
+        Loggers = new[] { "trx;LogFilePrefix=VsTestResults" },
+        Verbosity = DotNetCoreVerbosity.Normal,
+        ArgumentCustomization = arg => arg.Append($"-s {baseDir}/.runsettings /p:Platform=AnyCPU"),
     };
     DotNetCoreTest(file.FullPath, testSettings);
 }).DeferOnError();

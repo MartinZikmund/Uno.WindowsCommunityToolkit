@@ -950,6 +950,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
                 }
 
                 if (initializeDetailsPreferredHeight &&
+                    // See https://github.com/unoplatform/uno/issues/3519
                     (double.IsNaN(_detailsDesiredHeight) || _detailsDesiredHeight == 0) &&
                     _appliedDetailsTemplate != null &&
                     _detailsElement.Children.Count > 0)

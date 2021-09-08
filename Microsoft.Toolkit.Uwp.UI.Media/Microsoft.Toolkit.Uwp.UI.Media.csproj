@@ -43,12 +43,12 @@
     </Description>
     <PackageTags>UI;XAML;Acrylic;Brushes;Blur;Effects;Canvas;Geometry</PackageTags>
   </PropertyGroup>
-	
-	<PropertyGroup>
-		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Media</PackageId>
-	</PropertyGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763'">
+  <PropertyGroup>
+    <PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Media</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763'">
     <PackageReference Include="Win2D.uwp" Version="1.25.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.3" />
   </ItemGroup>
@@ -56,38 +56,40 @@
   <ItemGroup>
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Animations\Microsoft.Toolkit.Uwp.UI.Animations.csproj" />
   </ItemGroup>
-	
-	<!-- BEGIN UNO SPECIFIC -->
-	<PropertyGroup>
-		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
-		<NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
-		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Media</PackageId>
 
-		<!-- Validation fails as the generated document is too big -->
-		<XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
-	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
-		<PackageReference Include="Uno.UI" Version="3.4.0" />
+  <!-- BEGIN UNO SPECIFIC -->
+  <PropertyGroup>
+    <TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
+    <NoWarn>$(NoWarn);Uno0001;NU1701</NoWarn>
+    <PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Media</PackageId>
+
+    <!-- Validation fails as the generated document is too big -->
+    <XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+    <PackageReference Include="Uno.UI" Version="3.4.0" />
 
 
-		<Compile Remove="Brushes\**\*.cs" />
-		<None Include="Brushes\**\*.cs" />
-		<Compile Remove="Geometry\**\*.cs" />
-		<None Include="Geometry\**\*.cs" />
-		<Compile Remove="Pipelines\**\*.cs" />
-		<None Include="Pipelines\**\*.cs" />
-		<Compile Remove="Effects\**\*.cs" />
-		<None Include="Effects\**\*.cs" />
-		<Compile Remove="Animations\**\*.cs" />
-		<None Include="Animations\**\*.cs" />
-		<Compile Remove="Visuals\**\*.cs" />
-		<None Include="Visuals\**\*.cs" />
-		<Compile Remove="Helpers\SurfaceLoader*.cs" />
-	  <None Include="Helpers\SurfaceLoader*.cs" />
-		<Compile Remove="Enums\ImageBlendMode.cs" />
-	  <None Include="Enums\ImageBlendMode.cs" />
-		<Compile Remove="Extensions\UIElementExtensions.cs" />
-	  <None Include="Extensions\UIElementExtensions.cs" />
-	</ItemGroup>
-	<!-- END UNO SPECIFIC -->
+    <Compile Remove="Brushes\**\*.cs" />
+    <None Include="Brushes\**\*.cs" />
+    <Compile Remove="Geometry\**\*.cs" />
+    <None Include="Geometry\**\*.cs" />
+    <Compile Remove="Pipelines\**\*.cs" />
+    <None Include="Pipelines\**\*.cs" />
+    <Compile Remove="Effects\**\*.cs" />
+    <None Include="Effects\**\*.cs" />
+    <Compile Remove="Animations\**\*.cs" />
+    <None Include="Animations\**\*.cs" />
+    <Compile Remove="Visuals\**\*.cs" />
+    <None Include="Visuals\**\*.cs" />
+    <Compile Remove="Shadows\**\*.cs" />
+    <None Include="Shadows\**\*.cs" />
+    <Compile Remove="Helpers\SurfaceLoader*.cs" />
+    <None Include="Helpers\SurfaceLoader*.cs" />
+    <Compile Remove="Enums\ImageBlendMode.cs" />
+    <None Include="Enums\ImageBlendMode.cs" />
+    <Compile Remove="Extensions\UIElementExtensions.cs" />
+    <None Include="Extensions\UIElementExtensions.cs" />
+  </ItemGroup>
+  <!-- END UNO SPECIFIC -->
 </Project>

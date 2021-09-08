@@ -71,7 +71,7 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         /// <returns>The <see cref="AspectRatio"/> struct representing that ratio.</returns>
         public static AspectRatio ConvertToAspectRatio(string rawString)
         {
-            string[] ratio = rawString.Split(":");
+            string[] ratio = rawString.Split(':');
 
             if (ratio.Length == 2)
             {

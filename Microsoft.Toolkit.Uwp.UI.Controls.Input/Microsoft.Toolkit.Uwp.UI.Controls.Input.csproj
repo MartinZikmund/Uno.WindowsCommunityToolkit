@@ -11,19 +11,19 @@
       This library provides XAML templated controls. It is a part of the Windows Community Toolkit.
 
       Controls:
-        - ColorPicker/ColorPickerButton: Improved ColorPicker and DropDownButton version.
-        - RadialGauge: Displays a value within a range, using a needle on a circular face.
-        - RangeSelector: "Double slider" control for range values.
-        - RemoteDevicePicker: Remote Device Picker Control for Project Rome.
-        - TokenizingTextBox: An AutoSuggestBox like control which places entered input into easily removed containers for contacts or tags.
+      - ColorPicker/ColorPickerButton: Improved ColorPicker and DropDownButton version.
+      - RadialGauge: Displays a value within a range, using a needle on a circular face.
+      - RangeSelector: "Double slider" control for range values.
+      - RemoteDevicePicker: Remote Device Picker Control for Project Rome.
+      - TokenizingTextBox: An AutoSuggestBox like control which places entered input into easily removed containers for contacts or tags.
     </Description>
     <PackageTags>
-        Controls;XAML;UI;
-        Color;Picker;Button ;ColorPickerButton ;ColorPicker ;
-        Radial;Gauge        ;RadialGauge       ;
-        Range;Selector      ;RangeSelector     ;
-        Remote;Device;Picker;RemoteDevicePicker;DevicePicker;RemoteDevice;
-        Tokenizing;Text;Box ;TokenizingTextBox ;TextBox     ;
+      Controls;XAML;UI;
+      Color;Picker;Button ;ColorPickerButton ;ColorPicker ;
+      Radial;Gauge        ;RadialGauge       ;
+      Range;Selector      ;RangeSelector     ;
+      Remote;Device;Picker;RemoteDevicePicker;DevicePicker;RemoteDevice;
+      Tokenizing;Text;Box ;TokenizingTextBox ;TextBox     ;
     </PackageTags>
   </PropertyGroup>
 
@@ -40,21 +40,25 @@
     <ProjectReference Include="..\Microsoft.Toolkit.Uwp.UI.Controls.Primitives\Microsoft.Toolkit.Uwp.UI.Controls.Primitives.csproj" />
   </ItemGroup>
 
-	<!-- BEGIN UNO SPECIFIC -->
-	<PropertyGroup>
-		<TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
-		<NoWarn>$(NoWarn);Uno0001;NU1701;CS0436</NoWarn>
-		<PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Input</PackageId>
-        <RootNamespace>Microsoft.Toolkit.Uwp.UI.Controls.Input</RootNamespace>
+  <!-- BEGIN UNO SPECIFIC -->
+  <PropertyGroup>
+    <TargetFrameworks>$(TargetFrameworksOverride)</TargetFrameworks>
+    <NoWarn>$(NoWarn);Uno0001;NU1701;CS0436</NoWarn>
+    <PackageId>Uno.Microsoft.Toolkit.Uwp.UI.Controls.Input</PackageId>
+    <RootNamespace>Microsoft.Toolkit.Uwp.UI.Controls.Input</RootNamespace>
 
-      <!-- Validation fails as the generated document is too big -->
-		<XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
-	</PropertyGroup>
-	<ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
-		<PackageReference Remove="Microsoft.UI.Xaml" />
-		<PackageReference Include="Uno.UI"
-											Version="3.4.0" />
-	</ItemGroup>
-	<!-- END UNO SPECIFIC -->
+    <!-- Validation fails as the generated document is too big -->
+    <XamarinAndroidSupportSkipVerifyVersions>true</XamarinAndroidSupportSkipVerifyVersions>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+    <PackageReference Remove="Microsoft.UI.Xaml" />
+    <PackageReference Include="Uno.UI" Version="3.4.0" />
 
+    <Page Remove="RichSuggestBox/**/*.xaml" />
+    <Compile Remove="RichSuggestBox/**/*.cs" />
+    <None Include="RichSuggestBox/**/*.cs" />
+    <None Include="RichSuggestBox/**/*.xaml" />
+
+  </ItemGroup>
+  <!-- END UNO SPECIFIC -->
 </Project>

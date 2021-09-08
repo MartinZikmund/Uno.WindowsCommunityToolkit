@@ -15,6 +15,12 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 
+#if HAS_UNO
+using Popup = Windows.UI.Xaml.Controls.Popup;
+#else
+using Popup = Windows.UI.Xaml.Controls.Primitives.Popup;
+#endif
+
 namespace Microsoft.Toolkit.Uwp.UI.Controls
 {
     /// <summary>

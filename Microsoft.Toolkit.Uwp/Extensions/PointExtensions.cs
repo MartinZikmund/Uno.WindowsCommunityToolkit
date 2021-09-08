@@ -67,5 +67,19 @@ namespace Microsoft.Toolkit.Uwp
         {
             return new Vector3(point.ToVector2(), 0f);
         }
+
+#if HAS_UNO
+        /// <summary>
+        /// Creates a new <see cref="Vector3"/> of the specified point with 0 for the <see cref="Vector3.Z"/> coordinate.
+        /// </summary>
+        /// <param name="point"><see cref="Point"/> to transform to a <see cref="Vector3"/>.</param>
+        /// <returns>New <see cref="Vector3"/> representing the X,Y position of the <see cref="Point"/>.</returns>
+        [Pure]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2 ToVector2(this Point point)
+        {
+            return new Vector2((float)point.X, (float)point.Y);
+        }
+#endif
     }
 }

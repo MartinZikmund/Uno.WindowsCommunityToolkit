@@ -4,4 +4,6 @@
 
 using System.Runtime.CompilerServices;
 
+#if !HAS_UNO
 [assembly: InternalsVisibleTo("Microsoft.Toolkit.Uwp.UI.Media")]
+#endif

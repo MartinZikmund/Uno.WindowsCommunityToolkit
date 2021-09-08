@@ -4,6 +4,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Windows.ApplicationModel;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
@@ -125,16 +126,12 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         /// </remarks>
         private void OnSelectedIndexChanged(DependencyPropertyChangedEventArgs e)
         {
-            var view = (ListDetailsView)d;
-
-            var newValue = e.NewValue is int newIndex && newIndex >= 0 ? view.GetItems()?.ElementAt(newIndex) : default;
-            var oldValue = e.OldValue is int oldIndex ? view.GetItems()?.ElementAtOrDefault(oldIndex) : default;
-
-            // check if selection actually changed
-            if (view.SelectedItem != newValue)
+            if (e.NewValue is int newIndex)
             {
-                object newItem = newIndex >= 0 && Items.Count > newIndex ? Items[newIndex] : null;
-                object oldItem = e.OldValue is int oldIndex && oldIndex >= 0 && Items.Count > oldIndex ? Items[oldIndex] : null;
+                var count = this.GetItems()?.Count();
+
+                object newItem = newIndex >= 0 && count > newIndex ? this.GetItems()?.ElementAt(newIndex) : null;
+                object oldItem = e.OldValue is int oldIndex && oldIndex >= 0 && count > oldIndex ? this.GetItems()?.ElementAtOrDefault(oldIndex) : null;
                 if (SelectedItem != newItem)
                 {
                     if (newItem is null)
@@ -159,10 +156,8 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         /// </remarks>
         private void OnSelectedItemChanged(DependencyPropertyChangedEventArgs e)
         {
-            var view = (ListDetailsView)d;
-
             // UNO TODO
-            var index = e.NewValue == null ? -1 : view.GetItems()?.IndexOf(e.NewValue) ?? -1;
+            var index = e.NewValue == null ? -1 : this.GetItems()?.IndexOf(e.NewValue) ?? -1;
 
             // If there is no selection, do not remove the DetailsPresenter content but let it animate out.
             if (index >= 0)

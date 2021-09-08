@@ -17,7 +17,7 @@ namespace Microsoft.Toolkit.Uwp.UI
     /// <summary>
     /// The base class for attached shadows.
     /// </summary>
-    public abstract class AttachedShadowBase : DependencyObject, IAttachedShadow
+    public abstract partial class AttachedShadowBase : DependencyObject, IAttachedShadow
     {
         /// <summary>
         /// Gets a value indicating whether or not Composition's VisualSurface is supported.
@@ -174,10 +174,14 @@ namespace Microsoft.Toolkit.Uwp.UI
         /// <inheritdoc/>
         public IEnumerable<AttachedShadowElementContext> EnumerateElementContexts()
         {
+#if !HAS_UNO // Needs more recent API of ConditionalWeakTable not in netstd2.0
             foreach (var kvp in ShadowElementContextTable)
             {
                 yield return kvp.Value;
             }
+#else
+            yield break;
+#endif
         }
 
         /// <summary>
@@ -196,6 +200,7 @@ namespace Microsoft.Toolkit.Uwp.UI
                 return;
             }
 
+#if !HAS_UNO // Needs more recent API of ConditionalWeakTable not in netstd2.0
             foreach (var context in ShadowElementContextTable)
             {
                 if (context.Value.IsInitialized)
@@ -203,6 +208,7 @@ namespace Microsoft.Toolkit.Uwp.UI
                     OnPropertyChanged(context.Value, property, oldValue, newValue);
                 }
             }
+#endif
         }
 
         /// <summary>

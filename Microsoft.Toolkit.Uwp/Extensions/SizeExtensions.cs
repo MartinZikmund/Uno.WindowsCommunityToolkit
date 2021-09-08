@@ -55,7 +55,12 @@ namespace Microsoft.Toolkit.Uwp
             return new Rect(point, size);
         }
 
- #if HAS_UNO
+#if HAS_UNO
+        /// <summary>
+        /// Creates a new <see cref="Vector2"/>
+        /// </summary>
+        /// <param name="size"><see cref="Size"/></param>
+        /// <returns>New <see cref="Vector2"/></returns>
         [Pure]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Vector2 ToVector2(this Size size)

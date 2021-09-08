@@ -154,6 +154,7 @@ Task("BuildProjects")
         PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
+    .SetPlatform("Any CPU")
     .WithTarget("Restore");
 
     MSBuild(Solution, buildSettings);
@@ -167,6 +168,7 @@ Task("BuildProjects")
         PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
+    .SetPlatform("Any CPU")
     .WithTarget("Build")
     .WithProperty("GenerateLibraryLayout", "true");
 

@@ -362,7 +362,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)UnoPlatformShell.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\BrushAssets\NoiseTexture.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\BrushAssets\TileTexture.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\checker.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Helpers.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Llama.mp3" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mslogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NotificationAssets\Cloudy-Square.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NotificationAssets\Cloudy.png" />
@@ -405,7 +409,6 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Photos\NorthernCascadesReflection.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Photos\NovemberHikeWaterfall.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\pixel.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Samples\RangeSelector.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\SplashScreen.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\TwitterLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogo.png" />

@@ -222,6 +222,7 @@ Task("Package")
         PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
+    .SetPlatformTarget("Any CPU")
     .WithTarget("Restore")
     .WithTarget("Pack")
     .WithProperty("GenerateLibraryLayout", "true")

@@ -3,6 +3,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Diagnostics.Contracts;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using Point = Windows.Foundation.Point;
 using Rect = Windows.Foundation.Rect;
@@ -53,5 +54,19 @@ namespace Microsoft.Toolkit.Uwp
         {
             return new Rect(point, size);
         }
+
+#if HAS_UNO
+        /// <summary>
+        /// Creates a new <see cref="Vector2"/>
+        /// </summary>
+        /// <param name="size"><see cref="Size"/></param>
+        /// <returns>New <see cref="Vector2"/></returns>
+        [Pure]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static Vector2 ToVector2(this Size size)
+        {
+            return new Vector2((float)size.Width, (float)size.Height);
+        }
+#endif
     }
 }

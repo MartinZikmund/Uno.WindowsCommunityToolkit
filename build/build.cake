@@ -150,9 +150,11 @@ Task("BuildProjects")
     Information("\nBuilding Solution");
     var buildSettings = new MSBuildSettings
     {
-        MaxCpuCount = 0
+        MaxCpuCount = 0,
+        PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
+    .SetPlatformTarget("Any CPU")
     .WithTarget("Restore");
 
     MSBuild(Solution, buildSettings);
@@ -162,9 +164,11 @@ Task("BuildProjects")
     // Build once with normal dependency ordering
     buildSettings = new MSBuildSettings
     {
-        MaxCpuCount = 0
+        MaxCpuCount = 0,
+        PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
+    .SetPlatformTarget("Any CPU")
     .WithTarget("Build")
     .WithProperty("GenerateLibraryLayout", "true");
 
@@ -214,9 +218,11 @@ Task("Package")
     // Invoke the pack target in the end
     var buildSettings = new MSBuildSettings
     {
-        MaxCpuCount = 0
+        MaxCpuCount = 0,
+        PlatformTarget = PlatformTarget.MSIL
     }
     .SetConfiguration(configuration)
+    .SetPlatformTarget("Any CPU")
     .WithTarget("Restore")
     .WithTarget("Pack")
     .WithProperty("GenerateLibraryLayout", "true")
@@ -265,7 +271,19 @@ Task("Test")
         NoBuild = true,
         Loggers = new[] { "trx;LogFilePrefix=VsTestResults" },
         Verbosity = DotNetCoreVerbosity.Normal,
-        ArgumentCustomization = arg => arg.Append($"-s {baseDir}/.runsettings"),
+        ArgumentCustomization = arg => arg.Append($"-s {baseDir}/.runsettings /p:Platform=AnyCPU"),
+    };
+    DotNetCoreTest(file.FullPath, testSettings);
+}).DoesForEach(GetFiles(baseDir + "/**/UnitTests.SourceGenerators.csproj"), (file) =>
+{
+    Information("\nRunning NetCore Source Generator Unit Tests");
+    var testSettings = new DotNetCoreTestSettings
+    {
+        Configuration = configuration,
+        NoBuild = true,
+        Loggers = new[] { "trx;LogFilePrefix=VsTestResults" },
+        Verbosity = DotNetCoreVerbosity.Normal,
+        ArgumentCustomization = arg => arg.Append($"-s {baseDir}/.runsettings /p:Platform=AnyCPU"),
     };
     DotNetCoreTest(file.FullPath, testSettings);
 }).DeferOnError();

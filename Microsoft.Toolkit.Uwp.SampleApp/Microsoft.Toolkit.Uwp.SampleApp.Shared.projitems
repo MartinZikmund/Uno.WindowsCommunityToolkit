@@ -33,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\ThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\TimeSpanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Tools.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Vector3Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeRenderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyControl.xaml.cs">
       <DependentUpon>PropertyControl.xaml</DependentUpon>
@@ -61,7 +62,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\PropertyKind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\PropertyOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\SliderPropertyOptions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\ThicknessPropertyOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\ValueHolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Sample.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleCategory.cs" />
@@ -146,9 +146,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanelPage.xaml.cs">
       <DependentUpon>DockPanelPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\DropShadowPanelPage.xaml.cs">
-      <DependentUpon>DropShadowPanelPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\EnumValuesExtension\Animal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SamplePages\EnumValuesExtension\AnimalToColorConverter.xaml.cs" />
@@ -365,7 +362,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)UnoPlatformShell.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\BrushAssets\NoiseTexture.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\BrushAssets\TileTexture.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\checker.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Helpers.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Llama.mp3" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\mslogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NotificationAssets\Cloudy-Square.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\NotificationAssets\Cloudy.png" />
@@ -408,7 +409,6 @@
     <Content Include="$(MSBuildThisFileDirectory)Assets\Photos\NorthernCascadesReflection.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\Photos\NovemberHikeWaterfall.jpg" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\pixel.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Assets\Samples\RangeSelector.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\SplashScreen.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\TwitterLogo.png" />
     <Content Include="$(MSBuildThisFileDirectory)Assets\UnoLogo.png" />
@@ -580,10 +580,6 @@
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Connected Animations\ConnectedAnimationsCode.bind" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanel.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanel.png" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\DropShadowPanel.png" />
-    <None Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\DropShadowPanelXaml.bind" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\Trex.png" />
-    <Content Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\Unicorn.png" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\Expander\Expander.png" />
     <None Include="$(MSBuildThisFileDirectory)SamplePages\Expander\ExpanderXaml.bind" />
     <Content Include="$(MSBuildThisFileDirectory)SamplePages\FadeHeader\FadeHeaderBehavior.png" />
@@ -800,10 +796,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="$(MSBuildThisFileDirectory)SamplePages\DockPanel\DockPanelPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="$(MSBuildThisFileDirectory)SamplePages\DropShadowPanel\DropShadowPanelPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -38,21 +38,21 @@ namespace Microsoft.Toolkit.Uwp.SampleApp.Data
                         string line = sr.ReadLine();
                         string[] values = line.Split(',');
 
-                        list.Add(
-                            new DataGridDataItem()
-                            {
-                                Rank = uint.Parse(values[0]),
-                                Mountain = values[1],
-                                Height_m = uint.Parse(values[2]),
-                                Range = values[3],
-                                Coordinates = values[4],
-                                Prominence = uint.Parse(values[5]),
-                                Parent_mountain = values[6],
-                                First_ascent = uint.Parse(values[7]),
-                                Ascents = values[8]
-                            });
-                    }
+                    _items.Add(
+                        new DataGridDataItem()
+                        {
+                            Rank = uint.Parse(values[0]),
+                            Mountain = values[1],
+                            Height_m = uint.Parse(values[2]),
+                            Range = values[3],
+                            Coordinates = values[4],
+                            Prominence = uint.Parse(values[5]),
+                            Parent_mountain = values[6],
+                            First_ascent = DateTimeOffset.Parse(values[7]),
+                            Ascents = values[8],
+                        });
                 }
+            }
 
                 _items = new ObservableCollection<DataGridDataItem>(list);
                 return _items;

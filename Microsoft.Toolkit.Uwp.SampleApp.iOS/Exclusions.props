@@ -38,22 +38,23 @@
       <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\Bing Service\**" />
       <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\Implicit Animations\**" />
       <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\RadialGradientBrush\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\ImageBlendBrush\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\LoginButton\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\ImageCropper\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\Eyedropper\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\Weibo Service\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\PersonView\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\CameraPreview\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\ViewportBehavior\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\PipelineBrush\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\CanvasPathGeometry\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\TilesBrush\**" />
-			<_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\ObservableGroup\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\ImageBlendBrush\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\LoginButton\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\ImageCropper\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\Eyedropper\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\Weibo Service\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\PersonView\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\CameraPreview\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\ViewportBehavior\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\PipelineBrush\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\CanvasPathGeometry\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\TilesBrush\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\ObservableGroup\**" />
+      <_UnsupportedSamples Include="$(MSBuildThisFileDirectory)..\Microsoft.Toolkit.Uwp.SampleApp\SamplePages\DropShadowPanel\**" />
 
-			<!-- This is required under linux where evaluated paths are not compared the same way as windows -->
+      <!-- This is required under linux where evaluated paths are not compared the same way as windows -->
       <_AbsoluteUnsupportedSamples Include="@(_UnsupportedSamples->'$([System.IO.Path]::GetFullPath('%(_UnsupportedSamples.Identity)'))')"/>
-      
+
       <Page Remove="@(_AbsoluteUnsupportedSamples)" />
       <Compile Remove="@(_AbsoluteUnsupportedSamples)" />
     </ItemGroup>

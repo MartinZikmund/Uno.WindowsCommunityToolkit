@@ -57,7 +57,12 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
         /// <summary>
         /// Gets or sets the weak reference to the parent that owns the current animation collection.
         /// </summary>
-        internal WeakReference<UIElement>? ParentReference { get; set; }
+#if !HAS_UNO
+        internal
+#else
+        public
+#endif
+            WeakReference<UIElement>? ParentReference { get; set; }
 
         /// <inheritdoc cref="AnimationBuilder.Start(UIElement)"/>
         /// <exception cref="InvalidOperationException">Thrown when there is no attached <see cref="UIElement"/> instance.</exception>
@@ -124,7 +129,15 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
             {
                 foreach (object node in this)
                 {
-                    if (node is ITimeline timeline)
+                    if (node is IAttachedTimeline attachedTimeline)
+                    {
+                        var builder = AnimationBuilder.Create();
+
+                        attachedTimeline.AppendToBuilder(builder, element);
+
+                        await builder.StartAsync(element, token);
+                    }
+                    else if (node is ITimeline timeline)
                     {
                         var builder = AnimationBuilder.Create();
 
@@ -171,6 +184,9 @@ namespace Microsoft.Toolkit.Uwp.UI.Animations
                 {
                     switch (node)
                     {
+                        case IAttachedTimeline attachedTimeline:
+                            builder = attachedTimeline.AppendToBuilder(builder, element);
+                            break;
                         case ITimeline timeline:
                             builder = timeline.AppendToBuilder(builder);
                             break;

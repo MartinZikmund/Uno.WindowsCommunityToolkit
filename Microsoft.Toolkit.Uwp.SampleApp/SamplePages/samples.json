@@ -513,7 +513,8 @@
         "CodeUrl": "https://github.com/CommunityToolkit/WindowsCommunityToolkit/tree/main/Microsoft.Toolkit.Uwp.UI.Controls.Primitives/ConstrainedBox",
         "XamlCodeFile": "/SamplePages/Primitives/ConstrainedBox.bind",
         "Icon": "/SamplePages/Primitives/ConstrainedBox.png",
-        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/ConstrainedBox.md"
+        "DocumentationUrl": "https://raw.githubusercontent.com/MicrosoftDocs/WindowsCommunityToolkitDocs/master/docs/controls/ConstrainedBox.md",
+        "IsUno": true
       },
       {
         "Name": "RichSuggestBox",

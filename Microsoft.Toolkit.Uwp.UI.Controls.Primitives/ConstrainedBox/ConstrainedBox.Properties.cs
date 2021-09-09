@@ -21,7 +21,11 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         /// <summary>
         /// Gets or sets the scale for the width of the panel. Should be a value between 0-1.0. Default is 1.0.
         /// </summary>
-        public double ScaleX
+        public
+#if __ANDROID__
+            new
+#endif
+            double ScaleX
         {
             get { return (double)GetValue(ScaleXProperty); }
             set { SetValue(ScaleXProperty, value); }
@@ -36,7 +40,11 @@ namespace Microsoft.Toolkit.Uwp.UI.Controls
         /// <summary>
         /// Gets or sets the scale for the height of the panel. Should be a value between 0-1.0. Default is 1.0.
         /// </summary>
-        public double ScaleY
+        public
+#if __ANDROID__
+            new
+#endif
+            double ScaleY
         {
             get { return (double)GetValue(ScaleYProperty); }
             set { SetValue(ScaleYProperty, value); }

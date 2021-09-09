@@ -61,7 +61,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\PropertyKind.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\PropertyOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\SliderPropertyOptions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\ThicknessPropertyOptions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\PropertyDescriptor\ValueHolder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Sample.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\SampleCategory.cs" />

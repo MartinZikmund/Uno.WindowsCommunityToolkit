@@ -33,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Common\ThicknessConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\TimeSpanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Common\Tools.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\Vector3Converter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\CodeRenderer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\PropertyControl.xaml.cs">
       <DependentUpon>PropertyControl.xaml</DependentUpon>

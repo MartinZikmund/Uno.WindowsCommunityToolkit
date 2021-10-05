@@ -8,6 +8,7 @@
         <ResourceDictionary Source="ms-appx:///Microsoft.Toolkit.Uwp.UI.Controls.Input/RangeSelector/RangeSelector.xaml" />
         <ResourceDictionary Source="ms-appx:///Microsoft.Toolkit.Uwp.UI.Controls.Input/RemoteDevicePicker/RemoteDevicePicker.xaml" />
         <ResourceDictionary Source="ms-appx:///Microsoft.Toolkit.Uwp.UI.Controls.Input/TokenizingTextBox/TokenizingTextBox.xaml" />
-        <ResourceDictionary Source="ms-appx:///Microsoft.Toolkit.Uwp.UI.Controls.Input/RichSuggestBox/RichSuggestBox.xaml" />
+        <!-- Uno specific: RichSuggestBox is not present in Uno -->
+        <!--<ResourceDictionary Source="ms-appx:///Microsoft.Toolkit.Uwp.UI.Controls.Input/RichSuggestBox/RichSuggestBox.xaml" />-->
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

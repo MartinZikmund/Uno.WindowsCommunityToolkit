@@ -102,7 +102,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Filter">
       <Version>1.1.1</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.33" />
+    <PackageReference Include="Uno.UI.Sample.Banner" Version="1.44.0-dev.35" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
